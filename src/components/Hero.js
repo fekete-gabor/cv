@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import bg from "../assets/bg.mp4";
 import { HeroVideo, Portrait, Introduction } from "./index";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -14,30 +13,39 @@ const Hero = () => {
         pin: true,
         scrub: true,
         start: "top top",
-        end: "+=100%",
+        end: "+=150%",
+      },
+    });
+
+    tl.to(".left", { x: "-100%" }, 1).to(".right", { x: "100%" }, 1);
+  }, []);
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".box3",
+        start: "top 30%",
+        end: "bottom 0%+=250",
+        scrub: true,
+        markers: true,
       },
     });
 
     tl.fromTo(
-      ".line",
-      { height: 0, width: "2px", background: "transparent" },
-      { duration: 1, height: "200vh", background: "yellow" }
+      [".layer0", ".box3"],
+      { autoAlpha: 1 },
+      { duration: 2, ease: "linear", autoAlpha: 0 }
     )
       .fromTo(
-        ".left",
-        { border: "solid 1px transparent" },
-        { duration: 1, borderRight: "solid 1px yellow" },
-        "-=1"
+        [".layer1", ".box2"],
+        { autoAlpha: 1 },
+        { duration: 2, ease: "linear", autoAlpha: 0, delay: 6 }
       )
       .fromTo(
-        ".right",
-        { border: "solid 1px transparent" },
-        { duration: 1, borderLeft: "solid 1px yellow" },
-        "-=1"
-      )
-      .to(".line", { duration: 0, autoAlpha: 0 }, 1)
-      .to(".left", { x: "-100%" }, 1)
-      .to(".right", { x: "100%" }, 1);
+        [".layer2", ".box1"],
+        { autoAlpha: 1 },
+        { duration: 2, ease: "linear", autoAlpha: 0, delay: 6 }
+      );
   }, []);
 
   return (
@@ -47,12 +55,12 @@ const Hero = () => {
         <Portrait />
         <HeroVideo />
       </div>
-      <div className="line"></div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  height: 500vh;
   .panel-container {
     overflow: hidden;
     display: grid;
@@ -61,14 +69,6 @@ const Wrapper = styled.div`
     width: 100%;
     position: absolute;
     top: 0px;
-  }
-
-  .line {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
   }
 `;
 

@@ -5,39 +5,15 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Portrait = () => {
-  useEffect(() => {
-    const handleChange = (el, trigger, display, background, start) => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: trigger,
-          scrub: true,
-          start: `top top${start}`,
-          end: "bottom center",
-        },
-      });
-
-      tl.to(el, { display, background });
-    };
-
-    // hide box 3
-    handleChange(".box3", ".box3", "hotpink", "none", "-=100");
-
-    // change clr of box 2 & 1
-    handleChange(".box2", ".box3", "hotpink", "flex", "-=100");
-    handleChange(".box1", ".box3", "orange", "flex", "-=100");
-
-    // hide box 2
-    handleChange(".box2", ".box2", "hotpink", "none", "-=100");
-
-    // change clr of box 1
-    handleChange(".box1", ".box2", "hotpink", "flex", "-=100");
-
-    // hide box 1
-    handleChange(".box1", ".box1", "hotpink", "none", "-=150");
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <Wrapper className="right">
+      <div className="layer layer0"></div>
+      <div className="layer layer1"></div>
+      <div className="layer layer2"></div>
+      <div className="layer layer3"></div>
+      <div className="box0"></div>
       <div className="box1"></div>
       <div className="box2"></div>
       <div className="box3"></div>
@@ -50,11 +26,47 @@ const Wrapper = styled.div`
   position: relative;
   background-color: #222;
 
+  .layer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15rem;
+    color: whitesmoke;
+
+    height: 100%;
+    position: absolute;
+  }
+
+  .layer1 {
+    z-index: 6;
+    background-color: dodgerblue;
+    width: 25%;
+  }
+
+  .layer2 {
+    z-index: 5;
+    width: 50%;
+    background: goldenrod;
+  }
+
+  .layer3 {
+    z-index: 4;
+    width: 75%;
+    background: hotpink;
+  }
+
+  .layer0 {
+    z-index: 7;
+    width: 100%;
+    background-color: black;
+  }
+
+  .box0,
   .box1,
   .box2,
   .box3 {
-    width: 250px;
-    height: 250px;
+    width: 500px;
+    height: 500px;
     color: whitesmoke;
     font-size: 4rem;
     display: flex;
@@ -64,23 +76,30 @@ const Wrapper = styled.div`
     transform: translate(-50%, -50%);
   }
 
+  .box0 {
+    z-index: 10;
+    top: 80%;
+    left: 45%;
+    background: black;
+  }
+
   .box1 {
-    z-index: 4;
-    top: 50%;
+    z-index: 9;
+    top: 75%;
     left: 50%;
     background-color: dodgerblue;
   }
 
   .box2 {
-    z-index: 3;
-    top: 45%;
+    z-index: 8;
+    top: 70%;
     left: 55%;
     background-color: orange;
   }
 
   .box3 {
-    z-index: 2;
-    top: 40%;
+    z-index: 7;
+    top: 65%;
     left: 60%;
     background-color: hotpink;
   }
