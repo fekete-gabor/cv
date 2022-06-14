@@ -24,7 +24,8 @@ const Portrait = () => {
 const Wrapper = styled.div`
   z-index: 2;
   position: relative;
-  background-color: #222;
+  background-color: bisque;
+  border: none;
 
   .layer {
     display: flex;
@@ -32,7 +33,6 @@ const Wrapper = styled.div`
     align-items: center;
     font-size: 15rem;
     color: whitesmoke;
-
     height: 100%;
     position: absolute;
   }
@@ -58,15 +58,15 @@ const Wrapper = styled.div`
   .layer0 {
     z-index: 7;
     width: 100%;
-    background-color: black;
+    background-color: #222;
   }
 
   .box0,
   .box1,
   .box2,
   .box3 {
-    width: 500px;
-    height: 500px;
+    width: 250px;
+    height: 250px;
     color: whitesmoke;
     font-size: 4rem;
     display: flex;
@@ -80,7 +80,7 @@ const Wrapper = styled.div`
     z-index: 10;
     top: 80%;
     left: 45%;
-    background: black;
+    background: #222;
   }
 
   .box1 {
@@ -102,6 +102,16 @@ const Wrapper = styled.div`
     top: 65%;
     left: 60%;
     background-color: hotpink;
+  }
+
+  @media screen and (min-width: 1100px) {
+    .box0,
+    .box1,
+    .box2,
+    .box3 {
+      width: 500px;
+      height: 500px;
+    }
   }
 `;
 
