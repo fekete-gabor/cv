@@ -3,7 +3,7 @@ import reducer from "../reducer/main-reducer";
 import { SET_LANGUAGE } from "../actions";
 
 const initialState = {
-  language: "en",
+  language: "",
   is_loading: false,
   is_error: false,
   projects_load_begin: false,
