@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import engBG from "../assets/gb.jpg";
-import huBG from "../assets/hun.jpg";
+import huBG from "../assets/hu.jpg";
 import { Link } from "react-router-dom";
 import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap";
@@ -13,8 +13,8 @@ const Language = () => {
   const secondContainerRef = useRef(null);
 
   useEffect(() => {
-    const first = firstContainerRef.current;
-    const second = secondContainerRef.current;
+    const english = firstContainerRef.current;
+    const hungarian = secondContainerRef.current;
 
     const tl = gsap.timeline();
 
@@ -34,25 +34,40 @@ const Language = () => {
         },
         0
       )
-      .to(".bg-colored", { height: "10%" });
+      .fromTo(
+        ".bg-gray",
+        { height: "0%", filter: "grayscale(100%)" },
+        { duration: 1, height: "100%" },
+        0
+      )
+      .fromTo(
+        ".link-container",
+        { height: "100%" },
+        { duration: 1, height: "10%" },
+        0
+      )
+      .to(".bg-colored", { duration: 1, height: "10%" }, 0);
 
     gsap.set(".bg-colored", { height: "0%" });
-    gsap.set(".bg-gray", { height: "100%", filter: "grayscale(100%)" });
 
-    first.addEventListener("mouseenter", () => {
-      gsap.to(".bg-colored-eng", { duration: 1, height: "100%" });
+    english.addEventListener("mouseenter", () => {
+      gsap.to(".bg-colored-eng", { height: "100%" });
+      gsap.to(".link-container-eng", { duration: 2, height: "100%" });
     });
 
-    first.addEventListener("mouseleave", () => {
-      gsap.to(".bg-colored-eng", { duration: 1, height: "10%" });
+    english.addEventListener("mouseleave", () => {
+      gsap.to(".bg-colored-eng", { height: "10%" });
+      gsap.to(".link-container-eng", { duration: 2, height: "10%" });
     });
 
-    second.addEventListener("mouseenter", () => {
-      gsap.to(".bg-colored-hu", { duration: 1, height: "100%" });
+    hungarian.addEventListener("mouseenter", () => {
+      gsap.to(".bg-colored-hu", { height: "100%" });
+      gsap.to(".link-container-hu", { duration: 2, height: "100%" });
     });
 
-    second.addEventListener("mouseleave", () => {
-      gsap.to(".bg-colored-hu", { duration: 1, height: "10%" });
+    hungarian.addEventListener("mouseleave", () => {
+      gsap.to(".bg-colored-hu", { height: "10%" });
+      gsap.to(".link-container-hu", { duration: 2, height: "10%" });
     });
   }, []);
 
@@ -61,13 +76,22 @@ const Language = () => {
       <div className="wrap">
         <div className="container">
           <div className="img-container">
-            <img src={engBG} alt="hun" className="bg-colored bg-colored-eng" />
-            <img src={engBG} alt="hun" className="bg-gray bg-gray-eng" />
+            <img
+              src={engBG}
+              alt="double decker colored"
+              className="bg-colored bg-colored-eng"
+            />
+            <img
+              src={engBG}
+              alt="double decker gray"
+              className="bg-gray bg-gray-eng"
+            />
           </div>
-          <div className="link-container" ref={firstContainerRef}>
+          <div className="link-container link-container-eng">
             <Link
               to="/"
               data-language="eng"
+              ref={firstContainerRef}
               onClick={(e) => setLanguage(e.target.dataset.language)}
             >
               English
@@ -77,13 +101,22 @@ const Language = () => {
         </div>
         <div className="container">
           <div className="img-container">
-            <img src={huBG} alt="hun" className="bg-colored bg-colored-hu" />
-            <img src={huBG} alt="hun" className="bg-gray bg-gray-hu" />
+            <img
+              src={huBG}
+              alt="hungarian building colored"
+              className="bg-colored bg-colored-hu"
+            />
+            <img
+              src={huBG}
+              alt="hungarian building gray"
+              className="bg-gray bg-gray-hu"
+            />
           </div>
-          <div className="link-container" ref={secondContainerRef}>
+          <div className="link-container link-container-hu">
             <Link
               to="/"
               data-language="hu"
+              ref={secondContainerRef}
               onClick={(e) => setLanguage(e.target.dataset.language)}
             >
               Magyar
@@ -99,13 +132,14 @@ const Language = () => {
 const Wrapper = styled.section`
   .wrap {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: grid;
+    background: #222;
   }
 
   .container {
-    height: 100%;
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -131,9 +165,17 @@ const Wrapper = styled.section`
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    background: linear-gradient(
+      90deg,
+      rgba(0.2, 0.2, 0.2, 0.2),
+      rgba(0.2, 0.2, 0.2, 0.2)
+    );
     position: absolute;
     a {
+      width: 100%;
+      text-align: center;
       color: whitesmoke;
       font-size: 3rem;
     }
@@ -205,7 +247,7 @@ const Wrapper = styled.section`
     }
 
     .img-container {
-      height: 100vh;
+      height: 100%;
     }
   }
 `;

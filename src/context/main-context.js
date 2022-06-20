@@ -1,6 +1,11 @@
 import React, { useContext, useEffect, useReducer } from "react";
 import reducer from "../reducer/main-reducer";
-import { SET_LANGUAGE } from "../actions";
+import {
+  SET_LANGUAGE,
+  FETCH_BEGIN,
+  FETCH_SUCCESS,
+  FETCH_ERROR,
+} from "../actions";
 
 const initialState = {
   language: "",
@@ -12,6 +17,8 @@ const initialState = {
   projects: [],
 };
 
+const allProjectsUrl = process.env.REACT_APP_ALL_PROJECTS;
+
 const MainContext = React.createContext();
 
 export const MainProvider = ({ children }) => {
@@ -20,6 +27,24 @@ export const MainProvider = ({ children }) => {
   const setLanguage = (language) => {
     dispatch({ type: SET_LANGUAGE, payload: language });
   };
+
+  const fetchProjects = async () => {
+    dispatch({ type: FETCH_BEGIN });
+    try {
+      const response = await fetch(`${allProjectsUrl}/*`);
+
+      const data = await response.json();
+      const payload = data.data;
+      dispatch({ type: FETCH_SUCCESS, payload });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: FETCH_ERROR });
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, [state.is_loading]);
 
   return (
     <MainContext.Provider
