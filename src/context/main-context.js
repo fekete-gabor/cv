@@ -17,7 +17,7 @@ const initialState = {
   projects: [],
 };
 
-// const allProjectsUrl = process.env.REACT_APP_ALL_PROJECTS;
+const allProjectsUrl = process.env.REACT_APP_ALL_PROJECTS;
 
 const MainContext = React.createContext();
 
@@ -31,12 +31,9 @@ export const MainProvider = ({ children }) => {
   const fetchProjects = async () => {
     dispatch({ type: FETCH_BEGIN });
     try {
-      const response = await fetch(
-        `http://localhost:1337/api/projects?populate/*`
-      );
+      const response = await fetch(`${allProjectsUrl}`);
       const data = await response.json();
       const payload = data.data;
-      console.log(payload);
       dispatch({ type: FETCH_SUCCESS, payload });
     } catch (error) {
       dispatch({ type: FETCH_ERROR });
