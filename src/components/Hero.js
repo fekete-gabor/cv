@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { HeroVideo, Portrait, Introduction } from "./index";
+import { HeroBanner, HeroPortrait, HeroIntroduction } from "./index";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  // translate x left and right side
+  // translate x, left and right side
   useEffect(() => {
     ScrollTrigger.matchMedia({
       "(max-width: 1099px)": function () {
@@ -76,7 +76,7 @@ const Hero = () => {
     });
   }, []);
 
-  // translate y hobbies
+  // translate y, hobbies
   useEffect(() => {
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
@@ -84,12 +84,12 @@ const Hero = () => {
           scrollTrigger: {
             trigger: ".box3",
             start: "top 30%",
-            end: "+=150%",
+            end: "+=200%",
             scrub: true,
           },
         });
 
-        tl.to(".hobby", { y: "-124" });
+        tl.to(".hobby", { y: "-185" });
       },
     });
   }, []);
@@ -97,9 +97,9 @@ const Hero = () => {
   return (
     <Wrapper>
       <div className="panel-container">
-        <Introduction />
-        <Portrait />
-        <HeroVideo />
+        <HeroIntroduction />
+        <HeroPortrait />
+        <HeroBanner />
       </div>
     </Wrapper>
   );

@@ -1,8 +1,11 @@
 import Language from "./Language";
 import Hero from "./Hero";
-import HeroVideo from "./HeroVideo";
-import Introduction from "./Introduction";
-import Portrait from "./Portrait";
+import HeroBanner from "./HeroBanner";
+import HeroIntroduction from "./HeroIntroduction";
+import HeroPortrait from "./HeroPortrait";
+import AboutMe from "./AboutMe";
+import AboutMeIntroduction from "./AboutMeIntroduction";
+import AboutMePortrait from "./AboutMePortrait";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ScrollTop from "./ScrollTop";
@@ -10,9 +13,12 @@ import ScrollTop from "./ScrollTop";
 export {
   Language,
   Hero,
-  HeroVideo,
-  Introduction,
-  Portrait,
+  HeroBanner,
+  HeroIntroduction,
+  HeroPortrait,
+  AboutMe,
+  AboutMeIntroduction,
+  AboutMePortrait,
   Navbar,
   Footer,
   ScrollTop,
