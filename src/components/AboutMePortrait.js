@@ -11,6 +11,7 @@ const AboutMePortrait = () => {
 
 const Wrapper = styled.div`
   background-color: darkslategray;
+  z-index: 1;
 `;
 
 export default AboutMePortrait;

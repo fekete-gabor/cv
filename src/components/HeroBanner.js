@@ -37,10 +37,9 @@ const HeroBanner = () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   top: 0;
-  background-color: #222;
   display: flex;
   justify-content: center;
   align-items: center;

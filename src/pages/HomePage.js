@@ -4,69 +4,69 @@ import { Navbar, Hero, AboutMe, Footer, ScrollTop } from "../components";
 import { gsap } from "gsap";
 
 const HomePage = () => {
-  // useEffect(() => {
-  //   gsap.defaults({ ease: "slow" });
+  useEffect(() => {
+    let svgns = "http://www.w3.org/2000/svg";
+    let root = document.querySelector("svg");
+    let ease = 0.75;
 
-  //   let svgns = "http://www.w3.org/2000/svg";
-  //   let root = document.querySelector("svg");
-  //   let ease = 0.75;
+    let pointer = {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+    };
 
-  //   let pointer = {
-  //     x: window.innerWidth / 2,
-  //     y: window.innerHeight / 2,
-  //   };
+    window.addEventListener("mousemove", (event) => {
+      pointer.x = event.clientX;
+      pointer.y = event.clientY;
+    });
 
-  //   window.addEventListener("mousemove", function (event) {
-  //     pointer.x = event.clientX;
-  //     pointer.y = event.clientY;
-  //   });
+    let leader = (prop) => {
+      return prop === "x" ? pointer.x : pointer.y;
+    };
 
-  //   let leader = pointer;
+    let total = 100;
+    for (let i = 0; i < total; i++) {
+      leader = createLine(leader, i);
+    }
 
-  //   let total = 150;
-  //   for (let i = 0; i < total; i++) {
-  //     leader = createLine(leader, i);
-  //   }
+    function createLine(leader, i) {
+      let line = document.createElementNS(svgns, "line");
+      root.appendChild(line);
 
-  //   function createLine(leader, i) {
-  //     let line = document.createElementNS(svgns, "line");
-  //     root.appendChild(line);
+      gsap.set(line, { x: -15, y: -15, opacity: (total - i) / total });
 
-  //     gsap.set(line, { x: -15, y: -15, alpha: (total - i) / total });
+      let pos = gsap.getProperty(line);
 
-  //     gsap.to(line, {
-  //       duration: 1000,
-  //       x: "+=1",
-  //       y: "+=1",
-  //       repeat: -1,
-  //       modifiers: {
-  //         x: function () {
-  //           let posX = gsap.getProperty(line, "x");
-  //           let leaderX = gsap.getProperty(leader, "x");
+      gsap.to(line, {
+        duration: 1000,
+        x: "+=1",
+        y: "+=1",
+        repeat: -1,
+        ease: "none",
+        modifiers: {
+          x: () => {
+            let posX = pos("x");
+            let leaderX = leader("x");
+            let x = posX + (leaderX - posX) * ease;
+            line.setAttribute("x2", leaderX - x);
+            return x;
+          },
+          y: () => {
+            let posY = pos("y");
+            let leaderY = leader("y");
+            let y = posY + (leaderY - posY) * ease;
+            line.setAttribute("y2", leaderY - y);
+            return y;
+          },
+        },
+      });
 
-  //           let x = posX + (leaderX - posX) * ease;
-  //           line.setAttribute("x2", leaderX - x);
-  //           return x;
-  //         },
-  //         y: function () {
-  //           let posY = gsap.getProperty(line, "y");
-  //           let leaderY = gsap.getProperty(leader, "y");
-
-  //           let y = posY + (leaderY - posY) * ease;
-  //           line.setAttribute("y2", leaderY - y);
-  //           return y;
-  //         },
-  //       },
-  //     });
-
-  //     return line;
-  //   }
-  // }, []);
-
+      return pos;
+    }
+  }, []);
   return (
     <Wrapper>
-      {/* <svg></svg> */}
       {/* <Navbar /> */}
+      <svg></svg>
       <Hero />
       <AboutMe />
       <Footer />
@@ -76,18 +76,19 @@ const HomePage = () => {
 };
 
 const Wrapper = styled.section`
-  /* svg {
+  svg {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
+    background-color: var(--clr-primary-3);
   }
 
   line {
-    stroke: var(--clr-primary-4);
-    stroke-width: 4;
-  } */
+    stroke: tomato;
+    stroke-width: 2;
+  }
 `;
 
 export default HomePage;

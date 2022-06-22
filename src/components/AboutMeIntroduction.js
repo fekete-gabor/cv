@@ -14,6 +14,7 @@ const AboutMeIntroduction = () => {
 
 const Wrapper = styled.div`
   background-color: dodgerblue;
+  z-index: 1;
 `;
 
 export default AboutMeIntroduction;
