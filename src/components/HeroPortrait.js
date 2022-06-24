@@ -1,114 +1,110 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const HeroPortrait = () => {
+  useEffect(() => {
+    ScrollTrigger.matchMedia({
+      "(min-width: 1100px)": function () {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".container",
+            start: "top 0%",
+            end: "+=200%",
+            pin: true,
+            scrub: true,
+          },
+        });
+
+        tl.to(".mainBG", { background: "#F25774" })
+          .fromTo([".box4", ".layer1"], { autoAlpha: 1 }, { autoAlpha: 0 }, 0)
+          .to(".mainBG", { background: "#41BFB3" })
+          .fromTo([".box3", ".layer2"], { autoAlpha: 1 }, { autoAlpha: 0 }, 1)
+          .to(".mainBG", { background: "#F2D6B3" })
+          .fromTo([".box2", ".layer3"], { autoAlpha: 1 }, { autoAlpha: 0 }, 2)
+          .to(".mainBG", { background: "#F2A444" })
+          .fromTo(".layer4", { autoAlpha: 1 }, { autoAlpha: 0 }, 3)
+          .to(".mainBG", { background: "#050A26" });
+      },
+    });
+  }, []);
+
   return (
-    <Wrapper className="right">
-      <div className="layer layer0"></div>
+    <Wrapper>
       <div className="layer layer1"></div>
       <div className="layer layer2"></div>
       <div className="layer layer3"></div>
-      <div className="box box0"></div>
+      <div className="layer layer4"></div>
       <div className="box box1"></div>
       <div className="box box2"></div>
       <div className="box box3"></div>
+      <div className="box box4"></div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  z-index: 2;
-  position: relative;
-  background-color: bisque;
-  border: none;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
 
   .layer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15rem;
-    color: whitesmoke;
+    width: 50px;
     height: 100%;
-    position: absolute;
   }
 
-  .layer0 {
-    z-index: 7;
-    width: 100%;
-    background-color: var(--clr-primary-3);
-  }
-
-  .layer1 {
-    z-index: 6;
-    width: 68%;
-    background: var(--clr-primary-1);
-  }
-
-  .layer2 {
-    z-index: 5;
-    width: 76%;
-    background: var(--clr-primary-2);
-  }
-
-  .layer3 {
-    z-index: 4;
-    width: 84%;
-    background: var(--clr-primary-4);
-  }
-
-  .box {
-    width: 250px;
-    height: 250px;
-    color: whitesmoke;
-    font-size: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    transform: translate(-50%, -50%);
-  }
-
-  .box0 {
-    z-index: 10;
-    top: 80%;
-    left: 45%;
-    background: var(--clr-primary-3);
-  }
-
-  .box1 {
-    z-index: 9;
-    top: 75%;
-    left: 50%;
-    background-color: var(--clr-primary-4);
-  }
-
-  .box2 {
-    z-index: 8;
-    top: 70%;
-    left: 55%;
-    background-color: var(--clr-primary-2);
-  }
-
-  .box3 {
-    z-index: 7;
-    top: 65%;
-    left: 60%;
+  .layer4 {
     background-color: var(--clr-primary-1);
   }
 
-  @media screen and (min-width: 1100px) {
-    .box0,
-    .box1,
-    .box2,
-    .box3 {
-      width: 500px;
-      height: 500px;
-    }
+  .layer3 {
+    background-color: #f2d6b3;
+  }
 
-    .layer0 {
-      width: 60%;
-      background: bisque;
-    }
+  .layer2 {
+    background-color: #41bfb3;
+  }
+
+  .layer1 {
+    background-color: #f25774;
+  }
+
+  .box {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+  }
+
+  .box1 {
+    bottom: 0;
+    right: 20%;
+    background: #222;
+    z-index: 4;
+  }
+
+  .box2 {
+    bottom: 2%;
+    right: 19%;
+    background: #f2d6b3;
+    z-index: 3;
+  }
+
+  .box3 {
+    bottom: 4%;
+    right: 18%;
+    background: #41bfb3;
+    z-index: 2;
+  }
+
+  .box4 {
+    bottom: 6%;
+    right: 17%;
+    background: #f25774;
+    z-index: 1;
   }
 `;
 
