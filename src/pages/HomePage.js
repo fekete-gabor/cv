@@ -93,9 +93,9 @@ const HomePage = () => {
       {/* <Navbar /> */}
       <svg className="mainBG"></svg>
       <Hero />
-      {/* <AboutMe />
+      <AboutMe />
       <Footer />
-      <ScrollTop /> */}
+      <ScrollTop />
     </Wrapper>
   );
 };

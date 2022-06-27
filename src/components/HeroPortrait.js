@@ -55,7 +55,7 @@ const Wrapper = styled.div`
   z-index: 1;
   display: flex;
   justify-content: flex-end;
-  /* position: absolute; */
+  position: absolute;
 
   .layer {
     width: 50px;
@@ -99,6 +99,7 @@ const Wrapper = styled.div`
 
   @media screen and (min-width: 1100px) {
     position: unset;
+
     .layer {
       display: flex;
     }

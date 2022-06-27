@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap";
@@ -7,6 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HeroIntroduction = () => {
   const { secondary_colors: colors, language } = useMainContext();
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
 
   useEffect(() => {
     gsap.set([".introduction-container", ".hobby", ".letter"], {
@@ -93,6 +95,13 @@ const HeroIntroduction = () => {
   }, []);
 
   useEffect(() => {
+    const container = containerRef.current;
+    const text = textRef.current;
+
+    const containerHeight = container.getBoundingClientRect().height;
+    const textHeight = text.getBoundingClientRect().height;
+    const height = containerHeight - textHeight;
+
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         const tl = gsap.timeline({
@@ -103,11 +112,10 @@ const HeroIntroduction = () => {
             scrub: true,
           },
         });
-
-        tl.to(".hobby", { y: "-215" });
+        tl.to(".hobby-container", { y: `-${height}` });
       },
     });
-  }, []);
+  }, [containerRef, textRef]);
 
   useEffect(() => {
     gsap.utils.toArray(".letter").forEach((letter) => {
@@ -195,21 +203,25 @@ const HeroIntroduction = () => {
             <div className="introduction">
               <h1>
                 I have a passion for
-                <div className="hobbies">
-                  <ul>
-                    <li>
-                      <p className="hobby hobby1">webdesign-t,</p>
-                    </li>
-                    <li>
-                      <p className="hobby hobby2">tanulást,</p>
-                    </li>
-                    <li>
-                      <p className="hobby hobby3">dolgokat építeni,</p>
-                    </li>
-                    <li>
-                      <p className="hobby hobby4">&amp; az állatokat!</p>
-                    </li>
-                  </ul>
+                <div className="test">
+                  <div className="hobby-container" ref={containerRef}>
+                    <ul>
+                      <li>
+                        <p className="hobby hobby1">webdesign-t,</p>
+                      </li>
+                      <li>
+                        <p className="hobby hobby2">tanulást,</p>
+                      </li>
+                      <li>
+                        <p className="hobby hobby3">dolgokat építeni,</p>
+                      </li>
+                      <li>
+                        <p className="hobby hobby4" ref={textRef}>
+                          &amp; az állatokat!
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </h1>
             </div>
@@ -234,21 +246,25 @@ const HeroIntroduction = () => {
             <div className="introduction">
               <h1>
                 I have a passion for
-                <div className="hobbies">
-                  <ul>
-                    <li>
-                      <p className="hobby hobby1">webdesign,</p>
-                    </li>
-                    <li>
-                      <p className="hobby hobby2">learning,</p>
-                    </li>
-                    <li>
-                      <p className="hobby hobby3">building things,</p>
-                    </li>
-                    <li>
-                      <p className="hobby hobby4">&amp; animals!</p>
-                    </li>
-                  </ul>
+                <div className="test">
+                  <div className="hobby-container" ref={containerRef}>
+                    <ul>
+                      <li>
+                        <p className="hobby hobby1">webdesign,</p>
+                      </li>
+                      <li>
+                        <p className="hobby hobby2">learning,</p>
+                      </li>
+                      <li>
+                        <p className="hobby hobby3">building things,</p>
+                      </li>
+                      <li>
+                        <p className="hobby hobby4" ref={textRef}>
+                          &amp; animals!
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </h1>
             </div>
@@ -262,11 +278,10 @@ const HeroIntroduction = () => {
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
 
   .introduction-container {
     display: flex;
@@ -274,8 +289,8 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: left;
     padding: 1rem;
-    /* margin: 0 2rem; */
-    font-size: 1rem;
+    margin: 0 2rem;
+    font-size: 2rem;
     font-weight: 600;
     p {
       padding: 0.5rem 0;
@@ -283,9 +298,8 @@ const Wrapper = styled.div`
   }
 
   .introduction {
-    padding-left: 0.5rem;
     h1 {
-      font-size: 1rem;
+      font-size: 2rem;
     }
   }
 
@@ -306,7 +320,7 @@ const Wrapper = styled.div`
     margin: 0 0.5rem;
   }
 
-  .hobbies {
+  .hobby-container {
     width: fit-content;
   }
 
@@ -325,6 +339,10 @@ const Wrapper = styled.div`
       }
     }
 
+    .introduction {
+      padding-left: 0.5rem;
+    }
+
     p {
       overflow: hidden;
     }
@@ -334,16 +352,15 @@ const Wrapper = styled.div`
       font-size: 5rem;
     }
 
-    .hobbies {
-      overflow: hidden;
+    .test {
       height: 60px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
     }
-  }
 
-  @media screen and (min-width: 1200px) {
-    .letter,
-    .main-letter {
-      font-size: 7rem;
+    .hobby-container {
+      align-items: flex-start;
     }
   }
 `;
