@@ -55,10 +55,12 @@ const Wrapper = styled.div`
   z-index: 1;
   display: flex;
   justify-content: flex-end;
+  /* position: absolute; */
 
   .layer {
     width: 50px;
     height: 100%;
+    display: none;
   }
 
   .layer5 {
@@ -67,16 +69,14 @@ const Wrapper = styled.div`
   }
 
   .box {
-    width: 400px;
-    height: 400px;
-    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
   }
 
   .box1 {
-    bottom: 0;
-    right: 20%;
-    background: #222;
     z-index: 4;
+    display: flex;
   }
 
   .box2 {
@@ -95,6 +95,25 @@ const Wrapper = styled.div`
     bottom: 6%;
     right: 17%;
     z-index: 1;
+  }
+
+  @media screen and (min-width: 1100px) {
+    position: unset;
+    .layer {
+      display: flex;
+    }
+
+    .box {
+      display: flex;
+      width: 400px;
+      height: 400px;
+      position: absolute;
+    }
+
+    .box1 {
+      bottom: 0;
+      right: 20%;
+    }
   }
 `;
 

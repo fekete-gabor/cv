@@ -20,9 +20,16 @@ const Wrapper = styled.div`
   .container {
     width: 100%;
     height: 100vh;
-    display: grid;
-    grid-template-columns: 70% 30%;
+    display: flex;
+    flex-direction: column;
     position: relative;
+  }
+
+  @media screen and (min-width: 1100px) {
+    .container {
+      display: grid;
+      grid-template-columns: 70% 30%;
+    }
   }
 `;
 

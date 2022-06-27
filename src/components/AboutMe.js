@@ -14,7 +14,7 @@ const AboutMe = () => {
 const Wrapper = styled.section`
   height: 100vh;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(2, 1fr); */
 `;
 
 export default AboutMe;

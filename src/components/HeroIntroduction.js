@@ -192,7 +192,7 @@ const HeroIntroduction = () => {
               <div className="letter">k</div>
               <div className="letter">!</div>
             </div>
-            <div className="letter-container introduction">
+            <div className="introduction">
               <h1>
                 I have a passion for
                 <div className="hobbies">
@@ -231,7 +231,7 @@ const HeroIntroduction = () => {
               <div className="letter">r</div>
               <div className="letter">!</div>
             </div>
-            <div className="letter-container introduction">
+            <div className="introduction">
               <h1>
                 I have a passion for
                 <div className="hobbies">
@@ -261,11 +261,12 @@ const HeroIntroduction = () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 
   .introduction-container {
     display: flex;
@@ -273,9 +274,9 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: left;
     padding: 1rem;
-    margin: 0 2rem;
-    width: 100%;
-    height: 100%;
+    /* margin: 0 2rem; */
+    font-size: 1rem;
+    font-weight: 600;
     p {
       padding: 0.5rem 0;
     }
@@ -283,9 +284,13 @@ const Wrapper = styled.div`
 
   .introduction {
     padding-left: 0.5rem;
+    h1 {
+      font-size: 1rem;
+    }
   }
 
-  .letter-container {
+  .letter-container,
+  .introduction {
     display: flex;
     justify-content: flex-start;
     align-self: flex-start;
@@ -293,7 +298,7 @@ const Wrapper = styled.div`
 
   .letter,
   .main-letter {
-    font-size: 7rem;
+    font-size: 2rem;
     margin: 0 0.1rem;
   }
 
@@ -311,13 +316,34 @@ const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1100px) {
+    height: 100%;
+    .introduction-container {
+      width: 100%;
+      height: 100%;
+      p {
+        padding: 0.5rem 0;
+      }
+    }
+
     p {
       overflow: hidden;
+    }
+
+    .letter,
+    .main-letter {
+      font-size: 5rem;
     }
 
     .hobbies {
       overflow: hidden;
       height: 60px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .letter,
+    .main-letter {
+      font-size: 7rem;
     }
   }
 `;

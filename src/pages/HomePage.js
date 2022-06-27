@@ -1,96 +1,101 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import useMediaQuery from "../utils/mediaQuery";
 import { Navbar, Hero, AboutMe, Footer, ScrollTop } from "../components";
 import { gsap } from "gsap";
 
 const HomePage = () => {
+  const mediaQuery = useMediaQuery("(min-width: 1100px)");
+
   useEffect(() => {
-    let svgns = "http://www.w3.org/2000/svg";
-    let root = document.querySelector("svg");
-    let ease = 0.75;
+    if (mediaQuery) {
+      let svgns = "http://www.w3.org/2000/svg";
+      let root = document.querySelector("svg");
+      let ease = 0.75;
 
-    let pointer = {
-      x: window.innerWidth,
-      y: window.innerHeight,
-    };
+      let pointer = {
+        x: window.innerWidth,
+        y: window.innerHeight,
+      };
 
-    window.addEventListener("mousemove", (event) => {
-      pointer.x = event.clientX;
-      pointer.y = event.clientY;
-    });
-
-    let leader = (prop) => {
-      return prop === "x" ? pointer.x : pointer.y;
-    };
-
-    let total = 100;
-    for (let i = 0; i < total; i++) {
-      leader = createLine(leader, i);
-    }
-
-    function createLine(leader, i) {
-      let line = document.createElementNS(svgns, "line");
-      root.appendChild(line);
-
-      let colors = [
-        "#0049A6",
-        "#1677F2",
-        "#834CF5",
-        "#F20CCC",
-        "#F2522E",
-        "#9F46A8",
-      ];
-
-      gsap.set(line, {
-        x: -15,
-        y: -15,
-        stroke: colors[0],
-        strokeWidth: 3.5,
-        opacity: (total - i) / total,
+      window.addEventListener("mousemove", (event) => {
+        pointer.x = event.clientX;
+        pointer.y = event.clientY;
       });
 
-      colors.push(colors.shift());
+      let leader = (prop) => {
+        return prop === "x" ? pointer.x : pointer.y;
+      };
 
-      let pos = gsap.getProperty(line);
+      let total = 100;
+      for (let i = 0; i < total; i++) {
+        leader = createLine(leader, i);
+      }
 
-      gsap.to(line, {
-        duration: 1000,
-        x: "+=1",
-        y: "+=1",
-        repeat: -1,
-        keyframes: colors.map((color) => ({ stroke: color })),
-        duration: 1.5 * colors.length,
-        ease: "none",
-        modifiers: {
-          x: () => {
-            let posX = pos("x");
-            let leaderX = leader("x");
-            let x = posX + (leaderX - posX) * ease;
-            line.setAttribute("x2", leaderX - x);
-            return x;
+      function createLine(leader, i) {
+        let line = document.createElementNS(svgns, "line");
+        root.appendChild(line);
+
+        let colors = [
+          "#0049A6",
+          "#1677F2",
+          "#834CF5",
+          "#F20CCC",
+          "#F2522E",
+          "#9F46A8",
+        ];
+
+        gsap.set(line, {
+          x: -15,
+          y: -15,
+          stroke: colors[0],
+          strokeWidth: 3.5,
+          opacity: (total - i) / total,
+        });
+
+        colors.push(colors.shift());
+
+        let pos = gsap.getProperty(line);
+
+        gsap.to(line, {
+          duration: 1000,
+          x: "+=1",
+          y: "+=1",
+          repeat: -1,
+          keyframes: colors.map((color) => ({ stroke: color })),
+          duration: 1.5 * colors.length,
+          ease: "none",
+          modifiers: {
+            x: () => {
+              let posX = pos("x");
+              let leaderX = leader("x");
+              let x = posX + (leaderX - posX) * ease;
+              line.setAttribute("x2", leaderX - x);
+              return x;
+            },
+            y: () => {
+              let posY = pos("y");
+              let leaderY = leader("y");
+              let y = posY + (leaderY - posY) * ease;
+              line.setAttribute("y2", leaderY - y);
+              return y;
+            },
           },
-          y: () => {
-            let posY = pos("y");
-            let leaderY = leader("y");
-            let y = posY + (leaderY - posY) * ease;
-            line.setAttribute("y2", leaderY - y);
-            return y;
-          },
-        },
-      });
+        });
 
-      return pos;
+        return pos;
+      }
     }
-  }, []);
+  }, [mediaQuery]);
 
   return (
     <Wrapper>
       {/* <Navbar /> */}
       <svg className="mainBG"></svg>
       <Hero />
-      <AboutMe />
+      {/* <AboutMe />
       <Footer />
-      <ScrollTop />
+      <ScrollTop /> */}
     </Wrapper>
   );
 };
@@ -100,8 +105,8 @@ const Wrapper = styled.section`
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
     width: 100%;
+    height: 100%;
     background-color: var(--clr-primary-5);
   }
 `;
