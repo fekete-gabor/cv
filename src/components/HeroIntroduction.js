@@ -15,8 +15,6 @@ const HeroIntroduction = () => {
       color: "#222",
     });
 
-    gsap.set(".main-letter", { textShadow: "-6px 0px 2px #ce5937" });
-
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
@@ -66,14 +64,14 @@ const HeroIntroduction = () => {
             gsap.to(".main-letter", {
               duration: 1.5,
               color: "#0CF25D",
-              textShadow: "-6px 0px 2px #222",
+              textShadow: "-6px 0px 2px #F2055C",
             }),
 
           onEnterBack: () =>
             gsap.to(".main-letter", {
               duration: 1.5,
               color: "#0CF25D",
-              textShadow: "-6px 0px 2px #222",
+              textShadow: "-6px 0px 2px #F2055C",
             }),
 
           onLeave: () =>
@@ -112,7 +110,7 @@ const HeroIntroduction = () => {
             scrub: true,
           },
         });
-        tl.to(".hobby-container", { y: `-${height}` });
+        tl.to(container, { y: `-${height}` });
       },
     });
   }, [containerRef, textRef]);

@@ -10,7 +10,7 @@ const AboutMePortrait = () => {
 };
 
 const Wrapper = styled.div`
-  background-color: darkslategray;
+  /* background-color: darkslategray; */
   width: 100%;
   height: 100vh;
   z-index: 1;

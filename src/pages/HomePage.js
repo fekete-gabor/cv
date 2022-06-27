@@ -101,6 +101,10 @@ const HomePage = () => {
 };
 
 const Wrapper = styled.section`
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   .mainBG {
     position: fixed;
     top: 0;

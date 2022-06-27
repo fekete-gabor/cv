@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   z-index: 1;
   width: 100%;
   height: 100vh;
-  background-color: dodgerblue;
+  /* background-color: dodgerblue; */
 `;
 
 export default AboutMeIntroduction;
