@@ -5,11 +5,11 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const Hero = ({ colors }) => {
+const Hero = () => {
   return (
     <Wrapper>
       <div className="container">
-        <HeroIntroduction colors={colors} />
+        <HeroIntroduction />
         <HeroPortrait />
       </div>
     </Wrapper>

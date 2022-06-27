@@ -8,7 +8,16 @@ import {
 } from "../actions";
 
 const initialState = {
-  language: "",
+  language: "en",
+  primary_colors: ["#D9A3B1", "#8C586B", "#0E1826", "#4A808C", "#EADEC7"],
+  secondary_colors: [
+    "#0049A6",
+    "#1677F2",
+    "#834CF5",
+    "#F20CCC",
+    "#F2522E",
+    "#9F46A8",
+  ],
   is_loading: false,
   is_error: false,
   projects_load_begin: false,

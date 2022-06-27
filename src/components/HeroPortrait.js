@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useMainContext } from "../context/main-context";
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroPortrait = () => {
+  const { primary_colors: colors } = useMainContext();
+
   useEffect(() => {
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
@@ -18,29 +21,30 @@ const HeroPortrait = () => {
           },
         });
 
-        tl.to(".mainBG", { background: "#F25774" })
+        tl.to(".mainBG", { background: colors[0] })
           .fromTo([".box4", ".layer1"], { autoAlpha: 1 }, { autoAlpha: 0 }, 0)
-          .to(".mainBG", { background: "#41BFB3" })
+          .to(".mainBG", { background: colors[1] })
           .fromTo([".box3", ".layer2"], { autoAlpha: 1 }, { autoAlpha: 0 }, 1)
-          .to(".mainBG", { background: "#F2D6B3" })
+          .to(".mainBG", { background: colors[2] })
           .fromTo([".box2", ".layer3"], { autoAlpha: 1 }, { autoAlpha: 0 }, 2)
-          .to(".mainBG", { background: "#F2A444" })
+          .to(".mainBG", { background: colors[3] })
           .fromTo(".layer4", { autoAlpha: 1 }, { autoAlpha: 0 }, 3)
-          .to(".mainBG", { background: "#050A26" });
+          .to(".mainBG", { background: colors[4] });
       },
     });
   }, []);
 
   return (
     <Wrapper>
-      <div className="layer layer1"></div>
-      <div className="layer layer2"></div>
-      <div className="layer layer3"></div>
-      <div className="layer layer4"></div>
-      <div className="box box1"></div>
-      <div className="box box2"></div>
-      <div className="box box3"></div>
-      <div className="box box4"></div>
+      <div className="layer layer1" style={{ background: colors[0] }}></div>
+      <div className="layer layer2" style={{ background: colors[1] }}></div>
+      <div className="layer layer3" style={{ background: colors[2] }}></div>
+      <div className="layer layer4" style={{ background: colors[3] }}></div>
+      <div className="layer layer5"></div>
+      <div className="box box1" style={{ background: colors[0] }}></div>
+      <div className="box box2" style={{ background: colors[1] }}></div>
+      <div className="box box3" style={{ background: colors[2] }}></div>
+      <div className="box box4" style={{ background: colors[3] }}></div>
     </Wrapper>
   );
 };
@@ -50,27 +54,16 @@ const Wrapper = styled.div`
   height: 100%;
   z-index: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 
   .layer {
     width: 50px;
     height: 100%;
   }
 
-  .layer4 {
-    background-color: var(--clr-primary-1);
-  }
-
-  .layer3 {
-    background-color: #f2d6b3;
-  }
-
-  .layer2 {
-    background-color: #41bfb3;
-  }
-
-  .layer1 {
-    background-color: #f25774;
+  .layer5 {
+    width: 35%;
+    background: var(--clr-primary-5);
   }
 
   .box {
@@ -89,21 +82,18 @@ const Wrapper = styled.div`
   .box2 {
     bottom: 2%;
     right: 19%;
-    background: #f2d6b3;
     z-index: 3;
   }
 
   .box3 {
     bottom: 4%;
     right: 18%;
-    background: #41bfb3;
     z-index: 2;
   }
 
   .box4 {
     bottom: 6%;
     right: 17%;
-    background: #f25774;
     z-index: 1;
   }
 `;

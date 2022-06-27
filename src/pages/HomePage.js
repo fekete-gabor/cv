@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Navbar, Hero, AboutMe, Footer, ScrollTop } from "../components";
 import { gsap } from "gsap";
 
 const HomePage = () => {
-  const [colors, setColors] = useState();
-
   useEffect(() => {
     let svgns = "http://www.w3.org/2000/svg";
     let root = document.querySelector("svg");
     let ease = 0.75;
 
     let pointer = {
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
+      x: window.innerWidth,
+      y: window.innerHeight,
     };
 
     window.addEventListener("mousemove", (event) => {
@@ -35,15 +33,13 @@ const HomePage = () => {
       root.appendChild(line);
 
       let colors = [
-        "#F2CB05",
-        "#F20587",
-        "#05F2F2",
-        "#F2055C",
-        "#F20519",
-        "#F29E38",
+        "#0049A6",
+        "#1677F2",
+        "#834CF5",
+        "#F20CCC",
+        "#F2522E",
+        "#9F46A8",
       ];
-
-      setColors(colors);
 
       gsap.set(line, {
         x: -15,
@@ -91,7 +87,7 @@ const HomePage = () => {
     <Wrapper>
       {/* <Navbar /> */}
       <svg className="mainBG"></svg>
-      <Hero colors={colors} />
+      <Hero />
       <AboutMe />
       <Footer />
       <ScrollTop />
@@ -106,7 +102,7 @@ const Wrapper = styled.section`
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: var(--clr-primary-3);
+    background-color: var(--clr-primary-5);
   }
 `;
 

@@ -3,45 +3,89 @@ import styled from "styled-components";
 import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useSyncExternalStore } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
-const HeroIntroduction = ({ colors }) => {
-  const { language } = useMainContext();
+const HeroIntroduction = () => {
+  const { secondary_colors: colors, language } = useMainContext();
 
   useEffect(() => {
-    gsap.set([".int-container", ".hobby", ".letter"], { color: "white" });
+    gsap.set([".introduction-container", ".hobby", ".letter"], {
+      color: "#222",
+    });
+
+    gsap.set(".main-letter", { textShadow: "-6px 0px 2px #ce5937" });
 
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
           trigger: ".hobby",
-          start: "top 30%",
+          start: "top 40%",
           end: "+=150%",
-          markers: true,
 
           onEnter: () =>
-            gsap.to([".int-container", ".hobby", ".letter"], {
+            gsap.to([".introduction-container", ".hobby", ".letter"], {
               duration: 1.5,
-              color: "#222",
+              color: "white",
             }),
 
           onEnterBack: () =>
-            gsap.to([".int-container", ".hobby", ".letter"], {
+            gsap.to([".introduction-container", ".hobby", ".letter"], {
+              duration: 1.5,
+              color: "white",
+            }),
+
+          onLeave: () =>
+            gsap.to([".introduction-container", ".hobby", ".letter"], {
               duration: 1.5,
               color: "#222",
             }),
 
-          onLeave: () =>
-            gsap.to([".int-container", ".hobby", ".letter"], {
+          onLeaveBack: () =>
+            gsap.to([".introduction-container", ".hobby", ".letter"], {
               duration: 1.5,
-              color: "white",
+              color: "#222",
+            }),
+        });
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    gsap.set(".main-letter", { textShadow: "-6px 0px 2px #ce5937" });
+
+    ScrollTrigger.matchMedia({
+      "(min-width: 1100px)": function () {
+        ScrollTrigger.create({
+          trigger: ".hobby",
+          start: "top 40%",
+          end: "+=150%",
+
+          onEnter: () =>
+            gsap.to(".main-letter", {
+              duration: 1.5,
+              color: "#0CF25D",
+              textShadow: "-6px 0px 2px #222",
+            }),
+
+          onEnterBack: () =>
+            gsap.to(".main-letter", {
+              duration: 1.5,
+              color: "#0CF25D",
+              textShadow: "-6px 0px 2px #222",
+            }),
+
+          onLeave: () =>
+            gsap.to(".main-letter", {
+              duration: 1.5,
+              color: "#222",
+              textShadow: "-6px 0px 2px #ce5937",
             }),
 
           onLeaveBack: () =>
-            gsap.to([".int-container", ".hobby", ".letter"], {
+            gsap.to(".main-letter", {
               duration: 1.5,
-              color: "white",
+              color: "#222",
+              textShadow: "-6px 0px 2px #ce5937",
             }),
         });
       },
@@ -66,66 +110,65 @@ const HeroIntroduction = ({ colors }) => {
   }, []);
 
   useEffect(() => {
-    if (colors) {
-      gsap.utils.toArray(".letter").forEach((letter) => {
-        const tl = gsap.timeline();
+    gsap.utils.toArray(".letter").forEach((letter) => {
+      const tl = gsap.timeline();
 
-        const baseWidth = letter.getBoundingClientRect().width;
+      const baseWidth = letter.getBoundingClientRect().width;
 
-        const textAnimation = () => {
-          letter.addEventListener("mouseover", (e) => {
-            // get random color
-            const getRandomColor = () => {
-              return Math.floor(Math.random() * colors.length);
-            };
-            const randomColor = getRandomColor();
+      const textAnimation = () => {
+        letter.addEventListener("mouseover", (e) => {
+          // get random color
+          const getRandomColor = () => {
+            return Math.floor(Math.random() * colors.length);
+          };
 
-            const currentWidth = e.target.getBoundingClientRect().width;
+          const randomColor = getRandomColor();
 
-            if (baseWidth === currentWidth) {
-              tl.to(e.target, {
-                duration: 0.2,
-                scaleX: "1.1",
-                scaleY: "0.9",
-                ease: "yoyo",
-                color: colors[randomColor],
+          const currentWidth = e.target.getBoundingClientRect().width;
+
+          if (baseWidth === currentWidth) {
+            tl.to(e.target, {
+              duration: 0.2,
+              scaleX: "1.3",
+              scaleY: "0.8",
+              ease: "yoyo",
+              color: colors[randomColor],
+            })
+              .to(e.target, {
+                duration: 0.3,
+                scaleX: "0.8",
+                scaleY: "1.3",
               })
-                .to(e.target, {
-                  duration: 0.2,
-                  scaleX: "0.9",
-                  scaleY: "1.1",
-                })
-                .to(e.target, {
-                  duration: 0.2,
-                  scaleX: "1.1",
-                  scaleY: "0.9",
-                })
-                .to(e.target, {
-                  duration: 0.3,
-                  scaleX: "0.9",
-                  scaleY: "1.1",
-                })
-                .to(e.target, {
-                  duration: 0.4,
-                  scaleX: "1",
-                  scaleY: "1",
-                  color: "unset",
-                });
-            }
-          });
-        };
-
-        letter.addEventListener("mouseleave", () => {
-          letter.removeEventListener("mouseover", textAnimation);
+              .to(e.target, {
+                duration: 0.3,
+                scaleX: "1.3",
+                scaleY: "0.8",
+              })
+              .to(e.target, {
+                duration: 0.5,
+                scaleX: "0.8",
+                scaleY: "1.3",
+              })
+              .to(e.target, {
+                duration: 0.4,
+                scaleX: "1",
+                scaleY: "1",
+                color: "unset",
+              });
+          }
         });
-        textAnimation();
+      };
+
+      letter.addEventListener("mouseleave", () => {
+        letter.removeEventListener("mouseover", textAnimation);
       });
-    }
-  }, [colors]);
+      textAnimation();
+    });
+  }, []);
 
   return (
     <Wrapper>
-      <div className="int-container">
+      <div className="introduction-container">
         {language === "hu" ? (
           <>
             <div className="letter-container">
@@ -135,7 +178,7 @@ const HeroIntroduction = ({ colors }) => {
               <div className="letter">l</div>
               <div className="letter">o</div>
               <div className="letter comma">,</div>
-              <div className="letter">G</div>
+              <div className="main-letter">G</div>
               <div className="letter">á</div>
               <div className="letter">b</div>
               <div className="letter">o</div>
@@ -149,7 +192,7 @@ const HeroIntroduction = ({ colors }) => {
               <div className="letter">k</div>
               <div className="letter">!</div>
             </div>
-            <div className="letter-container e">
+            <div className="letter-container introduction">
               <h1>
                 I have a passion for
                 <div className="hobbies">
@@ -181,14 +224,14 @@ const HeroIntroduction = ({ colors }) => {
               <div className="letter">'</div>
               <div className="letter">m</div>
               <div className="letter comma">,</div>
-              <div className="letter">G</div>
+              <div className="main-letter">G</div>
               <div className="letter">á</div>
               <div className="letter">b</div>
               <div className="letter">o</div>
               <div className="letter">r</div>
               <div className="letter">!</div>
             </div>
-            <div className="letter-container e">
+            <div className="letter-container introduction">
               <h1>
                 I have a passion for
                 <div className="hobbies">
@@ -224,7 +267,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  .int-container {
+  .introduction-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -238,7 +281,7 @@ const Wrapper = styled.div`
     }
   }
 
-  .e {
+  .introduction {
     padding-left: 0.5rem;
   }
 
@@ -248,7 +291,8 @@ const Wrapper = styled.div`
     align-self: flex-start;
   }
 
-  .letter {
+  .letter,
+  .main-letter {
     font-size: 7rem;
     margin: 0 0.1rem;
   }
