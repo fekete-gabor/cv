@@ -1,17 +1,26 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useMainContext } from "../context/main-context";
+import useMediaQuery from "../utils/mediaQuery";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { HeroIntroductionENG, HeroIntroductionHU } from "./index";
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroIntroduction = () => {
-  const { secondary_colors: colors, language } = useMainContext();
+  const {
+    secondary_colors: colors,
+    getRandomColor,
+    language,
+  } = useMainContext();
   const containerRef = useRef(null);
   const textRef = useRef(null);
+  const refs = { containerRef, textRef };
+
+  const mediaQuery = useMediaQuery("(min-width: 1100px)");
 
   useEffect(() => {
-    gsap.set([".introduction-container", ".hobby", ".letter"], {
+    gsap.set([".introduction-container", ".hobby", ".letter", ".link"], {
       color: "#222",
     });
 
@@ -23,25 +32,25 @@ const HeroIntroduction = () => {
           end: "+=150%",
 
           onEnter: () =>
-            gsap.to([".introduction-container", ".hobby", ".letter"], {
+            gsap.to([".introduction-container", ".hobby", ".letter", ".link"], {
               duration: 1.5,
               color: "white",
             }),
 
           onEnterBack: () =>
-            gsap.to([".introduction-container", ".hobby", ".letter"], {
+            gsap.to([".introduction-container", ".hobby", ".letter", ".link"], {
               duration: 1.5,
               color: "white",
             }),
 
           onLeave: () =>
-            gsap.to([".introduction-container", ".hobby", ".letter"], {
+            gsap.to([".introduction-container", ".hobby", ".letter", ".link"], {
               duration: 1.5,
               color: "#222",
             }),
 
           onLeaveBack: () =>
-            gsap.to([".introduction-container", ".hobby", ".letter"], {
+            gsap.to([".introduction-container", ".hobby", ".letter", ".link"], {
               duration: 1.5,
               color: "#222",
             }),
@@ -51,7 +60,9 @@ const HeroIntroduction = () => {
   }, []);
 
   useEffect(() => {
-    gsap.set(".main-letter", { textShadow: "-6px 0px 2px #ce5937" });
+    gsap.set([".main-letter", ".navbar-brand"], {
+      textShadow: "-6px 0px 2px #ce5937",
+    });
 
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
@@ -61,28 +72,28 @@ const HeroIntroduction = () => {
           end: "+=150%",
 
           onEnter: () =>
-            gsap.to(".main-letter", {
+            gsap.to([".main-letter", ".navbar-brand"], {
               duration: 1.5,
               color: "#0CF25D",
               textShadow: "-6px 0px 2px #F2055C",
             }),
 
           onEnterBack: () =>
-            gsap.to(".main-letter", {
+            gsap.to([".main-letter", ".navbar-brand"], {
               duration: 1.5,
               color: "#0CF25D",
               textShadow: "-6px 0px 2px #F2055C",
             }),
 
           onLeave: () =>
-            gsap.to(".main-letter", {
+            gsap.to([".main-letter", ".navbar-brand"], {
               duration: 1.5,
               color: "#222",
               textShadow: "-6px 0px 2px #ce5937",
             }),
 
           onLeaveBack: () =>
-            gsap.to(".main-letter", {
+            gsap.to([".main-letter", ".navbar-brand"], {
               duration: 1.5,
               color: "#222",
               textShadow: "-6px 0px 2px #ce5937",
@@ -100,6 +111,8 @@ const HeroIntroduction = () => {
     const textHeight = text.getBoundingClientRect().height;
     const height = containerHeight - textHeight;
 
+    gsap.to(container, { y: "none" });
+
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         const tl = gsap.timeline({
@@ -113,7 +126,7 @@ const HeroIntroduction = () => {
         tl.to(container, { y: `-${height}` });
       },
     });
-  }, [containerRef, textRef]);
+  }, [mediaQuery]);
 
   useEffect(() => {
     gsap.utils.toArray(".letter").forEach((letter) => {
@@ -124,11 +137,11 @@ const HeroIntroduction = () => {
       const textAnimation = () => {
         letter.addEventListener("mouseover", (e) => {
           // get random color
-          const getRandomColor = () => {
-            return Math.floor(Math.random() * colors.length);
-          };
+          // const getRandomColor = () => {
+          //   return Math.floor(Math.random() * colors.length);
+          // };
 
-          const randomColor = getRandomColor();
+          const randomColor = getRandomColor(colors);
 
           const currentWidth = e.target.getBoundingClientRect().width;
 
@@ -175,98 +188,10 @@ const HeroIntroduction = () => {
   return (
     <Wrapper>
       <div className="introduction-container">
-        {language === "hu" ? (
-          <>
-            <div className="letter-container">
-              <div className="letter">H</div>
-              <div className="letter">e</div>
-              <div className="letter">l</div>
-              <div className="letter">l</div>
-              <div className="letter">o</div>
-              <div className="letter comma">,</div>
-              <div className="main-letter">G</div>
-              <div className="letter">á</div>
-              <div className="letter">b</div>
-              <div className="letter">o</div>
-              <div className="letter">r</div>
-              <div className="letter comma"></div>
-              <div className="letter">v</div>
-              <div className="letter">a</div>
-              <div className="letter">g</div>
-              <div className="letter">y</div>
-              <div className="letter">o</div>
-              <div className="letter">k</div>
-              <div className="letter">!</div>
-            </div>
-            <div className="introduction">
-              <h1>
-                I have a passion for
-                <div className="test">
-                  <div className="hobby-container" ref={containerRef}>
-                    <ul>
-                      <li>
-                        <p className="hobby hobby1">webdesign-t,</p>
-                      </li>
-                      <li>
-                        <p className="hobby hobby2">tanulást,</p>
-                      </li>
-                      <li>
-                        <p className="hobby hobby3">dolgokat építeni,</p>
-                      </li>
-                      <li>
-                        <p className="hobby hobby4" ref={textRef}>
-                          &amp; az állatokat!
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </h1>
-            </div>
-          </>
+        {language === "en" ? (
+          <HeroIntroductionENG refs={refs} />
         ) : (
-          <>
-            <div className="letter-container">
-              <div className="letter">H</div>
-              <div className="letter">i</div>
-              <div className="letter comma">,</div>
-              <div className="letter">I</div>
-              <div className="letter">'</div>
-              <div className="letter">m</div>
-              <div className="letter comma">,</div>
-              <div className="main-letter">G</div>
-              <div className="letter">á</div>
-              <div className="letter">b</div>
-              <div className="letter">o</div>
-              <div className="letter">r</div>
-              <div className="letter">!</div>
-            </div>
-            <div className="introduction">
-              <h1>
-                I have a passion for
-                <div className="test">
-                  <div className="hobby-container" ref={containerRef}>
-                    <ul>
-                      <li>
-                        <p className="hobby hobby1">webdesign,</p>
-                      </li>
-                      <li>
-                        <p className="hobby hobby2">learning,</p>
-                      </li>
-                      <li>
-                        <p className="hobby hobby3">building things,</p>
-                      </li>
-                      <li>
-                        <p className="hobby hobby4" ref={textRef}>
-                          &amp; animals!
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </h1>
-            </div>
-          </>
+          <HeroIntroductionHU refs={refs} />
         )}
       </div>
     </Wrapper>
@@ -350,11 +275,11 @@ const Wrapper = styled.div`
       font-size: 5rem;
     }
 
-    .test {
+    .mask {
       height: 60px;
-      overflow: hidden;
       display: flex;
       align-items: flex-start;
+      overflow: hidden;
     }
 
     .hobby-container {

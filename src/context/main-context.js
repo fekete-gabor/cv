@@ -49,6 +49,10 @@ export const MainProvider = ({ children }) => {
     }
   };
 
+  const getRandomColor = (colors) => {
+    return Math.floor(Math.random() * colors.length);
+  };
+
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -58,6 +62,7 @@ export const MainProvider = ({ children }) => {
       value={{
         ...state,
         setLanguage,
+        getRandomColor,
       }}
     >
       {children}

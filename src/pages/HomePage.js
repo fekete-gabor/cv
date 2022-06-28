@@ -38,10 +38,10 @@ const HomePage = () => {
 
         let colors = [
           "#0049A6",
-          "#1677F2",
-          "#834CF5",
+          "#41BFB3",
+          "#9FC131",
           "#F20CCC",
-          "#F2522E",
+          "#F27405",
           "#9F46A8",
         ];
 
@@ -90,7 +90,7 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      {/* <Navbar /> */}
+      <Navbar />
       <svg className="mainBG"></svg>
       <Hero />
       <AboutMe />
@@ -104,7 +104,8 @@ const Wrapper = styled.section`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+
   .mainBG {
     position: fixed;
     top: 0;
