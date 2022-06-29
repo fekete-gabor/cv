@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { HeroPortrait, HeroIntroduction } from "./index";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   return (

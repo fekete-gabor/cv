@@ -1,7 +1,14 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import useMediaQuery from "../utils/mediaQuery";
-import { Navbar, Hero, AboutMe, Footer, ScrollTop } from "../components";
+import {
+  Navbar,
+  Sidebar,
+  Hero,
+  AboutMe,
+  Footer,
+  ScrollTop,
+} from "../components";
 import { gsap } from "gsap";
 
 const HomePage = () => {
@@ -90,8 +97,9 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      <Navbar />
       <svg className="mainBG"></svg>
+      <Navbar />
+      <Sidebar />
       <Hero />
       <AboutMe />
       <Footer />
@@ -104,7 +112,7 @@ const Wrapper = styled.section`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
 
   .mainBG {
     position: fixed;

@@ -3,11 +3,21 @@ import {
   FETCH_BEGIN,
   FETCH_SUCCESS,
   FETCH_ERROR,
+  OPEN_SIDEBAR,
+  CLOSE_SIDEBAR,
 } from "../actions";
 
 const main_reducer = (state, action) => {
   if (action.type === SET_LANGUAGE) {
     return { ...state, language: action.payload };
+  }
+
+  if (action.type === OPEN_SIDEBAR) {
+    return { ...state, is_sidebar_open: true };
+  }
+
+  if (action.type === CLOSE_SIDEBAR) {
+    return { ...state, is_sidebar_open: false };
   }
 
   if (action.type === FETCH_BEGIN) {

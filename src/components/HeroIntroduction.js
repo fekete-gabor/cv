@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useMainContext } from "../context/main-context";
+import { getRandomColor } from "../utils/helpers";
 import useMediaQuery from "../utils/mediaQuery";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -8,19 +9,15 @@ import { HeroIntroductionENG, HeroIntroductionHU } from "./index";
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroIntroduction = () => {
-  const {
-    secondary_colors: colors,
-    getRandomColor,
-    language,
-  } = useMainContext();
+  const { secondary_colors: colors, language } = useMainContext();
   const containerRef = useRef(null);
   const textRef = useRef(null);
   const refs = { containerRef, textRef };
 
-  const mediaQuery = useMediaQuery("(min-width: 1100px)");
+  const mediaQuery = useMediaQuery("(min-width: 992px)");
 
   useEffect(() => {
-    gsap.set([".introduction-container", ".hobby", ".letter", ".link"], {
+    gsap.set([".introduction-container", ".hobby", ".letter"], {
       color: "#222",
     });
 
@@ -136,11 +133,6 @@ const HeroIntroduction = () => {
 
       const textAnimation = () => {
         letter.addEventListener("mouseover", (e) => {
-          // get random color
-          // const getRandomColor = () => {
-          //   return Math.floor(Math.random() * colors.length);
-          // };
-
           const randomColor = getRandomColor(colors);
 
           const currentWidth = e.target.getBoundingClientRect().width;
@@ -183,12 +175,12 @@ const HeroIntroduction = () => {
       });
       textAnimation();
     });
-  }, []);
+  }, [mediaQuery]);
 
   return (
     <Wrapper>
       <div className="introduction-container">
-        {language === "en" ? (
+        {language === "eng" ? (
           <HeroIntroductionENG refs={refs} />
         ) : (
           <HeroIntroductionHU refs={refs} />

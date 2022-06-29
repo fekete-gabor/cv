@@ -8,6 +8,7 @@ import AboutMe from "./AboutMe";
 import AboutMeIntroduction from "./AboutMeIntroduction";
 import AboutMePortrait from "./AboutMePortrait";
 import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import ScrollTop from "./ScrollTop";
 
@@ -22,6 +23,7 @@ export {
   AboutMeIntroduction,
   AboutMePortrait,
   Navbar,
+  Sidebar,
   Footer,
   ScrollTop,
 };

@@ -5,6 +5,8 @@ import {
   FETCH_BEGIN,
   FETCH_SUCCESS,
   FETCH_ERROR,
+  OPEN_SIDEBAR,
+  CLOSE_SIDEBAR,
 } from "../actions";
 
 const initialState = {
@@ -18,6 +20,7 @@ const initialState = {
     "#F2522E",
     "#9F46A8",
   ],
+  is_sidebar_open: false,
   is_loading: false,
   is_error: false,
   projects_load_begin: false,
@@ -37,6 +40,14 @@ export const MainProvider = ({ children }) => {
     dispatch({ type: SET_LANGUAGE, payload: language });
   };
 
+  const openSidebar = () => {
+    dispatch({ type: OPEN_SIDEBAR });
+  };
+
+  const closeSidebar = () => {
+    dispatch({ type: CLOSE_SIDEBAR });
+  };
+
   const fetchProjects = async () => {
     dispatch({ type: FETCH_BEGIN });
     try {
@@ -49,10 +60,6 @@ export const MainProvider = ({ children }) => {
     }
   };
 
-  const getRandomColor = (colors) => {
-    return Math.floor(Math.random() * colors.length);
-  };
-
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -62,7 +69,8 @@ export const MainProvider = ({ children }) => {
       value={{
         ...state,
         setLanguage,
-        getRandomColor,
+        openSidebar,
+        closeSidebar,
       }}
     >
       {children}

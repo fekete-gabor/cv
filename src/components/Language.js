@@ -13,8 +13,8 @@ const Language = () => {
   const secondContainerRef = useRef(null);
 
   useEffect(() => {
-    const english = firstContainerRef.current;
-    const hungarian = secondContainerRef.current;
+    const eng = firstContainerRef.current;
+    const hu = secondContainerRef.current;
 
     const tl = gsap.timeline();
 
@@ -43,31 +43,31 @@ const Language = () => {
       .fromTo(
         ".link-container",
         { height: "100%" },
-        { duration: 1, height: "10%" },
+        { duration: 1, height: "20%" },
         0
       )
-      .to(".bg-colored", { duration: 1, height: "10%" }, 0);
+      .to(".bg-colored", { duration: 1, height: "20%" }, 0);
 
     gsap.set(".bg-colored", { height: "0%" });
 
-    english.addEventListener("mouseenter", () => {
+    eng.addEventListener("mouseenter", () => {
       gsap.to(".bg-colored-eng", { height: "100%" });
       gsap.to(".link-container-eng", { duration: 2, height: "100%" });
     });
 
-    english.addEventListener("mouseleave", () => {
-      gsap.to(".bg-colored-eng", { height: "10%" });
-      gsap.to(".link-container-eng", { duration: 2, height: "10%" });
+    eng.addEventListener("mouseleave", () => {
+      gsap.to(".bg-colored-eng", { height: "20%" });
+      gsap.to(".link-container-eng", { duration: 2, height: "20%" });
     });
 
-    hungarian.addEventListener("mouseenter", () => {
+    hu.addEventListener("mouseenter", () => {
       gsap.to(".bg-colored-hu", { height: "100%" });
       gsap.to(".link-container-hu", { duration: 2, height: "100%" });
     });
 
-    hungarian.addEventListener("mouseleave", () => {
-      gsap.to(".bg-colored-hu", { height: "10%" });
-      gsap.to(".link-container-hu", { duration: 2, height: "10%" });
+    hu.addEventListener("mouseleave", () => {
+      gsap.to(".bg-colored-hu", { height: "20%" });
+      gsap.to(".link-container-hu", { duration: 2, height: "20%" });
     });
   }, []);
 
@@ -103,12 +103,12 @@ const Language = () => {
           <div className="img-container">
             <img
               src={huBG}
-              alt="hungarian building colored"
+              alt="hu building colored"
               className="bg-colored bg-colored-hu"
             />
             <img
               src={huBG}
-              alt="hungarian building gray"
+              alt="hu building gray"
               className="bg-gray bg-gray-hu"
             />
           </div>

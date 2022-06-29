@@ -21,7 +21,7 @@ const HeroPortrait = () => {
           },
         });
 
-        tl.to(".mainBG", { background: colors[0] })
+        tl.to([".mainBG"], { background: colors[0] })
           .fromTo([".box4", ".layer1"], { autoAlpha: 1 }, { autoAlpha: 0 }, 0)
           .to(".mainBG", { background: colors[1] })
           .fromTo([".box3", ".layer2"], { autoAlpha: 1 }, { autoAlpha: 0 }, 1)
