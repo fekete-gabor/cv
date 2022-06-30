@@ -17,10 +17,12 @@ const HeroIntroduction = () => {
   const mediaQuery = useMediaQuery("(min-width: 992px)");
 
   useEffect(() => {
+    // set font color on doc load
     gsap.set([".introduction-container", ".hobby", ".letter"], {
       color: "#222",
     });
 
+    // change font color on scroll
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
@@ -57,10 +59,12 @@ const HeroIntroduction = () => {
   }, []);
 
   useEffect(() => {
+    // set logo text shadow on doc load
     gsap.set([".main-letter", ".navbar-brand"], {
       textShadow: "-6px 0px 2px #ce5937",
     });
 
+    // change logo color & text shadow on scroll
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
@@ -100,6 +104,7 @@ const HeroIntroduction = () => {
     });
   }, []);
 
+  // translate hobbies on y axis
   useEffect(() => {
     const container = containerRef.current;
     const text = textRef.current;
@@ -125,6 +130,7 @@ const HeroIntroduction = () => {
     });
   }, [mediaQuery]);
 
+  // text animation on hover
   useEffect(() => {
     gsap.utils.toArray(".letter").forEach((letter) => {
       const tl = gsap.timeline();

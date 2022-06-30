@@ -9,6 +9,10 @@ const Footer = () => {
   );
 };
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+  width: 100%;
+  height: 70px;
+  background-color: #222;
+`;
 
 export default Footer;

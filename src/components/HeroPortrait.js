@@ -8,7 +8,10 @@ gsap.registerPlugin(ScrollTrigger);
 const HeroPortrait = () => {
   const { primary_colors: colors } = useMainContext();
 
+  // change background color on scroll
   useEffect(() => {
+    const body = document.querySelector("body");
+
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         const tl = gsap.timeline({
@@ -21,15 +24,15 @@ const HeroPortrait = () => {
           },
         });
 
-        tl.to([".mainBG"], { background: colors[0] })
+        tl.to(body, { background: colors[0] })
           .fromTo([".box4", ".layer1"], { autoAlpha: 1 }, { autoAlpha: 0 }, 0)
-          .to(".mainBG", { background: colors[1] })
+          .to(body, { background: colors[1] })
           .fromTo([".box3", ".layer2"], { autoAlpha: 1 }, { autoAlpha: 0 }, 1)
-          .to(".mainBG", { background: colors[2] })
+          .to(body, { background: colors[2] })
           .fromTo([".box2", ".layer3"], { autoAlpha: 1 }, { autoAlpha: 0 }, 2)
-          .to(".mainBG", { background: colors[3] })
+          .to(body, { background: colors[3] })
           .fromTo(".layer4", { autoAlpha: 1 }, { autoAlpha: 0 }, 3)
-          .to(".mainBG", { background: colors[4] });
+          .to(body, { background: colors[4] });
       },
     });
   }, []);

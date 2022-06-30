@@ -1,23 +1,13 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import engBG from "../assets/gb.jpg";
-import huBG from "../assets/hu.jpg";
-import { Link } from "react-router-dom";
-import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap";
+import { LanguageENG, LanguageHU } from "./index";
 
 const Language = () => {
-  const { setLanguage } = useMainContext();
-
-  const firstContainerRef = useRef(null);
-  const secondContainerRef = useRef(null);
-
   useEffect(() => {
-    const eng = firstContainerRef.current;
-    const hu = secondContainerRef.current;
-
     const tl = gsap.timeline();
 
+    // animation on doc load
     tl.fromTo(
       ".underline-eng",
       { scaleX: 0, x: "15%" },
@@ -49,81 +39,13 @@ const Language = () => {
       .to(".bg-colored", { duration: 1, height: "20%" }, 0);
 
     gsap.set(".bg-colored", { height: "0%" });
-
-    eng.addEventListener("mouseenter", () => {
-      gsap.to(".bg-colored-eng", { height: "100%" });
-      gsap.to(".link-container-eng", { duration: 2, height: "100%" });
-    });
-
-    eng.addEventListener("mouseleave", () => {
-      gsap.to(".bg-colored-eng", { height: "20%" });
-      gsap.to(".link-container-eng", { duration: 2, height: "20%" });
-    });
-
-    hu.addEventListener("mouseenter", () => {
-      gsap.to(".bg-colored-hu", { height: "100%" });
-      gsap.to(".link-container-hu", { duration: 2, height: "100%" });
-    });
-
-    hu.addEventListener("mouseleave", () => {
-      gsap.to(".bg-colored-hu", { height: "20%" });
-      gsap.to(".link-container-hu", { duration: 2, height: "20%" });
-    });
   }, []);
 
   return (
     <Wrapper>
       <div className="wrap">
-        <div className="container">
-          <div className="img-container">
-            <img
-              src={engBG}
-              alt="double decker colored"
-              className="bg-colored bg-colored-eng"
-            />
-            <img
-              src={engBG}
-              alt="double decker gray"
-              className="bg-gray bg-gray-eng"
-            />
-          </div>
-          <div className="link-container link-container-eng">
-            <Link
-              to="/"
-              data-language="eng"
-              ref={firstContainerRef}
-              onClick={(e) => setLanguage(e.target.dataset.language)}
-            >
-              English
-            </Link>
-            <div className="underline-eng"></div>
-          </div>
-        </div>
-        <div className="container">
-          <div className="img-container">
-            <img
-              src={huBG}
-              alt="hu building colored"
-              className="bg-colored bg-colored-hu"
-            />
-            <img
-              src={huBG}
-              alt="hu building gray"
-              className="bg-gray bg-gray-hu"
-            />
-          </div>
-          <div className="link-container link-container-hu">
-            <Link
-              to="/"
-              data-language="hu"
-              ref={secondContainerRef}
-              onClick={(e) => setLanguage(e.target.dataset.language)}
-            >
-              Magyar
-            </Link>
-            <div className="underline-hu"></div>
-          </div>
-        </div>
+        <LanguageENG />
+        <LanguageHU />
       </div>
     </Wrapper>
   );

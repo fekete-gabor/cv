@@ -23,6 +23,32 @@ const Navbar = () => {
     language,
   } = useMainContext();
 
+  // navbar animation on scroll
+  useEffect(() => {
+    ScrollTrigger.matchMedia({
+      "(min-width: 992px)": function () {
+        ScrollTrigger.create({
+          start: "top top",
+          end: 99999,
+          onUpdate: (self) => {
+            self.direction === -1
+              ? gsap.to(".link-container", {
+                  duration: 1.5,
+                  ease: "slow",
+                  y: "0",
+                })
+              : gsap.to(".link-container", {
+                  duration: 1.5,
+                  ease: "slow",
+                  y: "-200%",
+                });
+          },
+        });
+      },
+    });
+  }, []);
+
+  // link underline random color
   useEffect(() => {
     gsap.utils.toArray(".underline").forEach((line) => {
       const randomColor = getRandomColor(colors);
@@ -32,6 +58,7 @@ const Navbar = () => {
     });
   }, []);
 
+  // set link color if sidebar is closed
   useEffect(() => {
     if (!is_sidebar_open) {
       gsap.to(".link", { color: "#222" });
@@ -49,17 +76,19 @@ const Navbar = () => {
         <div className="col">
           <ul>{language === "eng" ? navLinksENG : navLinksHU}</ul>
         </div>
-        {!is_sidebar_open ? (
-          <GiHamburgerMenu
-            className="icon icon-open"
-            onClick={() => openSidebar()}
-          />
-        ) : (
-          <AiOutlineCloseCircle
-            className="icon icon-close"
-            onClick={() => closeSidebar()}
-          />
-        )}
+        <div className="icon-container">
+          {!is_sidebar_open ? (
+            <GiHamburgerMenu
+              className="icon icon-open"
+              onClick={() => openSidebar()}
+            />
+          ) : (
+            <AiOutlineCloseCircle
+              className="icon icon-close"
+              onClick={() => closeSidebar()}
+            />
+          )}
+        </div>
       </div>
     </Wrapper>
   );
@@ -117,7 +146,7 @@ const Wrapper = styled.section`
 
   .icon {
     font-size: 2rem;
-    margin: 0.5rem 2rem;
+    margin: 3rem;
     align-self: center;
     cursor: pointer;
     transition: var(--transition);

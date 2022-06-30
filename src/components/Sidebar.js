@@ -14,6 +14,7 @@ const Sidebar = () => {
     gsap.set(".sidebar", { x: "-100%" });
   }, []);
 
+  // close sidebar from 992px
   useEffect(() => {
     if (mediaQuery) {
       closeSidebar();
@@ -24,24 +25,27 @@ const Sidebar = () => {
     const tl = gsap.timeline();
 
     if (is_sidebar_open) {
+      // set sidebar link color
       gsap.to(".link", { color: "white" });
 
+      // sidebar open animation
       tl.to(".sidebar", { duration: 1, x: "0" })
         .to([".main-letter", ".navbar-brand"], {
           duration: 0.5,
           color: "#0CF25D",
           textShadow: "-6px 0px 2px #F2055C",
         })
+        .to(".col", { y: "-200%" }, 0)
         .to(".icon-close", { duration: 0.5, color: "#0cf25d" });
     } else {
-      tl.to(".sidebar", { duration: 1, x: "-100%" }).to(
-        [".main-letter", ".navbar-brand"],
-        {
+      // sidebar close animation
+      tl.to(".sidebar", { duration: 1, x: "-100%" })
+        .to([".main-letter", ".navbar-brand"], {
           duration: 0.5,
           color: "#222",
           textShadow: "-6px 0px 2px #ce5937",
-        }
-      );
+        })
+        .to(".col", { duration: 1, y: "0" }, 1);
     }
   }, [is_sidebar_open]);
 

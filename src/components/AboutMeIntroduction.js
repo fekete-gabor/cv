@@ -9,17 +9,15 @@ const AboutMeIntroduction = () => {
   const { language } = useMainContext();
 
   return (
-    <Wrapper className="cont">
+    <Wrapper>
       <h2>AboutMeIntroduction</h2>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  z-index: 1;
   width: 100%;
   height: 100vh;
-  /* background-color: dodgerblue; */
 `;
 
 export default AboutMeIntroduction;

@@ -10,7 +10,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  language: "en",
+  language: "",
   primary_colors: ["#D9A3B1", "#8C586B", "#0E1826", "#4A808C", "#EADEC7"],
   secondary_colors: [
     "#0049A6",
