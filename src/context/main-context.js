@@ -9,8 +9,15 @@ import {
   CLOSE_SIDEBAR,
 } from "../actions";
 
+const checkLocalStorage = () => {
+  const language = localStorage.getItem("language");
+  if (language) return JSON.parse(localStorage.getItem("language"));
+  return [];
+};
+
 const initialState = {
   language: "",
+  storage: checkLocalStorage(),
   primary_colors: ["#D9A3B1", "#8C586B", "#0E1826", "#4A808C", "#EADEC7"],
   secondary_colors: [
     "#0049A6",
@@ -59,6 +66,10 @@ export const MainProvider = ({ children }) => {
       dispatch({ type: FETCH_ERROR });
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem("language", JSON.stringify(state.storage));
+  }, [state.storage]);
 
   useEffect(() => {
     fetchProjects();

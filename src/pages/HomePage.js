@@ -1,8 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { Hero, AboutMe, Contacts } from "../components";
+import { useMainContext } from "../context/main-context";
+import { PreLoader, Hero, AboutMe, Contacts } from "../components";
 
 const HomePage = () => {
+  const { is_loading } = useMainContext();
+
+  if (is_loading) {
+    return <PreLoader />;
+  }
+
   return (
     <Wrapper>
       <Hero />

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useMainContext } from "../context/main-context";
-import { getRandomColor } from "../utils/helpers";
+import { getRandomValue } from "../utils/helpers";
 import useMediaQuery from "../utils/mediaQuery";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -109,11 +109,9 @@ const HeroIntroduction = () => {
     const container = containerRef.current;
     const text = textRef.current;
 
-    const containerHeight = container.getBoundingClientRect().height;
-    const textHeight = text.getBoundingClientRect().height;
-    const height = containerHeight - textHeight;
-
-    gsap.to(container, { y: "none" });
+    let containerHeight = container.getBoundingClientRect().height;
+    let textHeight = text.getBoundingClientRect().height;
+    let height = containerHeight - textHeight;
 
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
@@ -125,62 +123,64 @@ const HeroIntroduction = () => {
             scrub: true,
           },
         });
-        tl.to(container, { y: `-${height}` });
+        tl.fromTo(container, { y: 0 }, { y: `-${height}` });
       },
     });
-  }, [mediaQuery]);
+  }, []);
 
   // text animation on hover
   useEffect(() => {
-    gsap.utils.toArray(".letter").forEach((letter) => {
-      const tl = gsap.timeline();
+    if (mediaQuery) {
+      gsap.utils.toArray(".letter").forEach((letter) => {
+        const tl = gsap.timeline();
 
-      const baseWidth = letter.getBoundingClientRect().width;
+        const baseWidth = letter.getBoundingClientRect().width;
 
-      const textAnimation = () => {
-        letter.addEventListener("mouseover", (e) => {
-          const randomColor = getRandomColor(colors);
+        const textAnimation = () => {
+          letter.addEventListener("mouseover", (e) => {
+            const randomColor = getRandomValue(colors);
 
-          const currentWidth = e.target.getBoundingClientRect().width;
+            const currentWidth = e.target.getBoundingClientRect().width;
 
-          if (baseWidth === currentWidth) {
-            tl.to(e.target, {
-              duration: 0.2,
-              scaleX: "1.3",
-              scaleY: "0.8",
-              ease: "yoyo",
-              color: colors[randomColor],
-            })
-              .to(e.target, {
-                duration: 0.3,
-                scaleX: "0.8",
-                scaleY: "1.3",
-              })
-              .to(e.target, {
-                duration: 0.3,
+            if (baseWidth === currentWidth) {
+              tl.to(e.target, {
+                duration: 0.2,
                 scaleX: "1.3",
                 scaleY: "0.8",
+                ease: "yoyo",
+                color: colors[randomColor],
               })
-              .to(e.target, {
-                duration: 0.5,
-                scaleX: "0.8",
-                scaleY: "1.3",
-              })
-              .to(e.target, {
-                duration: 0.4,
-                scaleX: "1",
-                scaleY: "1",
-                color: "unset",
-              });
-          }
-        });
-      };
+                .to(e.target, {
+                  duration: 0.3,
+                  scaleX: "0.8",
+                  scaleY: "1.3",
+                })
+                .to(e.target, {
+                  duration: 0.3,
+                  scaleX: "1.3",
+                  scaleY: "0.8",
+                })
+                .to(e.target, {
+                  duration: 0.5,
+                  scaleX: "0.8",
+                  scaleY: "1.3",
+                })
+                .to(e.target, {
+                  duration: 0.4,
+                  scaleX: "1",
+                  scaleY: "1",
+                  color: "unset",
+                });
+            }
+          });
+        };
 
-      letter.addEventListener("mouseleave", () => {
-        letter.removeEventListener("mouseover", textAnimation);
+        letter.addEventListener("mouseleave", () => {
+          letter.removeEventListener("mouseover", textAnimation);
+        });
+        textAnimation();
       });
-      textAnimation();
-    });
+    }
   }, [mediaQuery]);
 
   return (

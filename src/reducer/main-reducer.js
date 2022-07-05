@@ -9,7 +9,7 @@ import {
 
 const main_reducer = (state, action) => {
   if (action.type === SET_LANGUAGE) {
-    return { ...state, language: action.payload };
+    return { ...state, language: action.payload, storage: action.payload };
   }
 
   if (action.type === OPEN_SIDEBAR) {

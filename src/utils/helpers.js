@@ -4,7 +4,7 @@ export const scrollToTop = () => {
   window.scrollTo(0, 0);
 };
 
-export const getRandomColor = (colors) => {
+export const getRandomValue = (colors) => {
   return Math.floor(Math.random() * colors.length);
 };
 
@@ -12,7 +12,7 @@ const linksENG = [
   {
     id: 1,
     text: "about",
-    url: "/about",
+    url: "/aboutdsa",
   },
   {
     id: 2,
@@ -47,7 +47,7 @@ const linksHU = [
   {
     id: 1,
     text: "rólam",
-    url: "/about",
+    url: "/aboutdsa",
   },
   {
     id: 2,

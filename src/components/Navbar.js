@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import {
-  getRandomColor,
+  getRandomValue,
   scrollToTop,
   navLinksENG,
   navLinksHU,
@@ -51,7 +51,7 @@ const Navbar = () => {
   // link underline random color
   useEffect(() => {
     gsap.utils.toArray(".underline").forEach((line) => {
-      const randomColor = getRandomColor(colors);
+      const randomColor = getRandomValue(colors);
       gsap.set(line, {
         background: colors[randomColor],
       });

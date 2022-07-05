@@ -16,24 +16,22 @@ const App = () => {
   const { language } = useMainContext();
 
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          {language ? (
-            <Route path="/" element={<SharedLayout />}>
-              <Route index path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/skills" element={<SkillsPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/contacts" element={<ContactsPage />} />
-            </Route>
-          ) : (
-            <Route path="/" element={<Language />} />
-          )}
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        {language ? (
+          <Route path="/" element={<SharedLayout />}>
+            <Route index path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/skills" element={<SkillsPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/contacts" element={<ContactsPage />} />
+          </Route>
+        ) : (
+          <Route path="/" element={<Language />} />
+        )}
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

@@ -1,6 +1,8 @@
 import Language from "./Language";
 import LanguageENG from "./LanguageENG";
 import LanguageHU from "./LanguageHU";
+import PreLoader from "./PreLoader";
+import Error from "./Error";
 import Hero from "./Hero";
 import HeroIntroduction from "./HeroIntroduction";
 import HeroIntroductionENG from "./HeroIntroductionENG";
@@ -19,6 +21,8 @@ export {
   Language,
   LanguageENG,
   LanguageHU,
+  PreLoader,
+  Error,
   Hero,
   HeroIntroduction,
   HeroIntroductionENG,

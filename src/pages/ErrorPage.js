@@ -1,14 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import Error from "../components/Error";
 
 const ErrorPage = () => {
-  return (
-    <Wrapper>
-      <h2>errorpage</h2>
-    </Wrapper>
-  );
+  return <Error />;
 };
-
-const Wrapper = styled.section``;
 
 export default ErrorPage;

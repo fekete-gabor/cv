@@ -10,10 +10,6 @@ const Sidebar = () => {
 
   const mediaQuery = useMediaQuery("(min-width: 992px)");
 
-  useEffect(() => {
-    gsap.set(".sidebar", { x: "-100%" });
-  }, []);
-
   // close sidebar from 992px
   useEffect(() => {
     if (mediaQuery) {
@@ -65,7 +61,8 @@ const Wrapper = styled.section`
   height: 100%;
   background-color: #222;
   position: fixed;
-  z-index: 998;
+  z-index: 997;
+  transform: translateX(-100%);
 
   .link-container {
     display: flex;

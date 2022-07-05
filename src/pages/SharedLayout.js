@@ -102,6 +102,7 @@ const SharedLayout = () => {
 };
 
 const Wrapper = styled.section`
+  overflow: hidden;
   .mainBG {
     position: fixed;
     top: 0;
