@@ -56,7 +56,7 @@ const HeroIntroduction = () => {
         });
       },
     });
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     // set logo text shadow on doc load
@@ -102,7 +102,7 @@ const HeroIntroduction = () => {
         });
       },
     });
-  }, []);
+  }, [language]);
 
   // translate hobbies on y axis
   useEffect(() => {
@@ -126,7 +126,7 @@ const HeroIntroduction = () => {
         tl.fromTo(container, { y: 0 }, { y: `-${height}` });
       },
     });
-  }, []);
+  }, [language]);
 
   // text animation on hover
   useEffect(() => {
@@ -181,7 +181,7 @@ const HeroIntroduction = () => {
         textAnimation();
       });
     }
-  }, [mediaQuery]);
+  }, [mediaQuery, language]);
 
   return (
     <Wrapper>

@@ -12,7 +12,7 @@ const linksENG = [
   {
     id: 1,
     text: "about",
-    url: "/aboutdsa",
+    url: "/about",
   },
   {
     id: 2,
@@ -47,7 +47,7 @@ const linksHU = [
   {
     id: 1,
     text: "rólam",
-    url: "/aboutdsa",
+    url: "/about",
   },
   {
     id: 2,

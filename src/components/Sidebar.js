@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import hungary from "../assets/hungary.png";
+import uk from "../assets/united-kingdom.png";
 import { navLinksENG, navLinksHU } from "../utils/helpers";
 import useMediaQuery from "../utils/mediaQuery";
 import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap";
 
 const Sidebar = () => {
-  const { language, is_sidebar_open, closeSidebar } = useMainContext();
+  const { language, setLanguage, is_sidebar_open, closeSidebar } =
+    useMainContext();
 
   const mediaQuery = useMediaQuery("(min-width: 992px)");
 
@@ -51,12 +54,27 @@ const Sidebar = () => {
         <ul onClick={() => closeSidebar()}>
           {language === "eng" ? navLinksENG : navLinksHU}
         </ul>
+        {language === "eng" ? (
+          <img
+            src={hungary}
+            alt="flag of hungary"
+            data-language="hu"
+            onClick={(e) => setLanguage(e.target.dataset.language)}
+          />
+        ) : (
+          <img
+            src={uk}
+            alt="flag of united kingdom"
+            data-language="eng"
+            onClick={(e) => setLanguage(e.target.dataset.language)}
+          />
+        )}
       </div>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.section`
+const Wrapper = styled.aside`
   width: 100%;
   height: 100%;
   background-color: #222;
@@ -66,23 +84,30 @@ const Wrapper = styled.section`
 
   .link-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     width: 100%;
     height: 100%;
     ul {
-      gap: 0 2rem;
+      gap: 0rem 2rem;
       li {
         a {
           font-size: 3rem;
-          padding: 0 1rem;
+          padding: 1rem;
           color: white;
         }
         &:hover .underline {
           width: 70px;
         }
       }
+    }
+    img {
+      height: 50px;
+      width: 50px;
+      margin-top: 1rem;
+      cursor: pointer;
     }
   }
 

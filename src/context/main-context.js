@@ -69,7 +69,7 @@ export const MainProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("language", JSON.stringify(state.storage));
-  }, [state.storage]);
+  }, [state.language, state.storage]);
 
   useEffect(() => {
     fetchProjects();

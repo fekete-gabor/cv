@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import hungary from "../assets/hungary.png";
+import uk from "../assets/united-kingdom.png";
 import {
   getRandomValue,
   scrollToTop,
@@ -21,6 +23,7 @@ const Navbar = () => {
     openSidebar,
     closeSidebar,
     language,
+    setLanguage,
   } = useMainContext();
 
   // navbar animation on scroll
@@ -74,7 +77,29 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="col">
-          <ul>{language === "eng" ? navLinksENG : navLinksHU}</ul>
+          <ul>
+            {language === "eng" ? (
+              <>
+                {navLinksENG}
+                <img
+                  src={hungary}
+                  alt="flag of hungary"
+                  data-language="hu"
+                  onClick={(e) => setLanguage(e.target.dataset.language)}
+                />
+              </>
+            ) : (
+              <>
+                {navLinksHU}
+                <img
+                  src={uk}
+                  alt="flag of united kingdom"
+                  data-language="eng"
+                  onClick={(e) => setLanguage(e.target.dataset.language)}
+                />
+              </>
+            )}
+          </ul>
         </div>
         <div className="icon-container">
           {!is_sidebar_open ? (
@@ -141,6 +166,11 @@ const Wrapper = styled.section`
           width: 70px;
         }
       }
+      img {
+        height: 30px;
+        transform: translateY(5px);
+        cursor: pointer;
+      }
     }
   }
 
@@ -151,7 +181,7 @@ const Wrapper = styled.section`
     cursor: pointer;
     transition: var(--transition);
     &:hover {
-      color: plum;
+      color: #ce5937;
     }
   }
 
