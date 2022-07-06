@@ -1,11 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
-import { useMainContext } from "../context/main-context";
+import { Link } from "react-router-dom";
+import { HeroIntroductionENG, HeroIntroductionHU } from "./index";
 import { getRandomValue } from "../utils/helpers";
 import useMediaQuery from "../utils/mediaQuery";
+import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { HeroIntroductionENG, HeroIntroductionHU } from "./index";
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroIntroduction = () => {
@@ -18,7 +19,7 @@ const HeroIntroduction = () => {
 
   useEffect(() => {
     // set font color on doc load
-    gsap.set([".introduction-container", ".hobby", ".letter"], {
+    gsap.set([".introduction-container", ".hobby", ".letter", ".contact-btn"], {
       color: "#222",
     });
 
@@ -31,40 +32,76 @@ const HeroIntroduction = () => {
           end: "+=150%",
 
           onEnter: () =>
-            gsap.to([".introduction-container", ".hobby", ".letter", ".link"], {
-              duration: 1.5,
-              color: "white",
-            }),
+            gsap.to(
+              [
+                ".introduction-container",
+                ".hobby",
+                ".letter",
+                ".link",
+                ".contact-btn",
+              ],
+              {
+                duration: 1.5,
+                color: "white",
+              }
+            ),
 
           onEnterBack: () =>
-            gsap.to([".introduction-container", ".hobby", ".letter", ".link"], {
-              duration: 1.5,
-              color: "white",
-            }),
+            gsap.to(
+              [
+                ".introduction-container",
+                ".hobby",
+                ".letter",
+                ".link",
+                ".contact-btn",
+              ],
+              {
+                duration: 1.5,
+                color: "white",
+              }
+            ),
 
           onLeave: () =>
-            gsap.to([".introduction-container", ".hobby", ".letter", ".link"], {
-              duration: 1.5,
-              color: "#222",
-            }),
+            gsap.to(
+              [
+                ".introduction-container",
+                ".hobby",
+                ".letter",
+                ".link",
+                ".contact-btn",
+              ],
+              {
+                duration: 1.5,
+                color: "#222",
+              }
+            ),
 
           onLeaveBack: () =>
-            gsap.to([".introduction-container", ".hobby", ".letter", ".link"], {
-              duration: 1.5,
-              color: "#222",
-            }),
+            gsap.to(
+              [
+                ".introduction-container",
+                ".hobby",
+                ".letter",
+                ".link",
+                ".contact-btn",
+              ],
+              {
+                duration: 1.5,
+                color: "#222",
+              }
+            ),
         });
       },
     });
   }, [language]);
 
   useEffect(() => {
-    // set logo text shadow on doc load
-    gsap.set([".main-letter", ".navbar-brand"], {
+    // set logo's & main letter's text shadow on doc load
+    gsap.set([".main-letter", ".navbar-brand", ".contact-circle"], {
       textShadow: "-6px 0px 2px #ce5937",
     });
 
-    // change logo color & text shadow on scroll
+    // change logo's & main letter's color, text shadow on scroll
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
@@ -128,7 +165,7 @@ const HeroIntroduction = () => {
     });
   }, [language]);
 
-  // text animation on hover
+  // animate text on hover
   useEffect(() => {
     if (mediaQuery) {
       gsap.utils.toArray(".letter").forEach((letter) => {
@@ -183,6 +220,72 @@ const HeroIntroduction = () => {
     }
   }, [mediaQuery, language]);
 
+  useEffect(() => {
+    // change contact circle's background color on scroll
+    ScrollTrigger.matchMedia({
+      "(min-width: 1100px)": function () {
+        ScrollTrigger.create({
+          trigger: ".hobby",
+          start: "top 40%",
+          end: "+=150%",
+
+          onEnter: () =>
+            gsap.to(".contact-circle", {
+              duration: 1.5,
+              background: "#0CF25D",
+            }),
+
+          onEnterBack: () =>
+            gsap.to(".contact-circle", {
+              duration: 1.5,
+              background: "#0CF25D",
+            }),
+
+          onLeave: () =>
+            gsap.to(".contact-circle", {
+              duration: 1.5,
+              background: "#ce5937",
+            }),
+
+          onLeaveBack: () =>
+            gsap.to(".contact-circle", {
+              duration: 1.5,
+              background: "#ce5937",
+            }),
+        });
+      },
+    });
+
+    const contactBtn = document.querySelector(".contact-btn");
+    const btnWidth = contactBtn.getBoundingClientRect().width;
+    const btnHeigth = contactBtn.getBoundingClientRect().height;
+
+    gsap.set(".contact-circle", {
+      width: btnWidth / 3.5,
+      height: btnHeigth / 1.5,
+      background: "#ce5937",
+      borderRadius: "50%",
+    });
+
+    contactBtn.addEventListener("mouseover", () => {
+      gsap.to(".contact-circle", {
+        duration: 0.4,
+        ease: "ElasticIn",
+        width: btnWidth,
+        borderRadius: 0,
+      });
+    });
+
+    contactBtn.addEventListener("mouseleave", () => {
+      gsap.to(".contact-circle", {
+        duration: 0.4,
+        ease: "ElasticOut",
+        width: btnWidth / 3.5,
+        borderRadius: "50%",
+      });
+    });
+  }, [mediaQuery, language]);
+
   return (
     <Wrapper>
       <div className="introduction-container">
@@ -191,6 +294,18 @@ const HeroIntroduction = () => {
         ) : (
           <HeroIntroductionHU refs={refs} />
         )}
+        <div className="btn-container">
+          {language === "eng" ? (
+            <Link to="/contacts" className="contact-btn">
+              send message!
+            </Link>
+          ) : (
+            <Link to="/contacts" className="contact-btn">
+              üzenetet küldök!
+            </Link>
+          )}
+          <div className="contact-circle"></div>
+        </div>
       </div>
     </Wrapper>
   );
@@ -250,6 +365,27 @@ const Wrapper = styled.div`
     margin: 0.25rem 0;
   }
 
+  .btn-container {
+    margin-top: 3rem;
+    position: relative;
+    a {
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      margin: 0;
+      text-transform: capitalize;
+    }
+  }
+
+  .contact-circle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
   @media screen and (min-width: 1100px) {
     height: 100%;
     .introduction-container {
@@ -282,6 +418,12 @@ const Wrapper = styled.div`
 
     .hobby-container {
       align-items: flex-start;
+    }
+
+    .btn-container {
+      a {
+        padding: 1rem;
+      }
     }
   }
 `;
