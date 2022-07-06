@@ -28,7 +28,7 @@ const HeroIntroduction = () => {
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
           trigger: ".hobby",
-          start: "top 40%",
+          start: "top 0%",
           end: "+=150%",
 
           onEnter: () =>
@@ -97,7 +97,7 @@ const HeroIntroduction = () => {
 
   useEffect(() => {
     // set logo's & main letter's text shadow on doc load
-    gsap.set([".main-letter", ".navbar-brand", ".contact-circle"], {
+    gsap.set([".main-letter", ".navbar-brand"], {
       textShadow: "-6px 0px 2px #ce5937",
     });
 
@@ -106,7 +106,7 @@ const HeroIntroduction = () => {
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
           trigger: ".hobby",
-          start: "top 40%",
+          start: "top 0%",
           end: "+=150%",
 
           onEnter: () =>
@@ -176,7 +176,6 @@ const HeroIntroduction = () => {
         const textAnimation = () => {
           letter.addEventListener("mouseover", (e) => {
             const randomColor = getRandomValue(colors);
-
             const currentWidth = e.target.getBoundingClientRect().width;
 
             if (baseWidth === currentWidth) {
@@ -215,75 +214,10 @@ const HeroIntroduction = () => {
         letter.addEventListener("mouseleave", () => {
           letter.removeEventListener("mouseover", textAnimation);
         });
+
         textAnimation();
       });
     }
-  }, [mediaQuery, language]);
-
-  useEffect(() => {
-    // change contact circle's background color on scroll
-    ScrollTrigger.matchMedia({
-      "(min-width: 1100px)": function () {
-        ScrollTrigger.create({
-          trigger: ".hobby",
-          start: "top 40%",
-          end: "+=150%",
-
-          onEnter: () =>
-            gsap.to(".contact-circle", {
-              duration: 1.5,
-              background: "#0CF25D",
-            }),
-
-          onEnterBack: () =>
-            gsap.to(".contact-circle", {
-              duration: 1.5,
-              background: "#0CF25D",
-            }),
-
-          onLeave: () =>
-            gsap.to(".contact-circle", {
-              duration: 1.5,
-              background: "#ce5937",
-            }),
-
-          onLeaveBack: () =>
-            gsap.to(".contact-circle", {
-              duration: 1.5,
-              background: "#ce5937",
-            }),
-        });
-      },
-    });
-
-    const contactBtn = document.querySelector(".contact-btn");
-    const btnWidth = contactBtn.getBoundingClientRect().width;
-    const btnHeigth = contactBtn.getBoundingClientRect().height;
-
-    gsap.set(".contact-circle", {
-      width: btnWidth / 3.5,
-      height: btnHeigth / 1.5,
-      background: "#ce5937",
-      borderRadius: "50%",
-    });
-
-    contactBtn.addEventListener("mouseover", () => {
-      gsap.to(".contact-circle", {
-        duration: 0.4,
-        ease: "ElasticIn",
-        width: btnWidth,
-        borderRadius: 0,
-      });
-    });
-
-    contactBtn.addEventListener("mouseleave", () => {
-      gsap.to(".contact-circle", {
-        duration: 0.4,
-        ease: "ElasticOut",
-        width: btnWidth / 3.5,
-        borderRadius: "50%",
-      });
-    });
   }, [mediaQuery, language]);
 
   return (
@@ -294,18 +228,6 @@ const HeroIntroduction = () => {
         ) : (
           <HeroIntroductionHU refs={refs} />
         )}
-        <div className="btn-container">
-          {language === "eng" ? (
-            <Link to="/contacts" className="contact-btn">
-              send message!
-            </Link>
-          ) : (
-            <Link to="/contacts" className="contact-btn">
-              üzenetet küldök!
-            </Link>
-          )}
-          <div className="contact-circle"></div>
-        </div>
       </div>
     </Wrapper>
   );
@@ -363,27 +285,6 @@ const Wrapper = styled.div`
   .hobby2,
   .hobby3 {
     margin: 0.25rem 0;
-  }
-
-  .btn-container {
-    margin-top: 3rem;
-    position: relative;
-    a {
-      position: absolute;
-      cursor: pointer;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1;
-      margin: 0;
-      text-transform: capitalize;
-    }
-  }
-
-  .contact-circle {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
   }
 
   @media screen and (min-width: 1100px) {
