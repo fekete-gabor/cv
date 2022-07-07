@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { HeroIntroductionENG, HeroIntroductionHU } from "./index";
 import { getRandomValue } from "../utils/helpers";
 import useMediaQuery from "../utils/mediaQuery";
@@ -13,7 +12,9 @@ const HeroIntroduction = () => {
   const { secondary_colors: colors, language } = useMainContext();
   const containerRef = useRef(null);
   const textRef = useRef(null);
-  const refs = { containerRef, textRef };
+  const linkRef = useRef(null);
+  const circleRef = useRef(null);
+  const refs = { containerRef, textRef, linkRef, circleRef };
 
   const mediaQuery = useMediaQuery("(min-width: 992px)");
 
@@ -29,7 +30,7 @@ const HeroIntroduction = () => {
         ScrollTrigger.create({
           trigger: ".hobby",
           start: "top 0%",
-          end: "+=150%",
+          end: "+=100%",
 
           onEnter: () =>
             gsap.to(
@@ -220,6 +221,71 @@ const HeroIntroduction = () => {
     }
   }, [mediaQuery, language]);
 
+  useEffect(() => {
+    const link = linkRef.current;
+    const circle = circleRef.current;
+    const linkWidth = link.getBoundingClientRect().width;
+
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo(
+      circle,
+      {
+        width: "65px",
+        height: "65px",
+        borderRadius: "50%",
+        background: "#0CF25D",
+      },
+      {
+        ease: "power4",
+        borderRadius: "25px",
+        width: linkWidth,
+      }
+    );
+
+    link.addEventListener("mouseover", () => {
+      tl.play();
+    });
+
+    link.addEventListener("mouseleave", () => {
+      tl.reverse();
+    });
+
+    ScrollTrigger.matchMedia({
+      "(min-width: 1100px)": function () {
+        ScrollTrigger.create({
+          trigger: ".hobby",
+          start: "top 0%",
+          end: "+=150%",
+
+          onEnter: () =>
+            gsap.to(circle, {
+              duration: 1.5,
+              background: "#F2055C",
+            }),
+
+          onEnterBack: () =>
+            gsap.to(circle, {
+              duration: 1.5,
+              background: "#F2055C",
+            }),
+
+          onLeave: () =>
+            gsap.to(circle, {
+              duration: 1.5,
+              background: "#0CF25D",
+            }),
+
+          onLeaveBack: () =>
+            gsap.to(circle, {
+              duration: 1.5,
+              background: "#0CF25D",
+            }),
+        });
+      },
+    });
+  }, [mediaQuery, language]);
+
   return (
     <Wrapper>
       <div className="introduction-container">
@@ -285,6 +351,26 @@ const Wrapper = styled.div`
   .hobby2,
   .hobby3 {
     margin: 0.25rem 0;
+  }
+
+  .contact-container {
+    position: relative;
+    margin-top: 2rem;
+    h2 {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-transform: capitalize;
+      color: #222;
+      padding: 1rem;
+      z-index: 1;
+    }
+  }
+
+  .contact-circle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   @media screen and (min-width: 1100px) {

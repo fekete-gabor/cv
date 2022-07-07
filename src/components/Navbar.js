@@ -51,7 +51,7 @@ const Navbar = () => {
     });
   }, []);
 
-  // link underline random color
+  // give random color to link's underline
   useEffect(() => {
     gsap.utils.toArray(".underline").forEach((line) => {
       const randomColor = getRandomValue(colors);

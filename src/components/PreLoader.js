@@ -63,9 +63,7 @@ const PreLoader = () => {
   }, []);
 
   useEffect(() => {
-    const dotArray = gsap.utils.toArray(".dot");
-
-    dotArray.forEach((dot, i) => {
+    gsap.utils.toArray(".dot").forEach((dot, i) => {
       gsap.set(dot, { autoAlpha: 0 });
       const randomColor = getRandomValue(colors);
 

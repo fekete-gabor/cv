@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HeroIntroductionHU = ({ refs }) => {
-  const { containerRef, textRef } = refs;
+  const { containerRef, textRef, linkRef, circleRef } = refs;
 
   return (
     <>
@@ -50,6 +51,14 @@ const HeroIntroductionHU = ({ refs }) => {
             </div>
           </div>
         </h1>
+      </div>
+      <div className="contact-container">
+        <Link to="/contacts">
+          <h2 className="contact-btn" ref={linkRef}>
+            üzenetet küldök!
+          </h2>
+          <div className="contact-circle" ref={circleRef}></div>
+        </Link>
       </div>
     </>
   );
