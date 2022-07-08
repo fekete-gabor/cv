@@ -54,7 +54,6 @@ body {
 }
 
 html {
-  scroll-padding-top: 80px;
   scroll-behavior: smooth;
   overflow-anchor: none;
 }

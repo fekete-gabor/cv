@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap";
@@ -9,7 +9,7 @@ const Contacts = () => {
   const { language } = useMainContext();
 
   return (
-    <Wrapper>
+    <Wrapper className="comp">
       <h2>Contacts</h2>
     </Wrapper>
   );

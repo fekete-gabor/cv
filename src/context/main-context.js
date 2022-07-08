@@ -7,6 +7,8 @@ import {
   FETCH_ERROR,
   OPEN_SIDEBAR,
   CLOSE_SIDEBAR,
+  COUNT_COMPONENTS,
+  SET_CURRENT_INDEX,
 } from "../actions";
 
 const checkLocalStorage = () => {
@@ -21,12 +23,14 @@ const initialState = {
   primary_colors: ["#D9A3B1", "#8C586B", "#0E1826", "#4A808C", "#EADEC7"],
   secondary_colors: [
     "#0049A6",
-    "#1677F2",
-    "#834CF5",
-    "#F20CCC",
     "#F2522E",
+    "#834CF5",
+    "#1677F2",
+    "#F20CCC",
     "#9F46A8",
   ],
+  current_component_index: 0,
+  all_component_index: "",
   is_sidebar_open: false,
   is_loading: false,
   is_error: false,
@@ -67,6 +71,14 @@ export const MainProvider = ({ children }) => {
     }
   };
 
+  const countComponents = (number) => {
+    dispatch({ type: COUNT_COMPONENTS, payload: number });
+  };
+
+  const setCurrentIndex = (index) => {
+    dispatch({ type: SET_CURRENT_INDEX, payload: index });
+  };
+
   useEffect(() => {
     localStorage.setItem("language", JSON.stringify(state.storage));
   }, [state.language, state.storage]);
@@ -82,6 +94,8 @@ export const MainProvider = ({ children }) => {
         setLanguage,
         openSidebar,
         closeSidebar,
+        countComponents,
+        setCurrentIndex,
       }}
     >
       {children}

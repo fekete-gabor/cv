@@ -4,7 +4,7 @@ import { AboutMeIntroduction, AboutMePortrait } from "./index";
 
 const AboutMe = () => {
   return (
-    <Wrapper id="aboutMe">
+    <Wrapper className="comp">
       <AboutMeIntroduction />
       <AboutMePortrait />
     </Wrapper>

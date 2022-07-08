@@ -4,7 +4,7 @@ import { HeroPortrait, HeroIntroduction } from "./index";
 
 const Hero = () => {
   return (
-    <Wrapper>
+    <Wrapper className="comp">
       <div className="container">
         <HeroIntroduction />
         <HeroPortrait />

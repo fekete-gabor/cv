@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import useMediaQuery from "../utils/mediaQuery";
-import { Navbar, Sidebar, Footer, ScrollTop } from "../components";
+import { useMainContext } from "../context/main-context";
+import { Navbar, Sidebar, Footer, ScrollTop, PreLoader } from "../components";
 import { Outlet } from "react-router-dom";
 import { gsap } from "gsap";
 
 const SharedLayout = () => {
+  const { is_loading } = useMainContext();
   const mediaQuery = useMediaQuery("(min-width: 1100px)");
 
   useEffect(() => {
-    if (mediaQuery) {
+    if (mediaQuery && !is_loading) {
       let svgns = "http://www.w3.org/2000/svg";
       let root = document.querySelector("svg");
       let ease = 0.75;
@@ -87,7 +89,11 @@ const SharedLayout = () => {
         return pos;
       }
     }
-  }, [mediaQuery]);
+  }, [mediaQuery, is_loading]);
+
+  if (is_loading) {
+    return <PreLoader />;
+  }
 
   return (
     <Wrapper>

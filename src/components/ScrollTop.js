@@ -41,7 +41,7 @@ const ScrollTop = () => {
   return (
     <Wrapper ref={myRef}>
       <AiOutlineArrowUp className="arrow" />
-      <p ref={textRef}>{language === "eng" ? "scroll top" : "lap tetejére"}</p>
+      <p ref={textRef}>{language === "eng" ? "scroll up" : "lap tetejére"}</p>
     </Wrapper>
   );
 };

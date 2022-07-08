@@ -5,6 +5,8 @@ import {
   FETCH_ERROR,
   OPEN_SIDEBAR,
   CLOSE_SIDEBAR,
+  COUNT_COMPONENTS,
+  SET_CURRENT_INDEX,
 } from "../actions";
 
 const main_reducer = (state, action) => {
@@ -37,6 +39,13 @@ const main_reducer = (state, action) => {
     return { ...state, is_error: true };
   }
 
+  if (action.type === COUNT_COMPONENTS) {
+    return { ...state, all_component_index: action.payload };
+  }
+
+  if (action.type === SET_CURRENT_INDEX) {
+    return { ...state, current_component_index: action.payload };
+  }
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 

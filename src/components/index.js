@@ -11,11 +11,14 @@ import HeroPortrait from "./HeroPortrait";
 import AboutMe from "./AboutMe";
 import AboutMeIntroduction from "./AboutMeIntroduction";
 import AboutMePortrait from "./AboutMePortrait";
+import Skills from "./Skills";
+import FuturePlans from "./FuturePlans";
 import Contacts from "./Contacts";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import ScrollTop from "./ScrollTop";
+import ComponentIndexes from "./ComponentIndexes";
 
 export {
   Language,
@@ -31,9 +34,12 @@ export {
   AboutMe,
   AboutMeIntroduction,
   AboutMePortrait,
+  Skills,
+  FuturePlans,
   Contacts,
   Navbar,
   Sidebar,
   Footer,
   ScrollTop,
+  ComponentIndexes,
 };
