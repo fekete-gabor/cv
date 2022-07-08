@@ -30,7 +30,7 @@ const initialState = {
     "#9F46A8",
   ],
   current_component_index: 0,
-  all_component_index: "",
+  all_components: "",
   is_sidebar_open: false,
   is_loading: false,
   is_error: false,

@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap/dist/gsap";
 
 const ComponentIndexes = () => {
-  const { current_component_index, all_component_index, setCurrentIndex } =
+  const { current_component_index, all_components, setCurrentIndex } =
     useMainContext();
 
   useEffect(() => {
@@ -35,7 +34,6 @@ const ComponentIndexes = () => {
       } else {
         tl.to(box, {
           borderRadius: "0%",
-
           background: "#05C7F2",
           border: "solid 0.5px transparent",
         });
@@ -43,21 +41,21 @@ const ComponentIndexes = () => {
     });
   }, [current_component_index]);
 
-  const scroll = (item) => {
-    item.scrollIntoView();
+  const scroll = (component) => {
+    component.scrollIntoView();
   };
 
   return (
     <Wrapper>
-      {all_component_index &&
-        all_component_index.map((comp, i) => {
+      {all_components &&
+        all_components.map((component, i) => {
           return (
             <div
               key={i}
               className="index-box"
               onClick={() => {
                 setCurrentIndex(i);
-                scroll(comp);
+                scroll(component);
               }}
             ></div>
           );

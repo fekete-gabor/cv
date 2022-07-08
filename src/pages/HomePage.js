@@ -14,12 +14,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const HomePage = () => {
-  const {
-    current_component_index,
-    setCurrentIndex,
-    countComponents,
-    all_component_index: comp,
-  } = useMainContext();
+  const { setCurrentIndex, countComponents, all_components } = useMainContext();
 
   useEffect(() => {
     let components = [...document.querySelectorAll(".comp")];
@@ -27,10 +22,10 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    if (comp) {
-      comp.map((item, i) => {
+    if (all_components) {
+      all_components.map((component, i) => {
         ScrollTrigger.create({
-          trigger: item,
+          trigger: component,
           start: "top center",
           end: "bottom center",
           onEnter: () => setCurrentIndex(i),
@@ -38,7 +33,7 @@ const HomePage = () => {
         });
       });
     }
-  }, [comp]);
+  }, [all_components]);
 
   return (
     <Wrapper>

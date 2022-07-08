@@ -40,7 +40,7 @@ const main_reducer = (state, action) => {
   }
 
   if (action.type === COUNT_COMPONENTS) {
-    return { ...state, all_component_index: action.payload };
+    return { ...state, all_components: action.payload };
   }
 
   if (action.type === SET_CURRENT_INDEX) {
