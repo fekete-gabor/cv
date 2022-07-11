@@ -15,7 +15,6 @@ const ComponentIndexes = () => {
         borderRadius: "0%",
         rotate: "45deg",
         background: "#05C7F2",
-        border: "solid 3px transparent",
       });
 
       if (current_component_index === i) {
@@ -23,25 +22,24 @@ const ComponentIndexes = () => {
           box,
           {
             background: "#05C7F2",
-            border: "solid 3px transparent",
           },
           {
+            duration: 1,
             borderRadius: "50%",
             background: "orange",
-            border: "solid 0.5px black",
           }
         );
       } else {
         tl.to(box, {
+          duration: 1,
           borderRadius: "0%",
           background: "#05C7F2",
-          border: "solid 0.5px transparent",
         });
       }
     });
   }, [current_component_index]);
 
-  const scroll = (component) => {
+  const scrollIntoView = (component) => {
     component.scrollIntoView();
   };
 
@@ -55,7 +53,7 @@ const ComponentIndexes = () => {
               className="index-box"
               onClick={() => {
                 setCurrentIndex(i);
-                scroll(component);
+                scrollIntoView(component);
               }}
             ></div>
           );
@@ -72,10 +70,17 @@ const Wrapper = styled.aside`
   transform: translateY(-50%);
 
   .index-box {
+    display: none;
     margin: 1rem 0;
     width: 10px;
     height: 10px;
     cursor: pointer;
+  }
+
+  @media screen and (min-width: 1100px) {
+    .index-box {
+      display: flex;
+    }
   }
 `;
 

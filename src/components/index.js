@@ -9,8 +9,10 @@ import HeroIntroductionENG from "./HeroIntroductionENG";
 import HeroIntroductionHU from "./HeroIntroductionHU";
 import HeroPortrait from "./HeroPortrait";
 import AboutMe from "./AboutMe";
-import AboutMeIntroduction from "./AboutMeIntroduction";
 import AboutMePortrait from "./AboutMePortrait";
+import AboutMeIntroduction from "./AboutMeIntroduction";
+import AboutMeIntroductionENG from "./AboutMeIntroductionENG";
+import AboutMeIntroductionHU from "./AboutMeIntroductionHU";
 import Skills from "./Skills";
 import FuturePlans from "./FuturePlans";
 import Contacts from "./Contacts";
@@ -32,8 +34,10 @@ export {
   HeroIntroductionHU,
   HeroPortrait,
   AboutMe,
-  AboutMeIntroduction,
   AboutMePortrait,
+  AboutMeIntroduction,
+  AboutMeIntroductionENG,
+  AboutMeIntroductionHU,
   Skills,
   FuturePlans,
   Contacts,

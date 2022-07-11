@@ -11,7 +11,7 @@ const HeroIntroductionHU = ({ refs }) => {
         <div className="letter">e</div>
         <div className="letter">l</div>
         <div className="letter">l</div>
-        <div className="letter">o</div>
+        <div className="letter">ó</div>
         <div className="letter comma">,</div>
         <div className="main-letter">G</div>
         <div className="letter">á</div>

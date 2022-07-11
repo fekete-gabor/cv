@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useMainContext } from "../context/main-context";
+import { AboutMeIntroductionENG, AboutMeIntroductionHU } from "./index";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -10,14 +11,30 @@ const AboutMeIntroduction = () => {
 
   return (
     <Wrapper>
-      <h2>AboutMeIntroduction</h2>
+      {language === "eng" ? (
+        <AboutMeIntroductionENG />
+      ) : (
+        <AboutMeIntroductionHU />
+      )}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
+
+  article {
+    padding: 3rem;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
 `;
 
 export default AboutMeIntroduction;

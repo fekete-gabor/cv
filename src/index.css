@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Stick+No+Bills&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap");
 
 /*
 =============== 
@@ -9,7 +10,7 @@ Variables
 */
 
 :root {
-  --font-family-cursive: "Amatic SC", cursive;
+  --font-family-cursive: "Mukta", sans-serif;
   /* darkest grey - used for headings */
   --clr-grey-1: hsl(209, 61%, 16%);
   --clr-grey-2: hsl(211, 39%, 23%);

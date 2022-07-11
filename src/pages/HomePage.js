@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import useMediaQuery from "../utils/mediaQuery";
 import { useMainContext } from "../context/main-context";
 import {
   Hero,
@@ -15,14 +16,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HomePage = () => {
   const { setCurrentIndex, countComponents, all_components } = useMainContext();
+  const mediaQuery = useMediaQuery("(min-width: 1100px)");
 
   useEffect(() => {
-    let components = [...document.querySelectorAll(".comp")];
+    const components = [...document.querySelectorAll(".comp")];
     countComponents(components);
   }, []);
 
   useEffect(() => {
-    if (all_components) {
+    if (all_components && mediaQuery) {
       all_components.map((component, i) => {
         ScrollTrigger.create({
           trigger: component,
@@ -33,7 +35,7 @@ const HomePage = () => {
         });
       });
     }
-  }, [all_components]);
+  }, [all_components, mediaQuery]);
 
   return (
     <Wrapper>
