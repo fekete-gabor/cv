@@ -35,38 +35,36 @@ const AboutMeIntroductionHU = () => {
         hogy végre beinduljon a karrierem és végre profiktól is tanulhassak.
         Addig is, tovább fejlődök.
       </p>
-      <p className="paragraph">
-        Néhány technológia amikkel nemrég dolgoztam:
-        <ul>
-          <li>
-            <p className="list-item">HTML</p>
-          </li>
-          <li>
-            <p className="list-item">CSS</p>
-          </li>
-          <li>
-            <p className="list-item">Styled Components</p>
-          </li>
-          <li>
-            <p className="list-item">JavaScript(ES6+)</p>
-          </li>
-          <li>
-            <p className="list-item">React</p>
-          </li>
-          <li>
-            <p className="list-item">GSAP</p>
-          </li>
-          <li>
-            <p className="list-item">Strapi Headless CMS</p>
-          </li>
-          <li>
-            <p className="list-item">Heroku</p>
-          </li>
-          <li>
-            <p className="list-item">Netlify</p>
-          </li>
-        </ul>
-      </p>
+      <p className="paragraph">Néhány technológia amikkel nemrég dolgoztam:</p>
+      <ul>
+        <li>
+          <p className="list-item">HTML</p>
+        </li>
+        <li>
+          <p className="list-item">CSS</p>
+        </li>
+        <li>
+          <p className="list-item">Styled Components</p>
+        </li>
+        <li>
+          <p className="list-item">JavaScript(ES6+)</p>
+        </li>
+        <li>
+          <p className="list-item">React</p>
+        </li>
+        <li>
+          <p className="list-item">GSAP</p>
+        </li>
+        <li>
+          <p className="list-item">Strapi Headless CMS</p>
+        </li>
+        <li>
+          <p className="list-item">Heroku</p>
+        </li>
+        <li>
+          <p className="list-item">Netlify</p>
+        </li>
+      </ul>
     </article>
   );
 };

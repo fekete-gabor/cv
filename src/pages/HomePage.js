@@ -5,7 +5,7 @@ import { useMainContext } from "../context/main-context";
 import {
   Hero,
   AboutMe,
-  Skills,
+  Projects,
   FuturePlans,
   Contacts,
   ComponentIndexes,
@@ -41,7 +41,7 @@ const HomePage = () => {
     <Wrapper>
       <Hero />
       <AboutMe />
-      <Skills />
+      <Projects />
       <FuturePlans />
       <Contacts />
       <ComponentIndexes />

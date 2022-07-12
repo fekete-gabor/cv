@@ -32,77 +32,81 @@ const AboutMe = () => {
 
   useEffect(() => {
     // change logo's & main letter's color, text shadow on scroll
-    ScrollTrigger.matchMedia({
-      "(min-width: 1100px)": function () {
-        ScrollTrigger.create({
-          trigger: "#about",
-          start: "top center",
-          end: "bottom center",
-          onEnter: () =>
-            gsap.to([".main-letter", ".navbar-brand"], {
-              duration: 1.5,
-              color: "#0CF25D",
-              textShadow: "-6px 0px 2px #F2055C",
-            }),
+    ScrollTrigger.create({
+      trigger: "#about",
+      start: "top center",
+      end: "bottom center",
+      onEnter: () =>
+        gsap.to([".main-letter", ".navbar-brand"], {
+          duration: 1.5,
+          color: "#0CF25D",
+          textShadow: "-6px 0px 2px #F2055C",
+        }),
 
-          onEnterBack: () =>
-            gsap.to([".main-letter", ".navbar-brand"], {
-              duration: 1.5,
-              color: "#0CF25D",
-              textShadow: "-6px 0px 2px #F2055C",
-            }),
+      onEnterBack: () =>
+        gsap.to([".main-letter", ".navbar-brand"], {
+          duration: 1.5,
+          color: "#0CF25D",
+          textShadow: "-6px 0px 2px #F2055C",
+        }),
 
-          onLeave: () =>
-            gsap.to([".main-letter", ".navbar-brand"], {
-              duration: 1.5,
-              color: "#222",
-              textShadow: "-6px 0px 2px #ce5937",
-            }),
+      onLeave: () =>
+        gsap.to([".main-letter", ".navbar-brand"], {
+          duration: 1.5,
+          color: "#222",
+          textShadow: "-6px 0px 2px #ce5937",
+        }),
 
-          onLeaveBack: () =>
-            gsap.to([".main-letter", ".navbar-brand"], {
-              duration: 1.5,
-              color: "#222",
-              textShadow: "-6px 0px 2px #ce5937",
-            }),
-        });
-      },
+      onLeaveBack: () =>
+        gsap.to([".main-letter", ".navbar-brand"], {
+          duration: 1.5,
+          color: "#222",
+          textShadow: "-6px 0px 2px #ce5937",
+        }),
     });
   }, [language, mediaQuery]);
 
   useEffect(() => {
     // change font color on scroll
-    ScrollTrigger.matchMedia({
-      "(min-width: 1100px)": function () {
-        ScrollTrigger.create({
-          trigger: "#about",
-          start: "top center",
-          end: "bottom center",
-          onEnter: () =>
-            gsap.to([".link", ".paragraph"], {
-              duration: 1.5,
-              color: "white",
-            }),
+    ScrollTrigger.create({
+      trigger: "#about",
+      start: "top center",
+      end: "bottom center",
+      onEnter: () =>
+        gsap.to(
+          [".link", ".paragraph", ".scroll-up-arrow", ".scroll-up-text"],
+          {
+            duration: 1.5,
+            color: "white",
+          }
+        ),
 
-          onEnterBack: () =>
-            gsap.to([".link", ".paragraph"], {
-              duration: 1.5,
-              color: "white",
-            }),
+      onEnterBack: () =>
+        gsap.to(
+          [".link", ".paragraph", ".scroll-up-arrow", ".scroll-up-text"],
+          {
+            duration: 1.5,
+            color: "white",
+          }
+        ),
 
-          onLeave: () =>
-            gsap.to(".link", {
-              duration: 1.5,
-              color: "#222",
-            }),
+      onLeave: () =>
+        gsap.to(
+          [".link", ".paragraph", ".scroll-up-arrow", ".scroll-up-text"],
+          {
+            duration: 1.5,
+            color: "#222",
+          }
+        ),
 
-          onLeaveBack: () =>
-            gsap.to(".link", {
-              duration: 1.5,
-              color: "#222",
-            }),
-        });
-      },
+      onLeaveBack: () =>
+        gsap.to(
+          [".link", ".paragraph", ".scroll-up-arrow", ".scroll-up-text"],
+          {
+            duration: 1.5,
+            color: "#222",
+          }
+        ),
     });
   }, [language, mediaQuery]);
 
@@ -162,7 +166,7 @@ const AboutMe = () => {
 
   return (
     <Wrapper className="comp" id="about">
-      <h1 className="title">about me</h1>
+      <h1 className="title">{language === "eng" ? "about me" : "rólam"}</h1>
       <div className="container">
         <AboutMeIntroduction />
         <AboutMePortrait />
@@ -171,7 +175,7 @@ const AboutMe = () => {
   );
 };
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   max-width: 85vw;
   height: fit-content;
   margin: 10rem auto;

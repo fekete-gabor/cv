@@ -103,42 +103,38 @@ const HeroIntroduction = () => {
     });
 
     // change logo's & main letter's color, text shadow on scroll
-    ScrollTrigger.matchMedia({
-      "(min-width: 1100px)": function () {
-        ScrollTrigger.create({
-          trigger: ".hobby",
-          start: "top 0%",
-          end: "+=150%",
+    ScrollTrigger.create({
+      trigger: ".hobby",
+      start: "top 0%",
+      end: "+=150%",
 
-          onEnter: () =>
-            gsap.to([".main-letter", ".navbar-brand"], {
-              duration: 1.5,
-              color: "#0CF25D",
-              textShadow: "-6px 0px 2px #F2055C",
-            }),
+      onEnter: () =>
+        gsap.to([".main-letter", ".navbar-brand"], {
+          duration: 1.5,
+          color: "#0CF25D",
+          textShadow: "-6px 0px 2px #F2055C",
+        }),
 
-          onEnterBack: () =>
-            gsap.to([".main-letter", ".navbar-brand"], {
-              duration: 1.5,
-              color: "#0CF25D",
-              textShadow: "-6px 0px 2px #F2055C",
-            }),
+      onEnterBack: () =>
+        gsap.to([".main-letter", ".navbar-brand"], {
+          duration: 1.5,
+          color: "#0CF25D",
+          textShadow: "-6px 0px 2px #F2055C",
+        }),
 
-          onLeave: () =>
-            gsap.to([".main-letter", ".navbar-brand"], {
-              duration: 1.5,
-              color: "#222",
-              textShadow: "-6px 0px 2px #ce5937",
-            }),
+      onLeave: () =>
+        gsap.to([".main-letter", ".navbar-brand"], {
+          duration: 1.5,
+          color: "#222",
+          textShadow: "-6px 0px 2px #ce5937",
+        }),
 
-          onLeaveBack: () =>
-            gsap.to([".main-letter", ".navbar-brand"], {
-              duration: 1.5,
-              color: "#222",
-              textShadow: "-6px 0px 2px #ce5937",
-            }),
-        });
-      },
+      onLeaveBack: () =>
+        gsap.to([".main-letter", ".navbar-brand"], {
+          duration: 1.5,
+          color: "#222",
+          textShadow: "-6px 0px 2px #ce5937",
+        }),
     });
   }, [language]);
 

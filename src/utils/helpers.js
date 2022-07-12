@@ -16,13 +16,13 @@ const linksENG = [
   },
   {
     id: 2,
-    text: "my skills",
-    url: "/skills",
+    text: "projects",
+    url: "/projects",
   },
   {
     id: 3,
-    text: "projects",
-    url: "/projects",
+    text: "plans",
+    url: "/plans",
   },
   {
     id: 4,
@@ -51,13 +51,13 @@ const linksHU = [
   },
   {
     id: 2,
-    text: "skillek",
-    url: "/skills",
+    text: "projektek",
+    url: "/projects",
   },
   {
     id: 3,
-    text: "projektek",
-    url: "/projects",
+    text: "terveim",
+    url: "/plans",
   },
   {
     id: 4,

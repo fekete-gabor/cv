@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   height: 100%;
 
   article {
-    padding: 3rem;
+    padding: 0.5rem;
   }
 
   h2 {
@@ -34,6 +34,12 @@ const Wrapper = styled.div`
 
   p {
     font-size: 1.25rem;
+  }
+
+  @media screen and (min-width: 400px) {
+    article {
+      padding: 3rem;
+    }
   }
 `;
 

@@ -13,7 +13,7 @@ import AboutMePortrait from "./AboutMePortrait";
 import AboutMeIntroduction from "./AboutMeIntroduction";
 import AboutMeIntroductionENG from "./AboutMeIntroductionENG";
 import AboutMeIntroductionHU from "./AboutMeIntroductionHU";
-import Skills from "./Skills";
+import Projects from "./Projects";
 import FuturePlans from "./FuturePlans";
 import Contacts from "./Contacts";
 import Navbar from "./Navbar";
@@ -34,11 +34,11 @@ export {
   HeroIntroductionHU,
   HeroPortrait,
   AboutMe,
-  AboutMePortrait,
   AboutMeIntroduction,
   AboutMeIntroductionENG,
   AboutMeIntroductionHU,
-  Skills,
+  AboutMePortrait,
+  Projects,
   FuturePlans,
   Contacts,
   Navbar,

@@ -11,7 +11,7 @@ const AboutMePortrait = () => {
 
 const Wrapper = styled.section`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@ const Wrapper = styled.section`
     content: "";
     position: absolute;
     display: block;
-    border: solid 2px yellowgreen;
+    border: solid 2px dodgerblue;
     width: 100%;
     height: 100%;
     bottom: -20px;
