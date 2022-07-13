@@ -16,7 +16,7 @@ const HeroPortrait = () => {
       "(min-width: 1100px)": function () {
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: ".container",
+            trigger: ".hero-container",
             start: "top 0%",
             end: "+=200%",
             pin: true,

@@ -19,8 +19,16 @@ const HeroIntroduction = () => {
   const mediaQuery = useMediaQuery("(min-width: 992px)");
 
   useEffect(() => {
+    const introductionContainer = document.querySelector(
+      ".introduction-container"
+    );
+    const hobbies = document.querySelectorAll(".hobby");
+    const letters = document.querySelectorAll(".letter");
+    const links = document.querySelectorAll(".link");
+    const contactBtn = document.querySelector(".contact-btn");
+
     // set font color on doc load
-    gsap.set([".introduction-container", ".hobby", ".letter", ".contact-btn"], {
+    gsap.set([introductionContainer, hobbies, letters, contactBtn], {
       color: "#222",
     });
 
@@ -28,19 +36,13 @@ const HeroIntroduction = () => {
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
-          trigger: ".hobby",
-          start: "top 0%",
-          end: "+=100%",
+          trigger: ".box4",
+          start: "top 40%",
+          end: "+=150%",
 
           onEnter: () =>
             gsap.to(
-              [
-                ".introduction-container",
-                ".hobby",
-                ".letter",
-                ".link",
-                ".contact-btn",
-              ],
+              [introductionContainer, hobbies, letters, links, contactBtn],
               {
                 duration: 1.5,
                 color: "white",
@@ -49,13 +51,7 @@ const HeroIntroduction = () => {
 
           onEnterBack: () =>
             gsap.to(
-              [
-                ".introduction-container",
-                ".hobby",
-                ".letter",
-                ".link",
-                ".contact-btn",
-              ],
+              [introductionContainer, hobbies, letters, links, contactBtn],
               {
                 duration: 1.5,
                 color: "white",
@@ -64,13 +60,7 @@ const HeroIntroduction = () => {
 
           onLeave: () =>
             gsap.to(
-              [
-                ".introduction-container",
-                ".hobby",
-                ".letter",
-                ".link",
-                ".contact-btn",
-              ],
+              [introductionContainer, hobbies, letters, links, contactBtn],
               {
                 duration: 1.5,
                 color: "#222",
@@ -79,13 +69,7 @@ const HeroIntroduction = () => {
 
           onLeaveBack: () =>
             gsap.to(
-              [
-                ".introduction-container",
-                ".hobby",
-                ".letter",
-                ".link",
-                ".contact-btn",
-              ],
+              [introductionContainer, hobbies, letters, links, contactBtn],
               {
                 duration: 1.5,
                 color: "#222",
@@ -97,40 +81,43 @@ const HeroIntroduction = () => {
   }, [language]);
 
   useEffect(() => {
+    const mainLetter = document.querySelector(".main-letter");
+    console.log(mainLetter);
+    const logo = document.querySelectorAll(".navbar-brand");
     // set logo's & main letter's text shadow on doc load
-    gsap.set([".main-letter", ".navbar-brand"], {
+    gsap.set([mainLetter, logo], {
       textShadow: "-6px 0px 2px #ce5937",
     });
 
     // change logo's & main letter's color, text shadow on scroll
     ScrollTrigger.create({
-      trigger: ".hobby",
-      start: "top 0%",
+      trigger: ".box4",
+      start: "top 40%",
       end: "+=150%",
 
       onEnter: () =>
-        gsap.to([".main-letter", ".navbar-brand"], {
+        gsap.to([mainLetter, logo], {
           duration: 1.5,
           color: "#0CF25D",
           textShadow: "-6px 0px 2px #F2055C",
         }),
 
       onEnterBack: () =>
-        gsap.to([".main-letter", ".navbar-brand"], {
+        gsap.to([mainLetter, logo], {
           duration: 1.5,
           color: "#0CF25D",
           textShadow: "-6px 0px 2px #F2055C",
         }),
 
       onLeave: () =>
-        gsap.to([".main-letter", ".navbar-brand"], {
+        gsap.to([mainLetter, logo], {
           duration: 1.5,
           color: "#222",
           textShadow: "-6px 0px 2px #ce5937",
         }),
 
       onLeaveBack: () =>
-        gsap.to([".main-letter", ".navbar-brand"], {
+        gsap.to([mainLetter, logo], {
           duration: 1.5,
           color: "#222",
           textShadow: "-6px 0px 2px #ce5937",
@@ -151,8 +138,8 @@ const HeroIntroduction = () => {
       "(min-width: 1100px)": function () {
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: ".box3",
-            start: "top 30%",
+            trigger: ".box5",
+            start: "top 40%",
             end: "+=200%",
             scrub: true,
           },
@@ -250,8 +237,8 @@ const HeroIntroduction = () => {
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
-          trigger: ".hobby",
-          start: "top 0%",
+          trigger: ".box4",
+          start: "top 40%",
           end: "+=150%",
 
           onEnter: () =>

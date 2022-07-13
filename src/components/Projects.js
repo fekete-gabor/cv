@@ -83,6 +83,7 @@ const Projects = () => {
 const Wrapper = styled.section`
   width: 100%;
   min-height: 100vh;
+  padding: 3rem 0.5rem;
 
   h2 {
     text-transform: capitalize;
@@ -130,23 +131,23 @@ const Wrapper = styled.section`
     left: -1.5%;
     width: 100%;
     height: 100%;
-    background: rgb(12, 242, 93);
+    background: rgb(242, 5, 221);
     background: -moz-linear-gradient(
       90deg,
-      rgba(12, 242, 93, 1) 0%,
-      rgba(242, 5, 92, 1) 100%
+      rgba(242, 5, 221, 0.5) 50%,
+      rgba(12, 74, 242, 0.5) 50%
     );
     background: -webkit-linear-gradient(
       90deg,
-      rgba(12, 242, 93, 1) 0%,
-      rgba(242, 5, 92, 1) 100%
+      rgba(242, 5, 221, 0.5) 50%,
+      rgba(12, 74, 242, 0.5) 50%
     );
     background: linear-gradient(
       90deg,
-      rgba(12, 242, 93, 1) 0%,
-      rgba(242, 5, 92, 1) 100%
+      rgba(242, 5, 221, 0.5) 50%,
+      rgba(12, 74, 242, 0.5) 50%
     );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0cf25d",endColorstr="#f2055c",GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f205dd",endColorstr="#0c4af2",GradientType=1);
     transform: skew(45deg) translateX(100%);
     transition: all 0.9s;
   }
@@ -160,23 +161,23 @@ const Wrapper = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgb(12, 242, 93);
+    background: rgb(242, 5, 221);
     background: -moz-linear-gradient(
       90deg,
-      rgba(12, 242, 93, 1) 0%,
-      rgba(242, 5, 92, 1) 100%
+      rgba(242, 5, 221, 0.5) 50%,
+      rgba(12, 74, 242, 0.5) 50%
     );
     background: -webkit-linear-gradient(
       90deg,
-      rgba(12, 242, 93, 1) 0%,
-      rgba(242, 5, 92, 1) 100%
+      rgba(242, 5, 221, 0.5) 50%,
+      rgba(12, 74, 242, 0.5) 50%
     );
     background: linear-gradient(
       90deg,
-      rgba(12, 242, 93, 1) 0%,
-      rgba(242, 5, 92, 1) 100%
+      rgba(242, 5, 221, 0.5) 50%,
+      rgba(12, 74, 242, 0.5) 50%
     );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0cf25d",endColorstr="#f2055c",GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f205dd",endColorstr="#0c4af2",GradientType=1);
     transform: skew(45deg) translateX(-100%);
     transition: all 0.9s;
   }

@@ -5,7 +5,7 @@ import { HeroPortrait, HeroIntroduction } from "./index";
 const Hero = () => {
   return (
     <Wrapper className="comp">
-      <div className="container">
+      <div className="hero-container">
         <HeroIntroduction />
         <HeroPortrait />
       </div>
@@ -14,7 +14,7 @@ const Hero = () => {
 };
 
 const Wrapper = styled.div`
-  .container {
+  .hero-container {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1100px) {
-    .container {
+    .hero-container {
       display: grid;
       grid-template-columns: 70% 30%;
     }

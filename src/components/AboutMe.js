@@ -19,147 +19,172 @@ const AboutMe = () => {
   ]);
 
   useEffect(() => {
-    ScrollTrigger.create({
-      trigger: "#about",
-      start: "top center",
-      end: "bottom center",
-      onEnter: () => gsap.to("body", { background: "#222" }),
-      onEnterBack: () => gsap.to("body", { background: "#222" }),
-      onLeave: () => gsap.to("body", { background: "rgb(234, 222, 199)" }),
-      onLeaveBack: () => gsap.to("body", { background: "rgb(234, 222, 199)" }),
+    ScrollTrigger.matchMedia({
+      "(min-width: 1100px)": function () {
+        ScrollTrigger.create({
+          trigger: "#about",
+          start: "top center",
+          end: "bottom 80%",
+          onEnter: () => gsap.to("body", { background: "#222" }),
+          onEnterBack: () => gsap.to("body", { background: "#222" }),
+          onLeave: () => gsap.to("body", { background: "#eadec7" }),
+          onLeaveBack: () => gsap.to("body", { background: "#eadec7" }),
+        });
+      },
     });
   }, [language, mediaQuery]);
 
   useEffect(() => {
-    // change logo's & main letter's color, text shadow on scroll
-    ScrollTrigger.create({
-      trigger: "#about",
-      start: "top center",
-      end: "bottom center",
-      onEnter: () =>
-        gsap.to([".main-letter", ".navbar-brand"], {
-          duration: 1.5,
-          color: "#0CF25D",
-          textShadow: "-6px 0px 2px #F2055C",
-        }),
+    const logo = document.querySelectorAll(".navbar-brand");
+    ScrollTrigger.matchMedia({
+      "(min-width: 1100px)": function () {
+        // change logo's  color, text shadow on scroll
+        ScrollTrigger.create({
+          trigger: "#about",
+          start: "top center",
+          end: "bottom 80%",
+          onEnter: () =>
+            gsap.to(logo, {
+              duration: 1.5,
+              color: "#0CF25D",
+              textShadow: "-6px 0px 2px #F2055C",
+            }),
 
-      onEnterBack: () =>
-        gsap.to([".main-letter", ".navbar-brand"], {
-          duration: 1.5,
-          color: "#0CF25D",
-          textShadow: "-6px 0px 2px #F2055C",
-        }),
+          onEnterBack: () =>
+            gsap.to(logo, {
+              duration: 1.5,
+              color: "#0CF25D",
+              textShadow: "-6px 0px 2px #F2055C",
+            }),
 
-      onLeave: () =>
-        gsap.to([".main-letter", ".navbar-brand"], {
-          duration: 1.5,
-          color: "#222",
-          textShadow: "-6px 0px 2px #ce5937",
-        }),
+          onLeave: () =>
+            gsap.to(logo, {
+              duration: 1.5,
+              color: "#222",
+              textShadow: "-6px 0px 2px #ce5937",
+            }),
 
-      onLeaveBack: () =>
-        gsap.to([".main-letter", ".navbar-brand"], {
-          duration: 1.5,
-          color: "#222",
-          textShadow: "-6px 0px 2px #ce5937",
-        }),
+          onLeaveBack: () =>
+            gsap.to(logo, {
+              duration: 1.5,
+              color: "#222",
+              textShadow: "-6px 0px 2px #ce5937",
+            }),
+        });
+      },
     });
   }, [language, mediaQuery]);
 
   useEffect(() => {
-    // change font color on scroll
-    ScrollTrigger.create({
-      trigger: "#about",
-      start: "top center",
-      end: "bottom center",
-      onEnter: () =>
-        gsap.to(
-          [".link", ".paragraph", ".scroll-up-arrow", ".scroll-up-text"],
-          {
-            duration: 1.5,
-            color: "white",
-          }
-        ),
+    const link = document.querySelectorAll(".link");
+    const paragraph = document.querySelectorAll(".paragraph");
+    const scrollArrow = document.querySelector(".scroll-up-arrow");
+    const scrollText = document.querySelector(".scroll-up-text");
 
-      onEnterBack: () =>
-        gsap.to(
-          [".link", ".paragraph", ".scroll-up-arrow", ".scroll-up-text"],
-          {
-            duration: 1.5,
-            color: "white",
-          }
-        ),
+    ScrollTrigger.matchMedia({
+      "(min-width: 1100px)": function () {
+        // change font color on scroll
+        ScrollTrigger.create({
+          trigger: "#about",
+          start: "top center",
+          end: "bottom 80%",
+          onEnter: () =>
+            gsap.to([link, paragraph, scrollArrow, scrollText], {
+              duration: 1.5,
+              color: "white",
+            }),
 
-      onLeave: () =>
-        gsap.to(
-          [".link", ".paragraph", ".scroll-up-arrow", ".scroll-up-text"],
-          {
-            duration: 1.5,
-            color: "#222",
-          }
-        ),
+          onEnterBack: () =>
+            gsap.to([link, paragraph, scrollArrow, scrollText], {
+              duration: 1.5,
+              color: "white",
+            }),
 
-      onLeaveBack: () =>
-        gsap.to(
-          [".link", ".paragraph", ".scroll-up-arrow", ".scroll-up-text"],
-          {
-            duration: 1.5,
-            color: "#222",
-          }
-        ),
+          onLeave: () =>
+            gsap.to([link, paragraph, scrollArrow, scrollText], {
+              duration: 1.5,
+              color: "#222",
+            }),
+
+          onLeaveBack: () =>
+            gsap.to([link, paragraph, scrollArrow, scrollText], {
+              duration: 1.5,
+              color: "#222",
+            }),
+        });
+      },
     });
   }, [language, mediaQuery]);
 
   useEffect(() => {
-    ScrollTrigger.create({
-      trigger: "#about",
-      start: "top center",
-      end: "bottom center",
-      onEnter: () => {
+    ScrollTrigger.matchMedia({
+      "(max-width: 1099px)": function () {
         gsap.utils
           .toArray([".title", ".highlight", ".list-item"])
-          .forEach((item, i) => {
+          .forEach((item) => {
             const randomColor = getRandomValue(randomColorArray);
 
-            const tl = gsap.timeline();
-
-            tl.to(item, {
-              delay: i / 10,
-              color: randomColorArray[randomColor],
-            });
+            gsap.set(item, { color: randomColorArray[randomColor] });
           });
+
+        gsap.set(".paragraph", { color: "white" });
       },
+    });
 
-      onEnterBack: () => {
-        gsap.utils
-          .toArray([".title", ".highlight", ".list-item"])
-          .reverse()
-          .forEach((item, i) => {
-            const randomColor = getRandomValue(randomColorArray);
+    ScrollTrigger.matchMedia({
+      "(min-width: 1100px)": function () {
+        gsap.to([".title", ".highlight", ".list-item"], { color: "#222" });
+        ScrollTrigger.create({
+          trigger: "#about",
+          start: "top center",
+          end: "bottom 80%",
+          onEnter: () => {
+            gsap.utils
+              .toArray([".title", ".highlight", ".list-item"])
+              .forEach((item, i) => {
+                const randomColor = getRandomValue(randomColorArray);
 
-            const tl = gsap.timeline();
+                const tl = gsap.timeline();
 
-            tl.to(item, {
-              delay: i / 10,
-              color: randomColorArray[randomColor],
-            });
-          });
-      },
+                tl.to(item, {
+                  delay: i / 10,
+                  color: randomColorArray[randomColor],
+                });
+              });
+          },
 
-      onLeave: () => {
-        gsap.utils
-          .toArray([".highlight", ".list-item", ".title"])
-          .forEach((item) => {
-            gsap.to(item, { color: "#222" });
-          });
-      },
+          onEnterBack: () => {
+            gsap.utils
+              .toArray([".title", ".highlight", ".list-item"])
+              .reverse()
+              .forEach((item, i) => {
+                const randomColor = getRandomValue(randomColorArray);
 
-      onLeaveBack: () => {
-        gsap.utils
-          .toArray([".highlight", ".list-item", ".title"])
-          .forEach((item) => {
-            gsap.to(item, { color: "#222" });
-          });
+                const tl = gsap.timeline();
+
+                tl.to(item, {
+                  delay: i / 10,
+                  color: randomColorArray[randomColor],
+                });
+              });
+          },
+
+          onLeave: () => {
+            gsap.utils
+              .toArray([".highlight", ".list-item", ".title"])
+              .forEach((item) => {
+                gsap.to(item, { color: "#222" });
+              });
+          },
+
+          onLeaveBack: () => {
+            gsap.utils
+              .toArray([".highlight", ".list-item", ".title"])
+              .forEach((item) => {
+                gsap.to(item, { color: "#222" });
+              });
+          },
+        });
       },
     });
   }, [language, mediaQuery]);
@@ -176,9 +201,9 @@ const AboutMe = () => {
 };
 
 const Wrapper = styled.div`
-  max-width: 85vw;
   height: fit-content;
-  margin: 10rem auto;
+  padding: 3rem 0.5rem;
+  background-color: #222;
 
   h1 {
     text-transform: capitalize;
@@ -194,6 +219,9 @@ const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1100px) {
+    max-width: 85vw;
+    margin: 10rem auto;
+    background-color: unset;
     .container {
       grid-template-columns: repeat(2, 1fr);
     }

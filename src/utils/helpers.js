@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 export const scrollToTop = () => {
   window.scrollTo(0, 0);
@@ -12,32 +12,32 @@ const linksENG = [
   {
     id: 1,
     text: "about",
-    url: "/about",
+    path: "#about",
   },
   {
     id: 2,
     text: "projects",
-    url: "/projects",
+    path: "#projects",
   },
   {
     id: 3,
     text: "plans",
-    url: "/plans",
+    path: "#plans",
   },
   {
     id: 4,
     text: "contacts",
-    url: "/contacts",
+    path: "#contacts",
   },
 ];
 
 export const navLinksENG = linksENG.map((links) => {
-  const { id, text, url } = links;
+  const { id, text, path } = links;
   return (
     <li key={id}>
-      <Link to={url} className="link">
+      <HashLink to={path} className="link">
         {text}
-      </Link>
+      </HashLink>
       <div className="underline"></div>
     </li>
   );
@@ -47,32 +47,32 @@ const linksHU = [
   {
     id: 1,
     text: "rólam",
-    url: "/about",
+    path: "#about",
   },
   {
     id: 2,
     text: "projektek",
-    url: "/projects",
+    path: "#projects",
   },
   {
     id: 3,
     text: "terveim",
-    url: "/plans",
+    path: "#plans",
   },
   {
     id: 4,
     text: "elérhetőségek",
-    url: "/contacts",
+    path: "#contacts",
   },
 ];
 
 export const navLinksHU = linksHU.map((links) => {
-  const { id, text, url } = links;
+  const { id, text, path } = links;
   return (
     <li key={id}>
-      <Link to={url} className="link">
+      <HashLink to={path} className="link">
         {text}
-      </Link>
+      </HashLink>
       <div className="underline"></div>
     </li>
   );

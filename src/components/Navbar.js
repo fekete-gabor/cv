@@ -28,6 +28,7 @@ const Navbar = () => {
 
   // navbar animation on scroll
   useEffect(() => {
+    const linkContainer = document.querySelector(".link-container");
     ScrollTrigger.matchMedia({
       "(min-width: 992px)": function () {
         ScrollTrigger.create({
@@ -35,12 +36,12 @@ const Navbar = () => {
           end: 99999,
           onUpdate: (self) => {
             self.direction === -1
-              ? gsap.to(".link-container", {
+              ? gsap.to(linkContainer, {
                   duration: 1.5,
                   ease: "slow",
                   y: "0",
                 })
-              : gsap.to(".link-container", {
+              : gsap.to(linkContainer, {
                   duration: 1.5,
                   ease: "slow",
                   y: "-200%",
@@ -64,15 +65,24 @@ const Navbar = () => {
   // set link color if sidebar is closed
   useEffect(() => {
     if (!is_sidebar_open) {
-      gsap.to(".link", { color: "#222" });
+      gsap.utils.toArray(".link").forEach((link) => {
+        gsap.to(link, { color: "#222" });
+      });
     }
   }, [is_sidebar_open]);
 
   return (
     <Wrapper>
       <div className="link-container">
-        <div className="navbar-brand" onClick={() => closeSidebar()}>
-          <Link to={"/"} className="navbar-brand" onClick={() => scrollToTop()}>
+        <div>
+          <Link
+            to={"/"}
+            className="navbar-brand"
+            onClick={() => {
+              scrollToTop();
+              closeSidebar();
+            }}
+          >
             G
           </Link>
         </div>
