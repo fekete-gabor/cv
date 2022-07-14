@@ -46,7 +46,7 @@ const Projects = () => {
 
   return (
     <Wrapper className="comp">
-      <h2>{language === "eng" ? "projects" : "projektek"}</h2>
+      <h1>{language === "eng" ? "projects" : "projektek"}</h1>
       <div className="project-container">
         {projects.map((project) => {
           const { id } = project;
@@ -85,7 +85,7 @@ const Wrapper = styled.section`
   min-height: 100vh;
   padding: 3rem 0.5rem;
 
-  h2 {
+  h1 {
     text-transform: capitalize;
     text-align: center;
   }
@@ -128,7 +128,7 @@ const Wrapper = styled.section`
     display: block;
     position: absolute;
     top: 0;
-    left: -1.5%;
+    left: 0;
     width: 100%;
     height: 100%;
     background: rgb(242, 5, 221);
@@ -157,7 +157,7 @@ const Wrapper = styled.section`
     content: "";
     display: block;
     position: absolute;
-    top: -1.5%;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;

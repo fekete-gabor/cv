@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const HeroIntroductionENG = ({ refs }) => {
   const { containerRef, textRef, linkRef, circleRef } = refs;
@@ -47,12 +47,12 @@ const HeroIntroductionENG = ({ refs }) => {
         </h1>
       </div>
       <div className="contact-container">
-        <Link to="/contacts">
+        <HashLink to="/#contacts">
           <h2 className="contact-btn" ref={linkRef}>
             contact me!
           </h2>
           <div className="contact-circle" ref={circleRef}></div>
-        </Link>
+        </HashLink>
       </div>
     </>
   );

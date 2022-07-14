@@ -9,7 +9,7 @@ const Contacts = () => {
   const { language } = useMainContext();
 
   return (
-    <Wrapper className="comp">
+    <Wrapper className="comp" id="contacts">
       <h2>Contacts</h2>
     </Wrapper>
   );

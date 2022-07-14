@@ -13,15 +13,16 @@ const ComponentIndexes = () => {
 
       gsap.set(box, {
         borderRadius: "0%",
+        scale: 1.15,
         rotate: "45deg",
-        background: "#05C7F2",
+        background: "#2A8C82",
       });
 
       if (current_component_index === i) {
         tl.fromTo(
           box,
           {
-            background: "#05C7F2",
+            background: "#2A8C82",
           },
           {
             duration: 1,
@@ -33,7 +34,7 @@ const ComponentIndexes = () => {
         tl.to(box, {
           duration: 1,
           borderRadius: "0%",
-          background: "#05C7F2",
+          background: "#2A8C82",
         });
       }
     });

@@ -82,7 +82,6 @@ const HeroIntroduction = () => {
 
   useEffect(() => {
     const mainLetter = document.querySelector(".main-letter");
-    console.log(mainLetter);
     const logo = document.querySelectorAll(".navbar-brand");
     // set logo's & main letter's text shadow on doc load
     gsap.set([mainLetter, logo], {
