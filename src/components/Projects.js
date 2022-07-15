@@ -82,7 +82,7 @@ const Projects = () => {
 
 const Wrapper = styled.section`
   width: 100%;
-  min-height: 100vh;
+  height: fit-content;
   padding: 3rem 0.5rem;
 
   h1 {
@@ -102,6 +102,7 @@ const Wrapper = styled.section`
     position: relative;
     text-align: center;
     width: 100%;
+    height: 400px;
     border-radius: 27px;
     margin: 1rem 0;
     background-color: #222;
@@ -122,77 +123,9 @@ const Wrapper = styled.section`
     align-self: center;
   }
 
-  .project::before {
-    z-index: 1;
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(242, 5, 221);
-    background: -moz-linear-gradient(
-      90deg,
-      rgba(242, 5, 221, 0.5) 50%,
-      rgba(12, 74, 242, 0.5) 50%
-    );
-    background: -webkit-linear-gradient(
-      90deg,
-      rgba(242, 5, 221, 0.5) 50%,
-      rgba(12, 74, 242, 0.5) 50%
-    );
-    background: linear-gradient(
-      90deg,
-      rgba(242, 5, 221, 0.5) 50%,
-      rgba(12, 74, 242, 0.5) 50%
-    );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f205dd",endColorstr="#0c4af2",GradientType=1);
-    transform: skew(45deg) translateX(100%);
-    transition: all 0.9s;
-  }
-
-  .project::after {
-    z-index: 1;
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(242, 5, 221);
-    background: -moz-linear-gradient(
-      90deg,
-      rgba(242, 5, 221, 0.5) 50%,
-      rgba(12, 74, 242, 0.5) 50%
-    );
-    background: -webkit-linear-gradient(
-      90deg,
-      rgba(242, 5, 221, 0.5) 50%,
-      rgba(12, 74, 242, 0.5) 50%
-    );
-    background: linear-gradient(
-      90deg,
-      rgba(242, 5, 221, 0.5) 50%,
-      rgba(12, 74, 242, 0.5) 50%
-    );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f205dd",endColorstr="#0c4af2",GradientType=1);
-    transform: skew(45deg) translateX(-100%);
-    transition: all 0.9s;
-  }
-
-  .project:hover::before {
-    left: -200%;
-  }
-
-  .project:hover::after {
-    left: 200%;
-  }
-
   .project-desc {
     display: flex;
-    padding: 1rem 6rem;
+    /* padding: 1rem 6rem; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -203,13 +136,85 @@ const Wrapper = styled.section`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* h3,
+    h4,
     p {
-    }
+      font-size: 1rem;
+    } */
     a {
       padding: 1rem;
       margin-top: 0.5rem;
       border-radius: 25px;
-      background: #222;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    .project::before {
+      z-index: 1;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(242, 5, 221);
+      background: -moz-linear-gradient(
+        90deg,
+        rgba(242, 5, 221, 0.5) 50%,
+        rgba(12, 74, 242, 0.5) 50%
+      );
+      background: -webkit-linear-gradient(
+        90deg,
+        rgba(242, 5, 221, 0.5) 50%,
+        rgba(12, 74, 242, 0.5) 50%
+      );
+      background: linear-gradient(
+        90deg,
+        rgba(242, 5, 221, 0.5) 50%,
+        rgba(12, 74, 242, 0.5) 50%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f205dd",endColorstr="#0c4af2",GradientType=1);
+      transform: skew(45deg) translateX(100%);
+      transition: all 0.9s;
+    }
+
+    .project::after {
+      z-index: 1;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(242, 5, 221);
+      background: -moz-linear-gradient(
+        90deg,
+        rgba(242, 5, 221, 0.5) 50%,
+        rgba(12, 74, 242, 0.5) 50%
+      );
+      background: -webkit-linear-gradient(
+        90deg,
+        rgba(242, 5, 221, 0.5) 50%,
+        rgba(12, 74, 242, 0.5) 50%
+      );
+      background: linear-gradient(
+        90deg,
+        rgba(242, 5, 221, 0.5) 50%,
+        rgba(12, 74, 242, 0.5) 50%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f205dd",endColorstr="#0c4af2",GradientType=1);
+      transform: skew(45deg) translateX(-100%);
+      transition: all 0.9s;
+    }
+
+    .project:hover::before {
+      left: -200%;
+    }
+
+    .project:hover::after {
+      left: 200%;
     }
   }
 

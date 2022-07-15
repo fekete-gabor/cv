@@ -1,11 +1,32 @@
 import { HashLink } from "react-router-hash-link";
+import vue from "../assets/vue.png";
+import angular from "../assets/angular.png";
+import nuxt from "../assets/nuxt.png";
+import gatsby from "../assets/gatsby.png";
+import gulp from "../assets/gulp.png";
+import node from "../assets/node.png";
+import php from "../assets/php.png";
+import svelte from "../assets/svelte.png";
+import typescript from "../assets/typescript.png";
+
+export const logos = [
+  vue,
+  angular,
+  nuxt,
+  gatsby,
+  gulp,
+  node,
+  php,
+  typescript,
+  svelte,
+];
 
 export const scrollToTop = () => {
   window.scrollTo(0, 0);
 };
 
-export const getRandomValue = (colors) => {
-  return Math.floor(Math.random() * colors.length);
+export const getRandomValue = (array) => {
+  return Math.floor(Math.random() * array.length);
 };
 
 const linksENG = [

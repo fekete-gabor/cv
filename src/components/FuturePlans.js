@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import plans from "../assets/plans.jpg";
+import { logos } from "../utils/helpers";
 import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -9,14 +9,29 @@ gsap.registerPlugin(ScrollTrigger);
 const FuturePlans = () => {
   const { language } = useMainContext();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    ScrollTrigger.matchMedia({
+      "(min-width: 1100px)": function () {
+        gsap.utils.toArray(".logo").forEach((logo, i) => {
+          gsap.set(logo, { autoAlpha: 0 });
+          ScrollTrigger.create({
+            trigger: "#plans",
+            start: "top center",
+            end: "bottom center",
+            onEnter: () =>
+              gsap.to(logo, {
+                duration: 1,
+                delay: i / 10,
+                autoAlpha: 1,
+              }),
+          });
+        });
+      },
+    });
+  }, []);
 
   return (
     <Wrapper className="comp" id="plans">
-      <div className="img-container">
-        <img src={plans} alt="plans" className="plans-bg" />
-      </div>
-
       <div className="plans-container">
         <div className="container">
           <h1>
@@ -27,8 +42,8 @@ const FuturePlans = () => {
           <article>
             <h2>
               {language === "eng"
-                ? "though i do not know what the future holds, education-wise i have a great deal of plans"
-                : "habár nem tudom mit hoz a jövő, tanulást illetően elég sok tervem van"}
+                ? "though i do not know what the future holds or what to study next, education-wise i have a great deal of plans"
+                : "habár nem tudom mit hoz a jövő vagy mit tanuljak következőnek, tanulást illetően elég sok tervem van"}
             </h2>
             <p>
               {language === "eng"
@@ -38,42 +53,26 @@ const FuturePlans = () => {
           </article>
         </div>
       </div>
+      <div className="logo-container">
+        {logos.map((logo, i) => {
+          return <img src={logo} alt="logo" key={i} className="logo" />;
+        })}
+      </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.section`
   width: 100%;
-  height: 100vh;
+  height: fit-content;
+  background-color: #d4d0cd;
   padding: 3rem 0.5rem;
+  margin: 0 auto;
   text-align: center;
-  position: relative;
-
-  .img-container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      clip-path: url(#clippath);
-    }
-  }
 
   .plans-container {
-    position: relative;
-  }
-
-  .container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 75vw;
+    margin: 3rem auto;
   }
 
   h1 {
@@ -81,9 +80,24 @@ const Wrapper = styled.section`
   }
 
   article {
-    background-color: plum;
-    width: max-content;
     margin-top: 5rem;
+    p {
+      font-size: 1.25rem;
+    }
+  }
+
+  .logo-container {
+    width: 75vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    margin: 3rem auto;
+    gap: 1rem;
+
+    img {
+      width: 100%;
+      height: 100px;
+      object-fit: scale-down;
+    }
   }
 `;
 
