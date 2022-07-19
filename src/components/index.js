@@ -14,6 +14,7 @@ import AboutMeIntroduction from "./AboutMeIntroduction";
 import AboutMeIntroductionENG from "./AboutMeIntroductionENG";
 import AboutMeIntroductionHU from "./AboutMeIntroductionHU";
 import Projects from "./Projects";
+import ProjectDesc from "./ProjectDesc";
 import FuturePlans from "./FuturePlans";
 import Contacts from "./Contacts";
 import Navbar from "./Navbar";
@@ -39,6 +40,7 @@ export {
   AboutMeIntroductionHU,
   AboutMePortrait,
   Projects,
+  ProjectDesc,
   FuturePlans,
   Contacts,
   Navbar,

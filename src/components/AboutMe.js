@@ -220,7 +220,7 @@ const Wrapper = styled.div`
 
   @media screen and (min-width: 1100px) {
     max-width: 85vw;
-    margin: 10rem auto;
+    margin: 5rem auto 0;
     background-color: unset;
     .container {
       grid-template-columns: repeat(2, 1fr);

@@ -1,80 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
+import { ProjectDesc } from "./index";
 import { useMainContext } from "../context/main-context";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
-  const { language, projects } = useMainContext();
-
-  useEffect(() => {
-    gsap.utils.toArray(".project").forEach((project) => {
-      const article = project.children[0];
-
-      gsap.set([article, ".desc-item", ".desc-btn"], { autoAlpha: 0 });
-
-      const tl = gsap.timeline({ paused: true });
-
-      const anim = tl
-        .fromTo(
-          [article, ".desc-item"],
-          { autoAlpha: 0 },
-          { autoAlpha: 1, color: "white" },
-          0
-        )
-        .fromTo(
-          ".desc-btn",
-          { autoAlpha: 0 },
-          {
-            autoAlpha: 1,
-            color: "white",
-            background: "#41BFB3",
-          },
-          0
-        );
-
-      project.addEventListener("mouseover", () => {
-        anim.play();
-      });
-
-      project.addEventListener("mouseleave", () => {
-        anim.reverse();
-      });
-    });
-  }, [language]);
+  const { language } = useMainContext();
 
   return (
     <Wrapper className="comp">
       <h1>{language === "eng" ? "projects" : "projektek"}</h1>
       <div className="project-container">
-        {projects.map((project) => {
-          const { id } = project;
-          const { title, link, technologies } = project.attributes;
-          const img = project.attributes.img.data.attributes.url;
-
-          return (
-            <div
-              key={id}
-              className={`${id % 2 === 0 ? "even project" : "odd project"}`}
-            >
-              <article className="project-desc">
-                <h3 className="desc-item">{title}</h3>
-                <h4 className="desc-item">
-                  {language === "eng"
-                    ? "used technologies"
-                    : "használt technológiák"}{" "}
-                  -
-                </h4>
-                <p className="desc-item">{technologies}</p>
-                <a href={`http://${link}`} target="_blank" className="desc-btn">
-                  {language === "eng" ? "view project" : "tovább a projekthez"}
-                </a>
-              </article>
-              <img src={img} alt="project thumbnail" className="project-img" />
-            </div>
-          );
-        })}
+        <ProjectDesc />
       </div>
     </Wrapper>
   );
@@ -90,65 +26,106 @@ const Wrapper = styled.section`
     text-align: center;
   }
 
-  .project-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 1rem;
-    max-width: 1025px;
-  }
-
   .project {
+    display: grid;
+    margin: 3rem auto;
     position: relative;
-    text-align: center;
-    width: 100%;
-    height: 400px;
-    border-radius: 27px;
-    margin: 1rem 0;
-    background-color: #222;
     overflow: hidden;
+    gap: 1rem;
+    border-radius: 27px;
+    background-color: #222;
+    font-family: var(--font-family-cursive);
     img {
       border-radius: 25px;
-      object-fit: cover;
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
-  .odd {
-    align-self: center;
+  .project-title-container {
+    h3 {
+      color: dodgerblue;
+    }
   }
 
   .even {
-    align-self: center;
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  .odd {
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .project-desc-container {
+    padding: 3rem;
+    display: grid;
+    align-items: center;
+    position: relative;
   }
 
   .project-desc {
-    display: flex;
-    /* padding: 1rem 6rem; */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background-color: #222;
-    width: 100%;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* h3,
-    h4,
+    h4 {
+      color: whitesmoke;
+      font-weight: 500;
+    }
     p {
-      font-size: 1rem;
-    } */
+      color: goldenrod;
+      font-size: 1.2rem;
+    }
     a {
-      padding: 1rem;
-      margin-top: 0.5rem;
-      border-radius: 25px;
+      z-index: 1;
+      cursor: pointer;
+      font-size: 2rem;
+      color: darkorchid;
+      transition: var(--transition);
+      &:hover {
+        color: hotpink;
+      }
     }
   }
 
+  .project-btn-container {
+    gap: 2rem;
+    display: flex;
+    margin-top: 1rem;
+  }
+
   @media screen and (min-width: 600px) {
+    .project {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      max-width: 70vw;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .project {
+      height: 500px;
+      &:hover .project-title-container {
+        transition: var(--transition);
+        opacity: 0;
+      }
+      &:hover .project-desc {
+        transition: var(--transition);
+        opacity: 1;
+      }
+    }
+    .project-title-container {
+      position: absolute;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      transition: var(--transition);
+    }
+    .project-desc {
+      opacity: 0;
+    }
     .project::before {
       z-index: 1;
       content: "";
@@ -216,30 +193,8 @@ const Wrapper = styled.section`
     .project:hover::after {
       left: 200%;
     }
-  }
-
-  @media screen and (min-width: 1100px) {
-    .project {
-      width: 60%;
-    }
-
-    .odd {
-      align-self: flex-end;
-    }
-
-    .even {
-      align-self: flex-start;
-    }
-
-    .project-desc {
-      padding: 10rem;
-
-      p {
-        font-size: 1.25rem;
-      }
-      a {
-        font-size: 1rem;
-      }
+    .project-title-container {
+      padding: 1rem;
     }
   }
 `;
