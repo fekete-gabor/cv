@@ -24,7 +24,6 @@ const HeroIntroduction = () => {
     );
     const hobbies = document.querySelectorAll(".hobby");
     const letters = document.querySelectorAll(".letter");
-    const links = document.querySelectorAll(".link");
     const contactBtn = document.querySelector(".contact-btn");
 
     // set font color on doc load
@@ -41,40 +40,28 @@ const HeroIntroduction = () => {
           end: "+=150%",
 
           onEnter: () =>
-            gsap.to(
-              [introductionContainer, hobbies, letters, links, contactBtn],
-              {
-                duration: 1.5,
-                color: "white",
-              }
-            ),
+            gsap.to([introductionContainer, hobbies, letters, contactBtn], {
+              duration: 1.5,
+              color: "white",
+            }),
 
           onEnterBack: () =>
-            gsap.to(
-              [introductionContainer, hobbies, letters, links, contactBtn],
-              {
-                duration: 1.5,
-                color: "white",
-              }
-            ),
+            gsap.to([introductionContainer, hobbies, letters, contactBtn], {
+              duration: 1.5,
+              color: "white",
+            }),
 
           onLeave: () =>
-            gsap.to(
-              [introductionContainer, hobbies, letters, links, contactBtn],
-              {
-                duration: 1.5,
-                color: "#222",
-              }
-            ),
+            gsap.to([introductionContainer, hobbies, letters, contactBtn], {
+              duration: 1.5,
+              color: "#222",
+            }),
 
           onLeaveBack: () =>
-            gsap.to(
-              [introductionContainer, hobbies, letters, links, contactBtn],
-              {
-                duration: 1.5,
-                color: "#222",
-              }
-            ),
+            gsap.to([introductionContainer, hobbies, letters, contactBtn], {
+              duration: 1.5,
+              color: "#222",
+            }),
         });
       },
     });
@@ -95,28 +82,28 @@ const HeroIntroduction = () => {
       end: "+=150%",
 
       onEnter: () =>
-        gsap.to([mainLetter, logo], {
+        gsap.to(mainLetter, {
           duration: 1.5,
           color: "#0CF25D",
           textShadow: "-6px 0px 2px #F2055C",
         }),
 
       onEnterBack: () =>
-        gsap.to([mainLetter, logo], {
+        gsap.to(mainLetter, {
           duration: 1.5,
           color: "#0CF25D",
           textShadow: "-6px 0px 2px #F2055C",
         }),
 
       onLeave: () =>
-        gsap.to([mainLetter, logo], {
+        gsap.to(mainLetter, {
           duration: 1.5,
           color: "#222",
           textShadow: "-6px 0px 2px #ce5937",
         }),
 
       onLeaveBack: () =>
-        gsap.to([mainLetter, logo], {
+        gsap.to(mainLetter, {
           duration: 1.5,
           color: "#222",
           textShadow: "-6px 0px 2px #ce5937",

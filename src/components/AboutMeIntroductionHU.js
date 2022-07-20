@@ -6,13 +6,11 @@ const AboutMeIntroductionHU = () => {
       <h2 className="title">Helló! Gábor vagyok, </h2>
       <p className="paragraph">
         szenvedélyem a tanulás, az önfejlesztés, és olyan dolgok készítése amik
-        a neten élnek. A Michigan államtől 8301 km-re levő kisvárosban,
-        <span className="highlight">Zalaegerszegen</span> születtem &amp;
-        nevelkedtem.
+        a neten élnek.
       </p>
       <p className="paragraph">
-        Mint sok más gyerek abból az időszakból, én is videójátékokat játszva
-        nőttem föl. Az idő múlásával{" "}
+        1989-ben születtem és mint sok más gyerek abból az időszakból, én is
+        videójátékokat játszva nőttem föl. Az idő múlásával{" "}
         <span className="highlight">egyre kíváncsibb lettem</span>, egyáltalán
         hogy lehet egy géppel kommunikálni?
       </p>
@@ -26,7 +24,7 @@ const AboutMeIntroductionHU = () => {
         </span>{" "}
         a tudás iránti vágyam, nemhogy enyhült volna,
         <span className="highlight">
-          csak még lelkesebb vagyok a FRONT- és BACKEND-del iránt
+          csak még lelkesebb vagyok a FRONT- és BACKEND iránt
         </span>
         .
       </p>

@@ -26,7 +26,7 @@ const Navbar = () => {
     setLanguage,
   } = useMainContext();
 
-  // navbar animation on scroll
+  // hide navbar on scroll
   useEffect(() => {
     const linkContainer = document.querySelector(".link-container");
     ScrollTrigger.matchMedia({
@@ -131,13 +131,15 @@ const Navbar = () => {
 
 const Wrapper = styled.section`
   width: 100%;
-  height: fit-content;
   z-index: 999;
   position: fixed;
 
   .link-container {
     display: grid;
     grid-template-columns: auto 1fr auto;
+    align-items: center;
+    background-color: #f2f2f2;
+    box-shadow: 0px 2px 3px #222;
   }
 
   .link {
@@ -160,8 +162,6 @@ const Wrapper = styled.section`
 
   .col,
   .navbar-brand {
-    height: fit-content;
-    align-self: center;
     padding: 0 1rem;
     ul {
       display: none;
@@ -186,7 +186,7 @@ const Wrapper = styled.section`
 
   .icon {
     font-size: 2rem;
-    margin: 3rem;
+    margin: 0 3rem;
     align-self: center;
     cursor: pointer;
     transition: var(--transition);

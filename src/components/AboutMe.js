@@ -35,48 +35,6 @@ const AboutMe = () => {
   }, [language, mediaQuery]);
 
   useEffect(() => {
-    const logo = document.querySelectorAll(".navbar-brand");
-    ScrollTrigger.matchMedia({
-      "(min-width: 1100px)": function () {
-        // change logo's  color, text shadow on scroll
-        ScrollTrigger.create({
-          trigger: "#about",
-          start: "top center",
-          end: "bottom 80%",
-          onEnter: () =>
-            gsap.to(logo, {
-              duration: 1.5,
-              color: "#0CF25D",
-              textShadow: "-6px 0px 2px #F2055C",
-            }),
-
-          onEnterBack: () =>
-            gsap.to(logo, {
-              duration: 1.5,
-              color: "#0CF25D",
-              textShadow: "-6px 0px 2px #F2055C",
-            }),
-
-          onLeave: () =>
-            gsap.to(logo, {
-              duration: 1.5,
-              color: "#222",
-              textShadow: "-6px 0px 2px #ce5937",
-            }),
-
-          onLeaveBack: () =>
-            gsap.to(logo, {
-              duration: 1.5,
-              color: "#222",
-              textShadow: "-6px 0px 2px #ce5937",
-            }),
-        });
-      },
-    });
-  }, [language, mediaQuery]);
-
-  useEffect(() => {
-    const link = document.querySelectorAll(".link");
     const paragraph = document.querySelectorAll(".paragraph");
     const scrollArrow = document.querySelector(".scroll-up-arrow");
     const scrollText = document.querySelector(".scroll-up-text");
@@ -89,25 +47,25 @@ const AboutMe = () => {
           start: "top center",
           end: "bottom 80%",
           onEnter: () =>
-            gsap.to([link, paragraph, scrollArrow, scrollText], {
+            gsap.to([paragraph, scrollArrow, scrollText], {
               duration: 1.5,
               color: "white",
             }),
 
           onEnterBack: () =>
-            gsap.to([link, paragraph, scrollArrow, scrollText], {
+            gsap.to([paragraph, scrollArrow, scrollText], {
               duration: 1.5,
               color: "white",
             }),
 
           onLeave: () =>
-            gsap.to([link, paragraph, scrollArrow, scrollText], {
+            gsap.to([paragraph, scrollArrow, scrollText], {
               duration: 1.5,
               color: "#222",
             }),
 
           onLeaveBack: () =>
-            gsap.to([link, paragraph, scrollArrow, scrollText], {
+            gsap.to([paragraph, scrollArrow, scrollText], {
               duration: 1.5,
               color: "#222",
             }),

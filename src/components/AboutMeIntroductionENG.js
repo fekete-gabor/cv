@@ -5,15 +5,14 @@ const AboutMeIntroductionENG = () => {
     <article>
       <h2 className="title">Hello! I'm Gábor,</h2>
       <p className="paragraph">
-        and I'm passionate about learning, improving and building things that
-        live on the web. I was born &amp; raised in a small town near the state
-        of Michigan at the distance of 8301 km in Hungary, called{" "}
-        <span className="highlight">Zalaegerszeg</span>.
+        and I'm passionate about learning, improving myself and building things
+        that live on the web.
       </p>
       <p className="paragraph">
-        Since many kids from that era, I grew up playing video games. As time
-        went on <span className="highlight">I got increasingly curious</span>,
-        how can one even communicate with a machine?
+        I was born in 1989 and since many kids from that era, I grew up playing
+        video games. As time went on{" "}
+        <span className="highlight">I got increasingly curious</span>, how can
+        one even communicate with a machine?
       </p>
       <p className="paragraph">
         Though I was always interested, I only started to learn how to code in
@@ -33,7 +32,7 @@ const AboutMeIntroductionENG = () => {
           I'm now looking for a junior dev position
         </span>{" "}
         to finally kick start my new career and learn among professionals. In
-        the meantime, <span className="highlight">I keep on improving</span>.
+        the meantime, <span className="highlight">I'm keep on improving</span>.
       </p>
       <p className="paragraph">
         Here are few technologies I've been working with recently:
