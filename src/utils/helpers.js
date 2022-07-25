@@ -8,13 +8,17 @@ import node from "../assets/node.png";
 import php from "../assets/php.png";
 import svelte from "../assets/svelte.png";
 import typescript from "../assets/typescript.png";
+import python from "../assets/python.png";
+import graphql from "../assets/graphql.png";
 
 export const logos = [
   vue,
+  python,
   angular,
   nuxt,
   gatsby,
   gulp,
+  graphql,
   node,
   php,
   typescript,

@@ -42,8 +42,8 @@ const FuturePlans = () => {
           <article>
             <h2>
               {language === "eng"
-                ? "though i do not know what to study next, i have a great deal of plans"
-                : "habár mit tanuljak következőnek, elég sok tervem van"}
+                ? "though i haven't decided yet what to study next, i have a great deal of plans"
+                : "egyelőre még nem döntöttem el mit fogok tanulni következőnek, viszont elég sok tervem van"}
             </h2>
             <p>
               {language === "eng"

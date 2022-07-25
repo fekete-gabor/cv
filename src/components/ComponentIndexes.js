@@ -69,6 +69,7 @@ const Wrapper = styled.aside`
   right: 50px;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 2;
 
   .index-box {
     display: none;

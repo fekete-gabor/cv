@@ -17,6 +17,8 @@ import Projects from "./Projects";
 import ProjectDesc from "./ProjectDesc";
 import FuturePlans from "./FuturePlans";
 import Contacts from "./Contacts";
+import CustomInput from "./CustomInput";
+import CustomTextArea from "./CustomTextArea";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
@@ -43,6 +45,8 @@ export {
   ProjectDesc,
   FuturePlans,
   Contacts,
+  CustomInput,
+  CustomTextArea,
   Navbar,
   Sidebar,
   Footer,

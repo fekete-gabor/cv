@@ -62,7 +62,7 @@ export const MainProvider = ({ children }) => {
   const fetchProjects = async () => {
     dispatch({ type: FETCH_BEGIN });
     try {
-      const response = await fetch(`${allProjectsUrl}`);
+      const response = await fetch(allProjectsUrl);
       const data = await response.json();
       const payload = data.data;
       dispatch({ type: FETCH_SUCCESS, payload });
