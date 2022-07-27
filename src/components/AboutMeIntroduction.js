@@ -38,7 +38,7 @@ const Wrapper = styled.div`
 
   @media screen and (min-width: 400px) {
     article {
-      padding: 3rem;
+      padding: 2rem;
     }
   }
 `;

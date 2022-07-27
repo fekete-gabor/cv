@@ -42,12 +42,12 @@ const FuturePlans = () => {
           <article>
             <h2>
               {language === "eng"
-                ? "though i haven't decided yet what to study next, i have a great deal of plans"
-                : "egyelőre még nem döntöttem el mit fogok tanulni következőnek, viszont elég sok tervem van"}
+                ? "though I haven't decided yet, what to study next, I have a great deal of plans"
+                : "egyelőre még nem döntöttem el, mit fogok tanulni következőnek, viszont elég sok tervem van"}
             </h2>
             <p>
               {language === "eng"
-                ? "here are some of the technologies i'm interested in -"
+                ? "here are some of the technologies I'm interested in -"
                 : "itt egy pár technólógia azok közül, amik érdekelnek -"}
             </p>
           </article>
@@ -71,7 +71,6 @@ const Wrapper = styled.section`
   text-align: center;
 
   .plans-container {
-    width: 75vw;
     margin: 3rem auto;
   }
 
@@ -97,6 +96,12 @@ const Wrapper = styled.section`
       width: 100%;
       height: 100px;
       object-fit: scale-down;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    .plans-container {
+      width: 75vw;
     }
   }
 `;

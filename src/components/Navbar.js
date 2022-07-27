@@ -186,7 +186,7 @@ const Wrapper = styled.section`
 
   .icon {
     font-size: 2rem;
-    margin: 0 3rem;
+    margin: 0 1rem;
     align-self: center;
     cursor: pointer;
     transition: var(--transition);

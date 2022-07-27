@@ -60,7 +60,7 @@ const Wrapper = styled.section`
   }
 
   .project-desc-container {
-    padding: 3rem;
+    padding: 0.5rem;
     display: grid;
     align-items: center;
     position: relative;
@@ -91,6 +91,12 @@ const Wrapper = styled.section`
     gap: 2rem;
     display: flex;
     margin-top: 1rem;
+  }
+
+  @media screen and (min-width: 400px) {
+    .project-desc-container {
+      padding: 2rem;
+    }
   }
 
   @media screen and (min-width: 600px) {

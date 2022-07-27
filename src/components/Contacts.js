@@ -48,13 +48,13 @@ const Contacts = () => {
               <div className="form-container">
                 <div className="form-control">
                   <CustomInput
-                    label={language === "eng" ? "name" : "név"}
+                    label={language === "eng" ? "name*" : "név*"}
                     name="name"
                     type="text"
                   />
                 </div>
                 <div className="form-control">
-                  <CustomInput label="email" name="email" type="text" />
+                  <CustomInput label="email*" name="email" type="text" />
                 </div>
                 <div className="form-control">
                   <CustomInput
@@ -65,7 +65,7 @@ const Contacts = () => {
                 </div>
                 <div className="form-control">
                   <CustomTextArea
-                    label={language === "eng" ? "message" : "üzenet"}
+                    label={language === "eng" ? "message*" : "üzenet*"}
                     name="message"
                     type="textarea"
                   />
@@ -96,7 +96,7 @@ const Wrapper = styled.div`
   }
 
   .form-container {
-    margin: 5rem;
+    margin: 5rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,6 +112,7 @@ const Wrapper = styled.div`
 
   .form-control {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 500px));
     gap: 0.5rem;
     margin-bottom: 1rem;
     label {
@@ -126,7 +127,6 @@ const Wrapper = styled.div`
 
   input,
   textarea {
-    width: 35vw;
     font-size: 1rem;
     padding: 0.5rem;
     text-transform: lowercase;
@@ -181,16 +181,13 @@ const Wrapper = styled.div`
     }
   }
 
+  .btn:disabled {
+    opacity: 0.35;
+  }
+
   @media screen and (min-width: 500px) {
-    form {
-      .form-control {
-        .form-input {
-          width: 100%;
-          font-size: 1.1rem;
-          padding: 0.5rem 2rem;
-          letter-spacing: 3px;
-        }
-      }
+    .form-container {
+      margin: 5rem;
     }
   }
 `;

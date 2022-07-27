@@ -57,9 +57,15 @@ const Wrapper = styled.section`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  z-index: 996;
 
   svg {
     font-size: 2rem;
+    color: dodgerblue;
+  }
+
+  p {
+    color: dodgerblue;
   }
 `;
 

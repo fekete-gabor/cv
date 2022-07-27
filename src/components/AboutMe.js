@@ -35,10 +35,6 @@ const AboutMe = () => {
   }, [language, mediaQuery]);
 
   useEffect(() => {
-    const paragraph = document.querySelectorAll(".paragraph");
-    const scrollArrow = document.querySelector(".scroll-up-arrow");
-    const scrollText = document.querySelector(".scroll-up-text");
-
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         // change font color on scroll
@@ -47,25 +43,25 @@ const AboutMe = () => {
           start: "top center",
           end: "bottom 80%",
           onEnter: () =>
-            gsap.to([paragraph, scrollArrow, scrollText], {
+            gsap.to(".paragraph", {
               duration: 1.5,
               color: "white",
             }),
 
           onEnterBack: () =>
-            gsap.to([paragraph, scrollArrow, scrollText], {
+            gsap.to(".paragraph", {
               duration: 1.5,
               color: "white",
             }),
 
           onLeave: () =>
-            gsap.to([paragraph, scrollArrow, scrollText], {
+            gsap.to(".paragraph", {
               duration: 1.5,
               color: "#222",
             }),
 
           onLeaveBack: () =>
-            gsap.to([paragraph, scrollArrow, scrollText], {
+            gsap.to(".paragraph", {
               duration: 1.5,
               color: "#222",
             }),
@@ -99,13 +95,12 @@ const AboutMe = () => {
           onEnter: () => {
             gsap.utils
               .toArray([".title", ".highlight", ".list-item"])
-              .forEach((item, i) => {
+              .forEach((item) => {
                 const randomColor = getRandomValue(randomColorArray);
 
                 const tl = gsap.timeline();
 
                 tl.to(item, {
-                  delay: i / 10,
                   color: randomColorArray[randomColor],
                 });
               });
@@ -115,13 +110,12 @@ const AboutMe = () => {
             gsap.utils
               .toArray([".title", ".highlight", ".list-item"])
               .reverse()
-              .forEach((item, i) => {
+              .forEach((item) => {
                 const randomColor = getRandomValue(randomColorArray);
 
                 const tl = gsap.timeline();
 
                 tl.to(item, {
-                  delay: i / 10,
                   color: randomColorArray[randomColor],
                 });
               });

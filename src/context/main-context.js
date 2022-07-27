@@ -10,6 +10,7 @@ import {
   COUNT_COMPONENTS,
   SET_CURRENT_INDEX,
 } from "../actions";
+import axios from "axios";
 
 const checkLocalStorage = () => {
   const language = localStorage.getItem("language");
@@ -62,9 +63,8 @@ export const MainProvider = ({ children }) => {
   const fetchProjects = async () => {
     dispatch({ type: FETCH_BEGIN });
     try {
-      const response = await fetch(allProjectsUrl);
-      const data = await response.json();
-      const payload = data.data;
+      const response = await axios(allProjectsUrl);
+      const payload = response.data.data;
       dispatch({ type: FETCH_SUCCESS, payload });
     } catch (error) {
       dispatch({ type: FETCH_ERROR });
