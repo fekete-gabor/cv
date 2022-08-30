@@ -7,7 +7,7 @@ const Projects = () => {
   const { language } = useMainContext();
 
   return (
-    <Wrapper className="comp">
+    <Wrapper className="comp" id="projects">
       <h1>{language === "eng" ? "projects" : "projektek"}</h1>
       <div className="project-container">
         <ProjectDesc />
@@ -67,6 +67,7 @@ const Wrapper = styled.section`
   }
 
   .project-desc {
+    width: 75%;
     h4 {
       color: whitesmoke;
       font-weight: 500;
