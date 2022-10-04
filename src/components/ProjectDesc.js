@@ -25,10 +25,10 @@ const ProjectDesc = () => {
               <h4>{language === "eng" ? <>{desc_eng}</> : <>{desc_hu}</>}</h4>
               <p>{technologies}</p>
               <div className="project-btn-container">
-                <a href={github} target="_blank">
+                <a href={github} target="_blank" rel="noreferrer">
                   <BsGithub />
                 </a>
-                <a href={link} target="_blank">
+                <a href={link} target="_blank" rel="noreferrer">
                   <BsBoxArrowUpRight />
                 </a>
               </div>
@@ -53,10 +53,10 @@ const ProjectDesc = () => {
               <h4>{language === "eng" ? <>{desc_eng}</> : <>{desc_hu}</>}</h4>
               <p>{technologies}</p>
               <div className="project-btn-container">
-                <a href={github} target="_blank">
+                <a href={github} target="_blank" rel="noreferrer">
                   <BsGithub />
                 </a>
-                <a href={link} target="_blank">
+                <a href={link} target="_blank" rel="noreferrer">
                   <BsBoxArrowUpRight />
                 </a>
               </div>

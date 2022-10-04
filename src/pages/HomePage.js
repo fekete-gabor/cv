@@ -19,12 +19,14 @@ const HomePage = () => {
   useEffect(() => {
     const components = [...document.querySelectorAll(".comp")];
     countComponents(components);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    if (all_components) {
-      ScrollTrigger.matchMedia({
-        "(min-width: 1100px)": function () {
+    ScrollTrigger.matchMedia({
+      "(min-width: 1100px)": function () {
+        all_components &&
+          // eslint-disable-next-line
           all_components.map((component, i) => {
             ScrollTrigger.create({
               trigger: component,
@@ -34,9 +36,9 @@ const HomePage = () => {
               onEnterBack: () => setCurrentIndex(i),
             });
           });
-        },
-      });
-    }
+      },
+    });
+    // eslint-disable-next-line
   }, [all_components]);
 
   return (

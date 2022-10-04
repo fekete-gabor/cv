@@ -64,7 +64,8 @@ const Language = () => {
 const Wrapper = styled.section`
   .wrap {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    padding: 0 4rem;
     display: grid;
     background: #111;
   }
@@ -90,6 +91,16 @@ const Wrapper = styled.section`
       width: 100%;
       object-fit: cover;
     }
+  }
+
+  .bg-eng,
+  .bg-mask-eng {
+    padding: 1rem 0 0.5rem 0;
+  }
+
+  .bg-hu,
+  .bg-mask-hu {
+    padding: 0.5rem 0 1rem 0;
   }
 
   .link-container {
@@ -195,8 +206,9 @@ const Wrapper = styled.section`
     }
   }
 
-  @media screen and (min-width: 1090px) {
+  @media screen and (min-width: 1200px) {
     .wrap {
+      height: 100vh;
       padding: 5rem 0;
       grid-template-columns: repeat(2, 1fr);
     }
