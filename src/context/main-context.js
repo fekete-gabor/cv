@@ -19,7 +19,7 @@ const checkLocalStorage = () => {
 };
 
 const initialState = {
-  language: "eng",
+  language: "",
   storage: checkLocalStorage(),
   primary_colors: ["#D9A3B1", "#8C586B", "#0E1826", "#4A808C", "#EADEC7"],
   secondary_colors: [
