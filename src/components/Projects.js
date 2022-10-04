@@ -28,35 +28,23 @@ const Wrapper = styled.section`
 
   .project {
     display: grid;
-    margin: 3rem auto;
     position: relative;
     overflow: hidden;
-    gap: 1rem;
-    border-radius: 27px;
+    margin: 3rem auto;
+    gap: 2rem;
+    border-radius: 25px;
     background-color: #222;
     font-family: var(--font-family-cursive);
-    img {
-      border-radius: 25px;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
   }
 
-  .project-title-container {
-    h3 {
-      color: dodgerblue;
-    }
-  }
-
-  .even {
-    text-align: right;
-    justify-content: flex-end;
-  }
-
+  .even,
   .odd {
-    text-align: left;
-    justify-content: flex-start;
+    text-align: center;
+  }
+
+  h3 {
+    color: dodgerblue;
+    text-transform: capitalize;
   }
 
   .project-desc-container {
@@ -67,7 +55,6 @@ const Wrapper = styled.section`
   }
 
   .project-desc {
-    width: 75%;
     h4 {
       color: whitesmoke;
       font-weight: 500;
@@ -91,7 +78,18 @@ const Wrapper = styled.section`
   .project-btn-container {
     gap: 2rem;
     display: flex;
+    justify-content: center;
     margin-top: 1rem;
+  }
+
+  .project-img-container {
+    height: 400px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 25px;
+    }
   }
 
   @media screen and (min-width: 400px) {
@@ -100,16 +98,35 @@ const Wrapper = styled.section`
     }
   }
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 920px) {
     .project {
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      max-width: 70vw;
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 85vw;
+      gap: 0;
+    }
+
+    .project-img-container {
+      height: 100%;
+    }
+
+    .even {
+      text-align: left;
+      .project-btn-container {
+        justify-content: flex-start;
+      }
+    }
+
+    .odd {
+      text-align: right;
+      .project-btn-container {
+        justify-content: flex-end;
+      }
     }
   }
 
   @media screen and (min-width: 1200px) {
     .project {
-      height: 500px;
+      height: 600px;
       &:hover .project-title-container {
         transition: var(--transition);
         opacity: 0;
@@ -194,11 +211,11 @@ const Wrapper = styled.section`
     }
 
     .project:hover::before {
-      left: -200%;
+      left: -210%;
     }
 
     .project:hover::after {
-      left: 200%;
+      left: 210%;
     }
     .project-title-container {
       padding: 1rem;

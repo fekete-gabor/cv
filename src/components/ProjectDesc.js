@@ -6,7 +6,7 @@ import useMediaQuery from "../utils/mediaQuery";
 const ProjectDesc = () => {
   const { language, projects } = useMainContext();
 
-  const mediaQuery = useMediaQuery("(min-width: 1166px)");
+  const mediaQuery = useMediaQuery("(min-width: 920px)");
 
   return projects.map((project, i) => {
     const { id } = project;
@@ -16,10 +16,7 @@ const ProjectDesc = () => {
 
     if (id % 2 === 0 && mediaQuery) {
       return (
-        <section
-          key={id}
-          className={`${id % 2 === 0 ? "even project" : "odd project"}`}
-        >
+        <section key={id} className="odd project">
           <div className="project-desc-container">
             <div className="project-title-container">
               <h3>{`0${i + 1} - ${title}`}</h3>
@@ -27,9 +24,7 @@ const ProjectDesc = () => {
             <article className="project-desc">
               <h4>{language === "eng" ? <>{desc_eng}</> : <>{desc_hu}</>}</h4>
               <p>{technologies}</p>
-              <div
-                className={`${id % 2 === 0 && "even project-btn-container"}`}
-              >
+              <div className="project-btn-container">
                 <a href={github} target="_blank">
                   <BsGithub />
                 </a>
@@ -46,7 +41,7 @@ const ProjectDesc = () => {
       );
     } else {
       return (
-        <section key={id} className="project">
+        <section key={id} className="even project">
           <div className="project-img-container">
             <img src={img} alt="project thumbnail" />
           </div>
