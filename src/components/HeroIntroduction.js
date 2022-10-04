@@ -188,6 +188,7 @@ const HeroIntroduction = () => {
         textAnimation();
       });
     }
+    // eslint-disable-next-line
   }, [mediaQuery, language]);
 
   useEffect(() => {

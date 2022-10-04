@@ -66,7 +66,6 @@ const SharedLayout = () => {
           y: "+=1",
           repeat: -1,
           keyframes: colors.map((color) => ({ stroke: color })),
-          duration: 1.5 * colors.length,
           ease: "none",
           modifiers: {
             x: () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import useMediaQuery from "../utils/mediaQuery";
 import { useMainContext } from "../context/main-context";
@@ -12,11 +12,7 @@ const AboutMe = () => {
   const { language } = useMainContext();
   const mediaQuery = useMediaQuery("(min-width: 1100px)");
 
-  const [randomColorArray, setRandomColorArray] = useState([
-    "#0CF25D",
-    "#41BFB3",
-    "#F2CB05",
-  ]);
+  const randomColorArray = ["#0CF25D", "#41BFB3", "#F2CB05"];
 
   useEffect(() => {
     ScrollTrigger.matchMedia({
@@ -139,6 +135,7 @@ const AboutMe = () => {
         });
       },
     });
+    // eslint-disable-next-line
   }, [language, mediaQuery]);
 
   return (

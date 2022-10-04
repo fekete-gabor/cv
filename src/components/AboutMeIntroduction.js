@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useMainContext } from "../context/main-context";
 import { AboutMeIntroductionENG, AboutMeIntroductionHU } from "./index";

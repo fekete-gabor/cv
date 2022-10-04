@@ -18,6 +18,7 @@ const Sidebar = () => {
     if (mediaQuery) {
       closeSidebar();
     }
+    // eslint-disable-next-line
   }, [mediaQuery]);
 
   useEffect(() => {
@@ -31,8 +32,11 @@ const Sidebar = () => {
       tl.to(".sidebar", { duration: 1, x: "0" }).to(".col", { y: "-200%" }, 0);
     } else {
       // sidebar close animation
-      tl.to(".sidebar", { duration: 1, x: "-100%" })
-      .to(".col", { duration: 1, y: "0" }, 1);
+      tl.to(".sidebar", { duration: 1, x: "-100%" }).to(
+        ".col",
+        { duration: 1, y: "0" },
+        1
+      );
     }
   }, [is_sidebar_open]);
 

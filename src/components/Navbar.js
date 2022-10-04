@@ -60,6 +60,7 @@ const Navbar = () => {
         background: colors[randomColor],
       });
     });
+    // eslint-disable-next-line
   }, []);
 
   // set link color if sidebar is closed

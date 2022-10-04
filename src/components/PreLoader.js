@@ -60,6 +60,7 @@ const PreLoader = () => {
         }).to(circle, { duration: 0.5, scale: 0, x: "0", y: "0" });
       }
     });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -80,6 +81,7 @@ const PreLoader = () => {
         color: colors[randomColor],
       }).to(dot, { autoAlpha: 0 });
     });
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -36,6 +36,7 @@ const HeroPortrait = () => {
           .to(".layer5", { background: "none" });
       },
     });
+    // eslint-disable-next-line
   }, []);
 
   return (
