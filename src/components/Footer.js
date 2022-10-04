@@ -25,6 +25,7 @@ const Footer = () => {
       duration: 4,
       keyframes: colors.map((color) => ({ color: color })),
     }).to(symbol, { color: firstColor });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const Footer = () => {
         }
       );
     });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -52,6 +54,7 @@ const Footer = () => {
         }
       );
     });
+    // eslint-disable-next-line
   }, []);
 
   return (
