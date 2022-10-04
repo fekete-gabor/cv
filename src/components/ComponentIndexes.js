@@ -38,7 +38,7 @@ const ComponentIndexes = () => {
         });
       }
     });
-  }, [current_component_index]);
+  }, [all_components, current_component_index]);
 
   const scrollIntoView = (component) => {
     component.scrollIntoView();
