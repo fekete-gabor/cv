@@ -13,44 +13,39 @@ const LanguageENG = () => {
     const eng = engRef.current;
 
     eng.addEventListener("mouseenter", () => {
-      gsap.to(".bg-colored-eng", { height: "100%" });
-      gsap.to(".link-container-eng", { duration: 2, height: "100%" });
+      gsap.to(".bg-mask-eng", { height: "100%" });
+      gsap.to(".link-container-mask-eng", { duration: 2, height: "100%" });
     });
 
     eng.addEventListener("mouseleave", () => {
-      gsap.to(".bg-colored-eng", { height: "20%" });
-      gsap.to(".link-container-eng", { duration: 2, height: "20%" });
+      gsap.to(".bg-mask-eng", { height: "20%" });
+      gsap.to(".link-container-mask-eng", { duration: 2, height: "20%" });
     });
   }, []);
 
   return (
-    <>
-      <div className="container">
-        <div className="img-container">
-          <img
-            src={engBG}
-            alt="double decker colored"
-            className="bg-colored bg-colored-eng"
-          />
-          <img
-            src={engBG}
-            alt="double decker gray"
-            className="bg-gray bg-gray-eng"
-          />
-        </div>
-        <div className="link-container link-container-eng">
-          <Link
-            to="/"
-            data-language="eng"
-            ref={engRef}
-            onClick={(e) => setLanguage(e.target.dataset.language)}
-          >
-            English
-          </Link>
-          <div className="underline-eng"></div>
-        </div>
+    <div className="container">
+      <div className="img-container">
+        <img
+          src={engBG}
+          alt="double decker colored"
+          className="bg-mask bg-mask-eng"
+        />
+        <img src={engBG} alt="double decker gray" className="bg bg-eng" />
       </div>
-    </>
+      <div className="link-container link-container-eng">
+        <Link
+          to="/"
+          data-language="eng"
+          ref={engRef}
+          onClick={(e) => setLanguage(e.target.dataset.language)}
+        >
+          English
+        </Link>
+      </div>
+      <div className="link-container-mask link-container-mask-eng"></div>
+      <div className="underline-eng"></div>
+    </div>
   );
 };
 

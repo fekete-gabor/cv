@@ -1,45 +1,55 @@
 import React, { useEffect } from "react";
+import { LanguageENG, LanguageHU } from "./index";
+import useMediaQuery from "../utils/mediaQuery";
 import styled from "styled-components";
 import { gsap } from "gsap";
-import { LanguageENG, LanguageHU } from "./index";
 
 const Language = () => {
+  const mediaQuery = useMediaQuery("(min-width: 320px)");
+
   useEffect(() => {
+    gsap.set(".bg-mask", { height: "0%" });
+
     const tl = gsap.timeline();
 
-    // animation on doc load
     tl.fromTo(
       ".underline-eng",
       { scaleX: 0, x: "15%" },
       { duration: 2, scaleX: 1, x: "0", transformOrigin: "100% 50%" }
-    )
-      .fromTo(
-        ".underline-hu",
-        { scaleX: 0, x: "-15%" },
-        {
-          duration: 2,
-          scaleX: 1,
-          x: "0",
-          transformOrigin: "0% 50%",
-        },
-        0
-      )
-      .fromTo(
-        ".bg-gray",
+    ).fromTo(
+      ".underline-hu",
+      { scaleX: 0, x: "-15%" },
+      {
+        duration: 2,
+        scaleX: 1,
+        x: "0",
+        transformOrigin: "0% 50%",
+      },
+      0
+    );
+  }, []);
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+
+    if (mediaQuery) {
+      tl.fromTo(
+        ".bg",
         { height: "0%", filter: "grayscale(100%)" },
         { duration: 1, height: "100%" },
         0
       )
-      .fromTo(
-        ".link-container",
-        { height: "100%" },
-        { duration: 1, height: "20%" },
-        0
-      )
-      .to(".bg-colored", { duration: 1, height: "20%" }, 0);
-
-    gsap.set(".bg-colored", { height: "0%" });
-  }, []);
+        .fromTo(
+          ".link-container-mask",
+          { height: "100%" },
+          { duration: 1, height: "20%" },
+          0
+        )
+        .to(".bg-mask", { duration: 1, height: "20%" }, 0);
+    } else {
+      gsap.set(".bg", { height: "100%", filter: "grayscale(0%)" });
+    }
+  }, [mediaQuery]);
 
   return (
     <Wrapper>
@@ -56,7 +66,7 @@ const Wrapper = styled.section`
     width: 100%;
     height: 100vh;
     display: grid;
-    background: #222;
+    background: #111;
   }
 
   .container {
@@ -83,38 +93,54 @@ const Wrapper = styled.section`
   }
 
   .link-container {
-    z-index: 3;
+    z-index: 4;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(
-      90deg,
-      rgba(0.2, 0.2, 0.2, 0.2),
-      rgba(0.2, 0.2, 0.2, 0.2)
-    );
     position: absolute;
+    background: transparent;
     a {
       width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
       color: whitesmoke;
       font-size: 3rem;
     }
   }
 
-  .bg-colored {
-    z-index: 2;
+  .link-container-mask {
+    overflow: hidden;
+    background: linear-gradient(
+      90deg,
+      rgba(0.2, 0.2, 0.2, 0.2),
+      rgba(0.2, 0.2, 0.2, 0.2)
+    );
+    width: 100%;
+    z-index: 3;
+    position: absolute;
   }
 
-  .bg-gray {
+  .bg-mask {
+    z-index: 2;
+    display: none;
+  }
+
+  .bg {
     z-index: 1;
   }
 
   .underline-eng,
   .underline-hu {
+    z-index: 4;
     height: 3px;
     width: 75%;
+    position: absolute;
+    top: 55%;
   }
 
   .underline-eng {
@@ -163,13 +189,36 @@ const Wrapper = styled.section`
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cd2a3e",endColorstr="#436f4d",GradientType=1);
   }
 
-  @media screen and (min-width: 1100px) {
+  @media screen and (min-width: 320px) {
+    .bg-mask {
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 1090px) {
     .wrap {
+      padding: 5rem 0;
       grid-template-columns: repeat(2, 1fr);
     }
 
     .img-container {
       height: 100%;
+    }
+
+    .bg-hu,
+    .bg-mask-hu {
+      padding: 0 1rem 0 0.5rem;
+    }
+
+    .bg-eng,
+    .bg-mask-eng {
+      padding: 0 0.5rem 0 1rem;
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    .wrap {
+      padding: 2rem 0;
     }
   }
 `;
