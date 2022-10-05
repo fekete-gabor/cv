@@ -42,9 +42,9 @@ const LanguageHU = () => {
         >
           Magyar
         </Link>
+        <div className="underline-hu"></div>
       </div>
       <div className="link-container-mask link-container-mask-hu"></div>
-      <div className="underline-hu"></div>
     </div>
   );
 };

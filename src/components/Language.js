@@ -42,10 +42,10 @@ const Language = () => {
         .fromTo(
           ".link-container-mask",
           { height: "100%" },
-          { duration: 1, height: "20%" },
+          { duration: 1, height: "20%", minHeight: "70px" },
           0
         )
-        .to(".bg-mask", { duration: 1, height: "20%" }, 0);
+        .to(".bg-mask", { duration: 1, height: "20%", minHeight: "70px" }, 0);
     } else {
       gsap.set(".bg", { height: "100%", filter: "grayscale(0%)" });
     }
@@ -64,15 +64,14 @@ const Language = () => {
 const Wrapper = styled.section`
   .wrap {
     width: 100%;
-    height: 100%;
-    padding: 0 4rem;
+    height: 100vh;
     display: grid;
     background: #111;
   }
 
   .container {
     width: 100%;
-    height: 100%;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -108,14 +107,10 @@ const Wrapper = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     background: transparent;
     a {
       width: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       text-align: center;
       color: whitesmoke;
       font-size: 3rem;
@@ -147,9 +142,7 @@ const Wrapper = styled.section`
   .underline-hu {
     z-index: 4;
     height: 3px;
-    width: 75%;
-    position: absolute;
-    top: 55%;
+    width: 35%;
   }
 
   .underline-eng {
@@ -199,6 +192,10 @@ const Wrapper = styled.section`
   }
 
   @media screen and (min-width: 460px) {
+    .wrap {
+      padding: 0 4rem;
+    }
+
     .bg-mask {
       display: block;
     }
@@ -209,6 +206,10 @@ const Wrapper = styled.section`
       height: 100vh;
       padding: 5rem 0;
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container {
+      height: 100%;
     }
 
     .img-container {

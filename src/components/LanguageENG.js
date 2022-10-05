@@ -42,9 +42,9 @@ const LanguageENG = () => {
         >
           English
         </Link>
+        <div className="underline-eng"></div>
       </div>
       <div className="link-container-mask link-container-mask-eng"></div>
-      <div className="underline-eng"></div>
     </div>
   );
 };
