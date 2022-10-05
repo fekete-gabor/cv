@@ -93,13 +93,11 @@ const Wrapper = styled.section`
     }
   }
 
-  .bg-eng,
-  .bg-mask-eng {
+  .container-eng {
     padding: 1rem 0 0.5rem 0;
   }
 
-  .bg-hu,
-  .bg-mask-hu {
+  .container-hu {
     padding: 0.5rem 0 1rem 0;
   }
 
@@ -200,7 +198,7 @@ const Wrapper = styled.section`
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cd2a3e",endColorstr="#436f4d",GradientType=1);
   }
 
-  @media screen and (min-width: 320px) {
+  @media screen and (min-width: 460px) {
     .bg-mask {
       display: block;
     }
