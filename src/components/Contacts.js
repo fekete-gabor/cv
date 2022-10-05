@@ -9,7 +9,7 @@ import { useMainContext } from "../context/main-context";
 
 const Contacts = () => {
   const { language } = useMainContext();
-  const [serverState, setServerState] = useState();
+  const [setServerState] = useState();
 
   const formEndpoint = process.env.REACT_APP_FORM_ENDPOINT;
 
