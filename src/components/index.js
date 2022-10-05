@@ -13,6 +13,7 @@ import AboutMePortrait from "./AboutMePortrait";
 import AboutMeIntroduction from "./AboutMeIntroduction";
 import AboutMeIntroductionENG from "./AboutMeIntroductionENG";
 import AboutMeIntroductionHU from "./AboutMeIntroductionHU";
+import AboutMeTechnologies from "./AboutMeTechnologies";
 import Projects from "./Projects";
 import ProjectDesc from "./ProjectDesc";
 import FuturePlans from "./FuturePlans";
@@ -40,6 +41,7 @@ export {
   AboutMeIntroduction,
   AboutMeIntroductionENG,
   AboutMeIntroductionHU,
+  AboutMeTechnologies,
   AboutMePortrait,
   Projects,
   ProjectDesc,

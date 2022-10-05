@@ -1,4 +1,5 @@
 import React from "react";
+import { AboutMeTechnologies } from "./index";
 
 const AboutMeIntroductionENG = () => {
   return (
@@ -37,35 +38,7 @@ const AboutMeIntroductionENG = () => {
       <p className="paragraph">
         Here are few technologies I've been working with recently:
       </p>
-      <ul>
-        <li>
-          <p className="list-item">HTML</p>
-        </li>
-        <li>
-          <p className="list-item">CSS</p>
-        </li>
-        <li>
-          <p className="list-item">Styled Components</p>
-        </li>
-        <li>
-          <p className="list-item">JavaScript(ES6+)</p>
-        </li>
-        <li>
-          <p className="list-item">React</p>
-        </li>
-        <li>
-          <p className="list-item">GSAP</p>
-        </li>
-        <li>
-          <p className="list-item">Strapi Headless CMS</p>
-        </li>
-        <li>
-          <p className="list-item">Heroku</p>
-        </li>
-        <li>
-          <p className="list-item">Netlify</p>
-        </li>
-      </ul>
+      <AboutMeTechnologies />
     </article>
   );
 };

@@ -55,6 +55,7 @@ const Wrapper = styled.section`
   }
 
   .project-desc {
+    padding: 0.5rem;
     h4 {
       color: whitesmoke;
       font-weight: 500;

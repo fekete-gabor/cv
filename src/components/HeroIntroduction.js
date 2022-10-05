@@ -127,7 +127,6 @@ const HeroIntroduction = () => {
             trigger: ".box5",
             start: "top 20%",
             end: "+=200%",
-            markers: true,
             scrub: true,
           },
         });

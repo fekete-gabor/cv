@@ -9,7 +9,7 @@ import { useMainContext } from "../context/main-context";
 
 const Contacts = () => {
   const { language } = useMainContext();
-  const [setServerState] = useState();
+  const [serverState, setServerState] = useState();
 
   const formEndpoint = process.env.REACT_APP_FORM_ENDPOINT;
 
@@ -30,7 +30,7 @@ const Contacts = () => {
       })
       .catch((error) => {
         actions.setSubmitting(false);
-        handleServerResponse(false, error.response.data.error);
+        handleServerResponse(false, error?.response?.data?.error);
       });
   };
 
