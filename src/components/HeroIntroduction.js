@@ -36,7 +36,7 @@ const HeroIntroduction = () => {
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
           trigger: ".box4",
-          start: "top 40%",
+          start: "top 20%",
           end: "+=150%",
 
           onEnter: () =>
@@ -78,7 +78,7 @@ const HeroIntroduction = () => {
     // change logo's & main letter's color, text shadow on scroll
     ScrollTrigger.create({
       trigger: ".box4",
-      start: "top 40%",
+      start: "top 20%",
       end: "+=150%",
 
       onEnter: () =>
@@ -125,8 +125,9 @@ const HeroIntroduction = () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: ".box5",
-            start: "top 40%",
+            start: "top 20%",
             end: "+=200%",
+            markers: true,
             scrub: true,
           },
         });
@@ -225,7 +226,7 @@ const HeroIntroduction = () => {
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
           trigger: ".box4",
-          start: "top 40%",
+          start: "top 20%",
           end: "+=150%",
 
           onEnter: () =>
