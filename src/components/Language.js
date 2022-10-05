@@ -107,7 +107,10 @@ const Wrapper = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: fixed;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: transparent;
     a {
       width: 100%;
@@ -216,13 +219,11 @@ const Wrapper = styled.section`
       height: 100%;
     }
 
-    .bg-hu,
-    .bg-mask-hu {
+    .container-hu {
       padding: 0 1rem 0 0.5rem;
     }
 
-    .bg-eng,
-    .bg-mask-eng {
+    .container-eng {
       padding: 0 0.5rem 0 1rem;
     }
   }
