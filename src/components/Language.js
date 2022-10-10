@@ -65,7 +65,9 @@ const Wrapper = styled.section`
   .wrap {
     width: 100%;
     height: 100vh;
+    overflow: hidden;
     display: grid;
+    gap: 1rem;
     background: #111;
   }
 
@@ -90,14 +92,6 @@ const Wrapper = styled.section`
       width: 100%;
       object-fit: cover;
     }
-  }
-
-  .container-eng {
-    padding: 1rem 0 0.5rem 0;
-  }
-
-  .container-hu {
-    padding: 0.5rem 0 1rem 0;
   }
 
   .link-container {
@@ -207,7 +201,7 @@ const Wrapper = styled.section`
   @media screen and (min-width: 1200px) {
     .wrap {
       height: 100vh;
-      padding: 5rem 0;
+      padding: 2rem 1rem;
       grid-template-columns: repeat(2, 1fr);
     }
 
@@ -217,20 +211,6 @@ const Wrapper = styled.section`
 
     .img-container {
       height: 100%;
-    }
-
-    .container-hu {
-      padding: 0 1rem 0 0.5rem;
-    }
-
-    .container-eng {
-      padding: 0 0.5rem 0 1rem;
-    }
-  }
-
-  @media screen and (min-width: 1400px) {
-    .wrap {
-      padding: 2rem 0;
     }
   }
 `;

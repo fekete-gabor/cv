@@ -24,8 +24,8 @@ const LanguageHU = () => {
   }, []);
 
   return (
-    <div className="container container-hu">
-      <div className="img-container">
+    <div className="container">
+      <div className="img-container img-container-hu">
         <img
           src={huBG}
           alt="hu building colored"
