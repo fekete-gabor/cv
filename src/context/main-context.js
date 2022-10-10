@@ -67,6 +67,7 @@ export const MainProvider = ({ children }) => {
       const payload = response.data.data;
       dispatch({ type: FETCH_SUCCESS, payload });
     } catch (error) {
+      if (error.response.status === 401) window.location.reload();
       dispatch({ type: FETCH_ERROR });
     }
   };
