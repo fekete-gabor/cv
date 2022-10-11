@@ -18,7 +18,7 @@ const Language = () => {
       { scaleX: 0, x: "15%" },
       {
         duration: 2,
-        delay: 1,
+        delay: 0.5,
         scaleX: 1,
         x: "0",
         transformOrigin: "100% 50%",
@@ -28,7 +28,7 @@ const Language = () => {
       { scaleX: 0, x: "-15%" },
       {
         duration: 2,
-        delay: 1,
+        delay: 0.5,
         scaleX: 1,
         x: "0",
         transformOrigin: "0% 50%",
@@ -46,7 +46,7 @@ const Language = () => {
         { height: "0%", filter: "grayscale(100%)" },
         {
           duration: 1,
-          delay: 1,
+          delay: 0.5,
           height: "100%",
           onComplete: () => setActive(true),
         },
