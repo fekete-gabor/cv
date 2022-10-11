@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import useMediaQuery from "../utils/mediaQuery";
 import { logos } from "../utils/helpers";
 import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap/dist/gsap";
@@ -8,27 +9,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 const FuturePlans = () => {
   const { language } = useMainContext();
+  const mediaQuery = useMediaQuery("(min-width: 1100px)");
 
   useEffect(() => {
-    ScrollTrigger.matchMedia({
-      "(min-width: 1100px)": function () {
-        gsap.utils.toArray(".logo").forEach((logo, i) => {
-          gsap.set(logo, { autoAlpha: 0 });
-          ScrollTrigger.create({
-            trigger: "#plans",
-            start: "top center",
-            end: "bottom center",
-            onEnter: () =>
-              gsap.to(logo, {
-                duration: 1,
-                delay: i / 10,
-                autoAlpha: 1,
-              }),
-          });
+    gsap.utils.toArray(".logo").forEach((logo, i) => {
+      if (mediaQuery) {
+        gsap.set(logo, { autoAlpha: 0 });
+
+        ScrollTrigger.create({
+          trigger: "#plans",
+          start: "top center",
+          end: "bottom center",
+          onEnter: () =>
+            gsap.to(logo, {
+              duration: 1,
+              delay: i / 10,
+              autoAlpha: 1,
+            }),
         });
-      },
+      } else {
+        gsap.set(logo, { autoAlpha: 1 });
+      }
     });
-  }, []);
+  }, [mediaQuery]);
 
   return (
     <Wrapper className="comp" id="plans">
