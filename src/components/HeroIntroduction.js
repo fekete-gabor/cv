@@ -306,7 +306,7 @@ const Wrapper = styled.div`
 
   .letter,
   .main-letter {
-    font-size: 2rem;
+    font-size: 3rem;
     margin: 0 0.1rem;
   }
 
