@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { LanguageENG, LanguageHU } from "./index";
 import useMediaQuery from "../utils/mediaQuery";
 import styled from "styled-components";
@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 
 const Language = () => {
   const mediaQuery = useMediaQuery("(min-width: 320px)");
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     gsap.set(".bg-mask", { height: "0%" });
@@ -17,7 +18,7 @@ const Language = () => {
       { scaleX: 0, x: "15%" },
       {
         duration: 2,
-        delay: 1.5,
+        delay: 1,
         scaleX: 1,
         x: "0",
         transformOrigin: "100% 50%",
@@ -27,7 +28,7 @@ const Language = () => {
       { scaleX: 0, x: "-15%" },
       {
         duration: 2,
-        delay: 1.5,
+        delay: 1,
         scaleX: 1,
         x: "0",
         transformOrigin: "0% 50%",
@@ -43,7 +44,12 @@ const Language = () => {
       tl.fromTo(
         ".bg",
         { height: "0%", filter: "grayscale(100%)" },
-        { duration: 1, delay: 1.5, height: "100%" },
+        {
+          duration: 1,
+          delay: 1,
+          height: "100%",
+          onComplete: () => setActive(true),
+        },
         0
       )
         .fromTo(
@@ -52,7 +58,15 @@ const Language = () => {
           { duration: 1, height: "20%", minHeight: "70px" },
           1
         )
-        .to(".bg-mask", { duration: 1, height: "20%", minHeight: "70px" }, 1);
+        .to(
+          ".bg-mask",
+          {
+            duration: 1,
+            height: "20%",
+            minHeight: "70px",
+          },
+          1
+        );
     } else {
       gsap.set(".bg", { height: "100%", filter: "grayscale(0%)" });
     }
@@ -61,8 +75,8 @@ const Language = () => {
   return (
     <Wrapper>
       <div className="wrap">
-        <LanguageENG />
-        <LanguageHU />
+        <LanguageENG active={active} />
+        <LanguageHU active={active} />
       </div>
     </Wrapper>
   );

@@ -4,24 +4,25 @@ import { Link } from "react-router-dom";
 import { useMainContext } from "../context/main-context";
 import { gsap } from "gsap";
 
-const LanguageHU = () => {
+const LanguageHU = ({ active }) => {
   const { setLanguage } = useMainContext();
 
   const huRef = useRef(null);
 
   useEffect(() => {
     const hu = huRef.current;
+    if (active) {
+      hu.addEventListener("mouseenter", () => {
+        gsap.to(".bg-mask-hu", { height: "100%" });
+        gsap.to(".link-container-mask-hu", { duration: 2, height: "100%" });
+      });
 
-    hu.addEventListener("mouseenter", () => {
-      gsap.to(".bg-mask-hu", { height: "100%" });
-      gsap.to(".link-container-mask-hu", { duration: 2, height: "100%" });
-    });
-
-    hu.addEventListener("mouseleave", () => {
-      gsap.to(".bg-mask-hu", { height: "20%" });
-      gsap.to(".link-container-mask-hu", { duration: 2, height: "20%" });
-    });
-  }, []);
+      hu.addEventListener("mouseleave", () => {
+        gsap.to(".bg-mask-hu", { height: "20%" });
+        gsap.to(".link-container-mask-hu", { duration: 2, height: "20%" });
+      });
+    }
+  }, [active]);
 
   return (
     <div className="container">
