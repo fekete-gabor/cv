@@ -9,8 +9,6 @@ const Language = () => {
   const [active, setActive] = useState(false);
 
   useEffect(() => {
-    gsap.set(".bg-mask", { height: "0%" });
-
     const tl = gsap.timeline();
 
     tl.fromTo(
@@ -58,12 +56,12 @@ const Language = () => {
           { duration: 1, height: "20%", minHeight: "70px" },
           1
         )
-        .to(
-          ".bg-mask",
+        .fromTo(
+          ".mask-container",
+          { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
           {
             duration: 1,
-            height: "20%",
-            minHeight: "70px",
+            clipPath: "polygon(0% 40%, 100% 40%, 100% 60%, 0% 60%)",
           },
           1
         );
@@ -102,7 +100,8 @@ const Wrapper = styled.section`
     position: relative;
   }
 
-  .img-container {
+  .img-container,
+  .mask-container {
     width: 100%;
     height: 50vh;
     position: relative;
@@ -113,6 +112,10 @@ const Wrapper = styled.section`
       width: 100%;
       object-fit: cover;
     }
+  }
+
+  .mask-container {
+    z-index: 3;
   }
 
   .link-container {
@@ -219,7 +222,7 @@ const Wrapper = styled.section`
     }
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1125px) {
     .wrap {
       height: 100vh;
       padding: 2rem 1rem;
@@ -230,8 +233,17 @@ const Wrapper = styled.section`
       height: 100%;
     }
 
-    .img-container {
+    .img-container,
+    .mask-container {
       height: 100%;
+      max-height: 750px;
+    }
+  }
+
+  @media screen and (min-width: 1350px) {
+    .img-container,
+    .mask-container {
+      max-height: unset;
     }
   }
 `;

@@ -13,12 +13,18 @@ const LanguageHU = ({ active }) => {
     const hu = huRef.current;
     if (active) {
       hu.addEventListener("mouseenter", () => {
-        gsap.to(".bg-mask-hu", { height: "100%" });
+        gsap.to(".mask-container-hu", {
+          duration: 1.5,
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        });
         gsap.to(".link-container-mask-hu", { duration: 2, height: "100%" });
       });
 
       hu.addEventListener("mouseleave", () => {
-        gsap.to(".bg-mask-hu", { height: "20%" });
+        gsap.to(".mask-container-hu", {
+          duration: 1.5,
+          clipPath: "polygon(0% 40%, 100% 40%, 100% 60%, 0% 60%)",
+        });
         gsap.to(".link-container-mask-hu", { duration: 2, height: "20%" });
       });
     }
@@ -27,11 +33,13 @@ const LanguageHU = ({ active }) => {
   return (
     <div className="container">
       <div className="img-container img-container-hu">
-        <img
-          src={huBG}
-          alt="hu building colored"
-          className="bg-mask bg-mask-hu"
-        />
+        <div className="mask-container mask-container-hu">
+          <img
+            src={huBG}
+            alt="hu building colored"
+            className="bg-mask bg-mask-hu"
+          />
+        </div>
         <img src={huBG} alt="hu building gray" className="bg bg-hu" />
       </div>
       <div className="link-container link-container-hu">
