@@ -34,7 +34,7 @@ const HeroIntroductionENG = ({ refs }) => {
                   <p className="hobby hobby2">learning,</p>
                 </li>
                 <li>
-                  <p className="hobby hobby3">building things,</p>
+                  <p className="hobby hobby3">programming,</p>
                 </li>
                 <li>
                   <p className="hobby hobby4" ref={textRef}>

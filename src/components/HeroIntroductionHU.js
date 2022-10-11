@@ -29,18 +29,18 @@ const HeroIntroductionHU = ({ refs }) => {
       </div>
       <div className="introduction">
         <h1>
-          I have a passion for
+          Szeretem
           <div className="mask">
             <div className="hobby-container" ref={containerRef}>
               <ul>
                 <li>
-                  <p className="hobby hobby1">webdesign-t,</p>
+                  <p className="hobby hobby1">a webdesign-t,</p>
                 </li>
                 <li>
-                  <p className="hobby hobby2">tanulást,</p>
+                  <p className="hobby hobby2">a tanulást,</p>
                 </li>
                 <li>
-                  <p className="hobby hobby3">dolgokat építeni,</p>
+                  <p className="hobby hobby3">programozni,</p>
                 </li>
                 <li>
                   <p className="hobby hobby4" ref={textRef}>
