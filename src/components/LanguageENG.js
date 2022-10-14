@@ -41,13 +41,13 @@ const LanguageENG = ({ active }) => {
         </div>
         <img src={engBG} alt="double decker gray" className="bg bg-eng" />
       </div>
-      <div className="link-container link-container-eng">
-        <Link
-          to="/"
-          data-language="eng"
-          ref={engRef}
-          onClick={(e) => setLanguage(e.target.dataset.language)}
-        >
+      <div
+        className="link-container link-container-eng"
+        ref={engRef}
+        data-language="eng"
+        onClick={(e) => setLanguage(e.target.dataset.language)}
+      >
+        <Link to="/" data-language="eng">
           English
         </Link>
         <div className="underline-eng"></div>

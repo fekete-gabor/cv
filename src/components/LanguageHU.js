@@ -42,13 +42,13 @@ const LanguageHU = ({ active }) => {
         </div>
         <img src={huBG} alt="hu building gray" className="bg bg-hu" />
       </div>
-      <div className="link-container link-container-hu">
-        <Link
-          to="/"
-          data-language="hu"
-          ref={huRef}
-          onClick={(e) => setLanguage(e.target.dataset.language)}
-        >
+      <div
+        className="link-container link-container-hu"
+        ref={huRef}
+        data-language="hu"
+        onClick={(e) => setLanguage(e.target.dataset.language)}
+      >
+        <Link to="/" data-language="hu">
           Magyar
         </Link>
         <div className="underline-hu"></div>
