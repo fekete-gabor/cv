@@ -8,10 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 const HeroPortrait = () => {
   const { primary_colors: colors } = useMainContext();
 
-  // change background color on scroll
   useEffect(() => {
     const body = document.querySelector("body");
-
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         const tl = gsap.timeline({
@@ -24,19 +22,18 @@ const HeroPortrait = () => {
           },
         });
 
-        tl.to(body, { background: colors[0] })
+        tl.to(body, { backgroundColor: colors[0] })
           .fromTo([".box5", ".layer1"], { autoAlpha: 1 }, { autoAlpha: 0 }, 0)
-          .to(body, { background: colors[1] })
+          .to(body, { backgroundColor: colors[1] }, 1)
           .fromTo([".box4", ".layer2"], { autoAlpha: 1 }, { autoAlpha: 0 }, 1)
-          .to(body, { background: colors[2] })
+          .to(body, { backgroundColor: colors[2] }, 2)
           .fromTo([".box3", ".layer3"], { autoAlpha: 1 }, { autoAlpha: 0 }, 2)
-          .to(body, { background: colors[3] })
+          .to(body, { backgroundColor: colors[3] }, 3)
           .fromTo([".box2", ".layer4"], { autoAlpha: 1 }, { autoAlpha: 0 }, 3)
-          .to(body, { background: colors[4] })
-          .to(".layer5", { background: "none" });
+          .to(body, { backgroundColor: colors[4] }, 4)
+          .fromTo(".layer5", { autoAlpha: 1 }, { autoAlpha: 0 }, 4);
       },
     });
-    // eslint-disable-next-line
   }, []);
 
   return (
