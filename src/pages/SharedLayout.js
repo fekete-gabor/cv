@@ -52,11 +52,18 @@ const SharedLayout = () => {
           x: -15,
           y: -15,
           stroke: colors[0],
-          strokeWidth: 3.5,
+          strokeWidth: 4,
           opacity: (total - i) / total,
         });
 
         colors.push(colors.shift());
+        const tl = gsap.timeline();
+
+        tl.to(line, {
+          duration: colors.length * 1.5,
+          repeat: -1,
+          keyframes: colors.map((color) => ({ stroke: color })),
+        });
 
         let pos = gsap.getProperty(line);
 
@@ -64,8 +71,6 @@ const SharedLayout = () => {
           duration: 1000,
           x: "+=1",
           y: "+=1",
-          repeat: -1,
-          keyframes: colors.map((color) => ({ stroke: color })),
           ease: "none",
           modifiers: {
             x: () => {
