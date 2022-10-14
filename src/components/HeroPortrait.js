@@ -34,6 +34,7 @@ const HeroPortrait = () => {
           .fromTo(".layer5", { autoAlpha: 1 }, { autoAlpha: 0 }, 4);
       },
     });
+    // eslint-disable-next-line
   }, []);
 
   return (
