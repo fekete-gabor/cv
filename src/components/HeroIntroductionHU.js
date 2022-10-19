@@ -40,7 +40,7 @@ const HeroIntroductionHU = ({ refs }) => {
                   <p className="hobby hobby2">a tanulást,</p>
                 </li>
                 <li>
-                  <p className="hobby hobby3">programozni,</p>
+                  <p className="hobby hobby3">a programozást,</p>
                 </li>
                 <li>
                   <p className="hobby hobby4" ref={textRef}>
