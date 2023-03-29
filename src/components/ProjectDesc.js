@@ -10,8 +10,15 @@ const ProjectDesc = () => {
 
   return projects.map((project, i) => {
     const { id } = project;
-    const { title, desc_eng, desc_hu, github, link, technologies } =
-      project.attributes;
+    const {
+      title,
+      desc_eng,
+      desc_hu,
+      github,
+      github_backend,
+      link,
+      technologies,
+    } = project.attributes;
     const img = project.attributes.img.data.attributes.url;
 
     if (id % 2 === 0 && mediaQuery) {
@@ -28,6 +35,11 @@ const ProjectDesc = () => {
                 <a href={github} target="_blank" rel="noreferrer">
                   <BsGithub />
                 </a>
+                {github_backend && (
+                  <a href={github_backend} target="_blank" rel="noreferrer">
+                    <BsGithub />
+                  </a>
+                )}
                 <a href={link} target="_blank" rel="noreferrer">
                   <BsBoxArrowUpRight />
                 </a>
