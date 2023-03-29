@@ -77,10 +77,17 @@ const Wrapper = styled.section`
   }
 
   .project-btn-container {
-    gap: 2rem;
+    gap: 0rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0 0.5rem;
+    }
   }
 
   .project-img-container {
@@ -220,6 +227,15 @@ const Wrapper = styled.section`
     }
     .project-title-container {
       padding: 1rem;
+    }
+
+    .project-btn-container {
+      div {
+        justify-content: flex-start;
+      }
+      .odd-btn {
+        justify-content: flex-end;
+      }
     }
   }
 `;
