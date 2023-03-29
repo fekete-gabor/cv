@@ -30,6 +30,18 @@ const AboutMeTechnologies = () => {
           <p className="list-item">Heroku</p>
         </li>
         <li>
+          <p className="list-item">Railway App</p>
+        </li>
+        <li>
+          <p className="list-item">Node</p>
+        </li>
+        <li>
+          <p className="list-item">Express</p>
+        </li>
+        <li>
+          <p className="list-item">MongoDB</p>
+        </li>
+        <li>
           <p className="list-item">Netlify</p>
         </li>
       </ul>
