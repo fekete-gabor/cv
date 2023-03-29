@@ -19,9 +19,10 @@ const ProjectDesc = () => {
       link,
       technologies,
     } = project.attributes;
+
     const img = project.attributes.img.data.attributes.url;
 
-    if (id % 2 === 0 && mediaQuery) {
+    if (i % 2 === 0 && mediaQuery) {
       return (
         <section key={id} className="odd project">
           <div className="project-desc-container">
@@ -32,17 +33,26 @@ const ProjectDesc = () => {
               <h4>{language === "eng" ? <>{desc_eng}</> : <>{desc_hu}</>}</h4>
               <p>{technologies}</p>
               <div className="project-btn-container">
-                <a href={github} target="_blank" rel="noreferrer">
-                  <BsGithub />
-                </a>
-                {github_backend && (
-                  <a href={github_backend} target="_blank" rel="noreferrer">
+                <div className="odd-btn">
+                  <a href={github} target="_blank" rel="noreferrer">
                     <BsGithub />
                   </a>
+                  <h4>- frontend</h4>
+                </div>
+                {github_backend && (
+                  <div className="odd-btn">
+                    <a href={github_backend} target="_blank" rel="noreferrer">
+                      <BsGithub />
+                    </a>
+                    <h4>- backend</h4>
+                  </div>
                 )}
-                <a href={link} target="_blank" rel="noreferrer">
-                  <BsBoxArrowUpRight />
-                </a>
+                <div className="odd-btn">
+                  <a href={link} target="_blank" rel="noreferrer">
+                    <BsBoxArrowUpRight />
+                  </a>
+                  <h4>- site link</h4>
+                </div>
               </div>
             </article>
           </div>
@@ -65,12 +75,26 @@ const ProjectDesc = () => {
               <h4>{language === "eng" ? <>{desc_eng}</> : <>{desc_hu}</>}</h4>
               <p>{technologies}</p>
               <div className="project-btn-container">
-                <a href={github} target="_blank" rel="noreferrer">
-                  <BsGithub />
-                </a>
-                <a href={link} target="_blank" rel="noreferrer">
-                  <BsBoxArrowUpRight />
-                </a>
+                <div>
+                  <h4>frontend -</h4>
+                  <a href={github} target="_blank" rel="noreferrer">
+                    <BsGithub />
+                  </a>
+                </div>
+                {github_backend && (
+                  <div>
+                    <h4>backend -</h4>
+                    <a href={github_backend} target="_blank" rel="noreferrer">
+                      <BsGithub />
+                    </a>
+                  </div>
+                )}
+                <div>
+                  <h4>site link -</h4>
+                  <a href={link} target="_blank" rel="noreferrer">
+                    <BsBoxArrowUpRight />
+                  </a>
+                </div>
               </div>
             </article>
           </div>
