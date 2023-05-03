@@ -10,6 +10,7 @@ import svelte from "../assets/svelte.png";
 import typescript from "../assets/typescript.png";
 import python from "../assets/python.png";
 import graphql from "../assets/graphql.png";
+import chatgpt from "../assets/chatgpt.png";
 
 export const logos = [
   vue,
@@ -23,6 +24,7 @@ export const logos = [
   php,
   typescript,
   svelte,
+  chatgpt,
 ];
 
 export const scrollToTop = () => {
