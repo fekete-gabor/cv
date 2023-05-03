@@ -13,7 +13,7 @@ const HeroIntroductionENG = ({ refs }) => {
         <div className="letter">I</div>
         <div className="letter">'</div>
         <div className="letter">m</div>
-        <div className="letter comma">,</div>
+        <div className="letter comma"></div>
         <div className="main-letter">G</div>
         <div className="letter">á</div>
         <div className="letter">b</div>
@@ -28,13 +28,13 @@ const HeroIntroductionENG = ({ refs }) => {
             <div className="hobby-container" ref={containerRef}>
               <ul>
                 <li>
-                  <p className="hobby hobby1">webdesign,</p>
+                  <p className="hobby hobby1">webdesign</p>
                 </li>
                 <li>
-                  <p className="hobby hobby2">learning,</p>
+                  <p className="hobby hobby2">learning</p>
                 </li>
                 <li>
-                  <p className="hobby hobby3">programming,</p>
+                  <p className="hobby hobby3">programming</p>
                 </li>
                 <li>
                   <p className="hobby hobby4" ref={textRef}>
