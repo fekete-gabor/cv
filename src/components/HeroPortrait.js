@@ -23,13 +23,13 @@ const HeroPortrait = () => {
         });
 
         tl.to(body, { backgroundColor: colors[0] })
-          .fromTo([".box5", ".layer1"], { autoAlpha: 1 }, { autoAlpha: 0 }, 0)
+          .fromTo(".layer1", { autoAlpha: 1 }, { autoAlpha: 0 }, 0)
           .to(body, { backgroundColor: colors[1] }, 1)
-          .fromTo([".box4", ".layer2"], { autoAlpha: 1 }, { autoAlpha: 0 }, 1)
+          .fromTo(".layer2", { autoAlpha: 1 }, { autoAlpha: 0 }, 1)
           .to(body, { backgroundColor: colors[2] }, 2)
-          .fromTo([".box3", ".layer3"], { autoAlpha: 1 }, { autoAlpha: 0 }, 2)
+          .fromTo(".layer3", { autoAlpha: 1 }, { autoAlpha: 0 }, 2)
           .to(body, { backgroundColor: colors[3] }, 3)
-          .fromTo([".box2", ".layer4"], { autoAlpha: 1 }, { autoAlpha: 0 }, 3)
+          .fromTo(".layer4", { autoAlpha: 1 }, { autoAlpha: 0 }, 3)
           .to(body, { backgroundColor: colors[4] }, 4)
           .fromTo(".layer5", { autoAlpha: 1 }, { autoAlpha: 0 }, 4);
       },
@@ -44,11 +44,6 @@ const HeroPortrait = () => {
       <div className="layer layer3" style={{ background: colors[2] }}></div>
       <div className="layer layer4" style={{ background: colors[3] }}></div>
       <div className="layer layer5"></div>
-      <div className="box box1"></div>
-      <div className="box box2" style={{ background: colors[3] }}></div>
-      <div className="box box3" style={{ background: colors[2] }}></div>
-      <div className="box box4" style={{ background: colors[1] }}></div>
-      <div className="box box5" style={{ background: colors[0] }}></div>
     </Wrapper>
   );
 };
@@ -72,56 +67,11 @@ const Wrapper = styled.div`
     background: var(--clr-primary-5);
   }
 
-  .box {
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-
-  .box1 {
-    display: flex;
-    background: #ce5937;
-    bottom: 0%;
-    right: 20%;
-    z-index: 5;
-  }
-
-  .box2 {
-    bottom: 2%;
-    right: 19%;
-    z-index: 4;
-  }
-
-  .box3 {
-    bottom: 4%;
-    right: 18%;
-    z-index: 3;
-  }
-
-  .box4 {
-    bottom: 6%;
-    right: 17%;
-    z-index: 2;
-  }
-
-  .box5 {
-    bottom: 8%;
-    right: 16%;
-    z-index: 1;
-  }
-
   @media screen and (min-width: 1100px) {
     position: unset;
 
     .layer {
       display: flex;
-    }
-
-    .box {
-      display: flex;
-      width: 400px;
-      height: 400px;
-      position: absolute;
     }
   }
 `;
