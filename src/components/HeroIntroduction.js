@@ -26,6 +26,8 @@ const HeroIntroduction = () => {
     const letters = document.querySelectorAll(".letter");
     const contactBtn = document.querySelector(".contact-btn");
 
+    ScrollTrigger.refresh();
+
     // set font color on doc load
     gsap.set([introductionContainer, hobbies, letters, contactBtn], {
       color: "#222",
@@ -35,9 +37,9 @@ const HeroIntroduction = () => {
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
-          trigger: ".box4",
+          trigger: ".hobby-container",
           start: "top 20%",
-          end: "+=150%",
+          end: "+=125%",
 
           onEnter: () =>
             gsap.to([introductionContainer, hobbies, letters, contactBtn], {
@@ -76,9 +78,11 @@ const HeroIntroduction = () => {
       textShadow: "-6px 0px 2px #ce5937",
     });
 
+    ScrollTrigger.refresh();
+
     // change logo's & main letter's color, text shadow on scroll
     ScrollTrigger.create({
-      trigger: ".box4",
+      trigger: ".hobby-container",
       start: "top 20%",
       end: "+=150%",
 
@@ -121,13 +125,16 @@ const HeroIntroduction = () => {
     let textHeight = text.getBoundingClientRect().height;
     let height = containerHeight - textHeight;
 
+    ScrollTrigger.refresh();
+
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: ".box5",
+            trigger: ".hobby-container",
             start: "top 20%",
             end: "+=200%",
+
             scrub: true,
           },
         });
@@ -225,7 +232,7 @@ const HeroIntroduction = () => {
     ScrollTrigger.matchMedia({
       "(min-width: 1100px)": function () {
         ScrollTrigger.create({
-          trigger: ".box4",
+          trigger: ".hobby-container",
           start: "top 20%",
           end: "+=150%",
 
