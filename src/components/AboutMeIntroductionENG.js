@@ -4,36 +4,38 @@ import { AboutMeTechnologies } from "./index";
 const AboutMeIntroductionENG = () => {
   return (
     <article>
-      <h2 className="title">Hello! I'm Gábor,</h2>
+      <h2 className="title">So, who am I really?</h2>
       <p className="paragraph">
-        and I'm passionate about learning, improving myself and building things
-        that live on the web.
+        Hello, I'm <span className="highlight">Gábor</span> and I like creating
+        things that live on the web.
       </p>
       <p className="paragraph">
-        I was born in 1989 and since many kids from that era, I grew up playing
-        video games. As time went on{" "}
-        <span className="highlight">I got increasingly curious</span>, how can
-        one even communicate with a machine?
+        My interest in web development{" "}
+        <span className="highlight">started back in 2015</span>, when I
+        published my first
+        <span className="highlight"> WordPress</span> blog. Turns out pushing
+        buttons and solving problems are pretty fun.
       </p>
       <p className="paragraph">
-        Though I was always interested, I only started to learn how to code in
-        <span className="highlight"> july of 2021</span>. I'm completely self
-        taught. Since I started my journey and{" "}
+        Though I was interested before,{" "}
         <span className="highlight">
-          deepend my knowledge in various technologies
-        </span>{" "}
-        my thirst for knowledge, is not only unsatiated,{" "}
-        <span className="highlight">
-          I'm even more enthusiastic about both FRONT- and BACKEND
+          I started to learn how to code in july of 2021
         </span>
         .
       </p>
       <p className="paragraph">
+        Since I started this journey and deepend my knowledge in various
+        technologies,{" "}
         <span className="highlight">
-          I'm now looking for a junior dev position
-        </span>{" "}
-        to finally kick start my new career and learn among professionals. In
-        the meantime, <span className="highlight">I'm keep on improving</span>.
+          I've got increasingly curious about both FRONT- AND BACKEND
+        </span>
+        , and I'm very <span className="highlight">excited to learn more</span>.
+      </p>
+      <p className="paragraph">
+        I currently{" "}
+        <span className="highlight">looking for a junior dev position</span> to
+        kickstart my career and{" "}
+        <span className="highlight">learn among professionals!</span>
       </p>
       <p className="paragraph">
         Here are few technologies I've been working with recently:
