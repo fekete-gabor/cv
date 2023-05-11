@@ -4,35 +4,37 @@ import { AboutMeTechnologies } from "./index";
 const AboutMeIntroductionHU = () => {
   return (
     <article>
-      <h2 className="title">Helló! Gábor vagyok, </h2>
+      <h2 className="title">Szóval ki is vagyok valójában? </h2>
       <p className="paragraph">
-        szenvedélyem a tanulás, az önfejlesztés, és olyan dolgok készítése amik
-        a neten élnek.
+        Helló, a nevem <span className="highlight">Gábor</span> és szeretek
+        dolgokat készíteni amik a neten élnek.
       </p>
       <p className="paragraph">
-        1989-ben születtem és mint sok más gyerek abból az időszakból, én is
-        videójátékokat játszva nőttem föl. Az idő múlásával{" "}
-        <span className="highlight">egyre kíváncsibb lettem</span>, egyáltalán
-        hogy lehet egy géppel kommunikálni?
+        <span className="highlight">2015-ben</span> kezdett el foglalkoztatni a
+        webfejlesztés, amikor létrehoztam az első{" "}
+        <span className="highlight">WordPress</span> blogomat. Úgy tűnik
+        gombokat nyomogatni és problémákat megoldani egész szórakoztató.
       </p>
       <p className="paragraph">
         Bár mindig is érdekelt, csak{" "}
-        <span className="highlight">2021 júliusában</span> kezdtem tanulni, hogy
-        kell programozni. Eddig teljesen önállóan tanultam. Mióta elkezdtem ezt
-        az utazást és{" "}
         <span className="highlight">
-          elmélyítettem tudásom különböző technológiákban
-        </span>{" "}
-        a tudás iránti vágyam, nemhogy enyhült volna,
-        <span className="highlight">
-          csak még lelkesebb vagyok a FRONT- és BACKEND iránt
+          2021 júliusában kezdtem programozást tanulni
         </span>
         .
       </p>
       <p className="paragraph">
-        <span className="highlight">Most egy junior dev pozíciót keresek</span>,
-        hogy végre beinduljon a karrierem és végre profiktól is tanulhassak.
-        Addig is, tovább fejlődök.
+        Mióta elkezdtem ezt az utazást és elmélyítettem tudásom számos
+        technológiában{" "}
+        <span className="highlight">
+          egyre kíváncsibb vagyok FRONT- és BACKEND iránt is.
+        </span>
+        , és izgatottan várom, hogy{" "}
+        <span className="highlight">többet tanulhassak</span>.
+      </p>
+      <p className="paragraph">
+        Jelenleg <span className="highlight">junior dev pozíciót keresek</span>,
+        hogy beinduljon a karrierem és végre{" "}
+        <span className="highlight">profiktól tanulhassak!</span>
       </p>
       <p className="paragraph">Néhány technológia amikkel nemrég dolgoztam:</p>
       <AboutMeTechnologies />
