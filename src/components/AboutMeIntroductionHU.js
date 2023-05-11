@@ -34,7 +34,7 @@ const AboutMeIntroductionHU = () => {
       <p className="paragraph">
         Jelenleg <span className="highlight">junior dev pozíciót keresek</span>,
         hogy beinduljon a karrierem és végre{" "}
-        <span className="highlight">profiktól tanulhassak!</span>
+        <span className="highlight">profik között fejlődjek!</span>
       </p>
       <p className="paragraph">Néhány technológia amikkel nemrég dolgoztam:</p>
       <AboutMeTechnologies />
