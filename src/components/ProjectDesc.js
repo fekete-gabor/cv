@@ -33,18 +33,20 @@ const ProjectDesc = () => {
               <h4>{language === "eng" ? <>{desc_eng}</> : <>{desc_hu}</>}</h4>
               <p>{technologies}</p>
               <div className="project-btn-container">
-                <div className="odd-btn">
-                  <a href={github} target="_blank" rel="noreferrer">
-                    <BsGithub />
-                  </a>
-                  <h4>- frontend</h4>
-                </div>
+                {github && (
+                  <div className="odd-btn">
+                    <a href={github} target="_blank" rel="noreferrer">
+                      <BsGithub />
+                    </a>
+                    <h4>- frontend repo</h4>
+                  </div>
+                )}
                 {github_backend && (
                   <div className="odd-btn">
                     <a href={github_backend} target="_blank" rel="noreferrer">
                       <BsGithub />
                     </a>
-                    <h4>- backend</h4>
+                    <h4>- backend repo</h4>
                   </div>
                 )}
                 <div className="odd-btn">
@@ -75,15 +77,17 @@ const ProjectDesc = () => {
               <h4>{language === "eng" ? <>{desc_eng}</> : <>{desc_hu}</>}</h4>
               <p>{technologies}</p>
               <div className="project-btn-container">
-                <div>
-                  <h4>frontend -</h4>
-                  <a href={github} target="_blank" rel="noreferrer">
-                    <BsGithub />
-                  </a>
-                </div>
+                {github && (
+                  <div>
+                    <h4>frontend repo -</h4>
+                    <a href={github} target="_blank" rel="noreferrer">
+                      <BsGithub />
+                    </a>
+                  </div>
+                )}
                 {github_backend && (
                   <div>
-                    <h4>backend -</h4>
+                    <h4>backend repo -</h4>
                     <a href={github_backend} target="_blank" rel="noreferrer">
                       <BsGithub />
                     </a>
