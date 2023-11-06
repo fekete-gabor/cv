@@ -4,7 +4,7 @@ import { AboutMeTechnologies } from "./index";
 const AboutMeIntroductionENG = () => {
   return (
     <article>
-      <h2 className="title">So, who am I really?</h2>
+      <h2 className="title">So, who am I?</h2>
       <p className="paragraph">
         Hello, I'm <span className="highlight">Gábor</span> and I like creating
         things that live on the web.
