@@ -18,6 +18,12 @@ const AboutMeTechnologies = () => {
           <p className="list-item">React</p>
         </li>
         <li>
+          <p className="list-item">Vue.js</p>
+        </li>
+        <li>
+          <p className="list-item">Tailwind CSS</p>
+        </li>
+        <li>
           <p className="list-item">Redux Toolkit</p>
         </li>
         <li>
@@ -40,6 +46,9 @@ const AboutMeTechnologies = () => {
         </li>
         <li>
           <p className="list-item">MongoDB</p>
+        </li>
+        <li>
+          <p className="list-item">Firebase</p>
         </li>
         <li>
           <p className="list-item">Netlify</p>
