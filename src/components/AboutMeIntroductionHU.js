@@ -4,7 +4,7 @@ import { AboutMeTechnologies } from "./index";
 const AboutMeIntroductionHU = () => {
   return (
     <article>
-      <h2 className="title">Szóval ki is vagyok valójában? </h2>
+      <h2 className="title">Szóval ki is vagyok én? </h2>
       <p className="paragraph">
         Helló, a nevem <span className="highlight">Gábor</span> és szeretek
         dolgokat készíteni amik a neten élnek.
